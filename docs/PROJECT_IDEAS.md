@@ -65,3 +65,43 @@ These are recommendations, not completed projects. Publish only after building a
 ## Recommended order
 
 Start with the support assistant **or** optimization workbench as a flagship. Add endurance analytics to demonstrate personality and product skills. Add the classical ML service when broadening ML evidence. Keep the document tool as an optional later project. The portfolio can launch with substantial anonymized professional experience and no fabricated personal-project section.
+
+## Concrete build sequence and finish criteria
+
+Recommended first build: **prompt optimization and evaluation workbench**. It makes David's DSPy/GEPA experience independently inspectable with a smaller ingestion and interface scope than a full support assistant. The ranking above reflects broad employer signal; this sequence reflects the fastest path to credible public evidence. Build the support assistant next if retrieval roles are the target, or endurance analytics next for a more distinctive product story. These are scope estimates, not delivery promises.
+
+| Stage | Bounded scope | Finish criterion |
+| --- | --- | --- |
+| First vertical slice | One original synthetic support-intent dataset, five classes, baseline evaluation script, fixed splits | A fresh checkout reproduces the baseline and exports per-class errors |
+| Optimization | One DSPy program, one GEPA run configuration, explicit token/cost ceiling | Baseline and optimized results run against the same untouched test set; unsuccessful runs remain visible |
+| Reviewable demo | Streamlit experiment comparison, saved sample run, short recording | An employer can understand the tradeoff in two minutes without supplying credentials |
+| Release | README, data/model notes, dependency lock, CI, limitations | Setup works from a clean environment; no private data, API keys or unsubstantiated improvement claims |
+
+For the support assistant, constrain the first corpus to 20–40 original fictional product support pages. Create answerable, unanswerable, ambiguous and conflicting-source questions; label expected source IDs before tuning. Start with roughly 60–100 curated questions, but publish the actual final counts and label limitations. A small synthetic benchmark demonstrates engineering discipline; it does not establish production reliability. Use an offline fixture mode and optional server-side model adapter. Keep API keys out of the frontend.
+
+For endurance analytics, start with generated CSV activity records rather than integrating a live fitness account. First release: weekly totals, sport filters, consistent units, missing-session handling and a clear synthetic-data indicator. Exclude public routes/maps from the default demo. A useful and correctly tested dashboard is sufficient; add ML only when a question and comparison baseline justify it.
+
+For classical ML, bike-demand forecasting is a concrete candidate. Check the chosen dataset's original publisher, attribution and license before committing it; retain its original time order. A seasonal naive forecast is the first comparison. For document intelligence, begin with original synthetic invoices and field-level annotations to avoid exposing identity or customer records.
+
+### Evidence every released project should contain
+
+- A clear problem, intended user and short working demonstration; no placeholder demo links.
+- Reproducible setup, a dependency lock, dataset provenance/license, architecture explanation and explicit personal contributions.
+- Baseline, held-out evaluation, error slices and failure examples. Record provider/model configuration, run date, budget and measured cost/latency scope.
+- Safe demo data, accessible interface, meaningful CI checks and a limitations section.
+- Screenshots or a short recording plus an offline sample output so reviewers can inspect the work without paid services.
+
+## Public GitHub suitability review — 15 October 2026
+
+Reviewed the [public repository inventory](https://api.github.com/users/FarcasDavid/repos?per_page=100), repository landing pages and selected default-branch trees/READMEs. This is a presentation-readiness review, not a full code, security or execution audit. The current portfolio repository is the seventh repository returned by the API; a cached profile page still displayed six.
+
+| Repository | Observed evidence | Launch decision |
+| --- | --- | --- |
+| [CryptoMarket](https://github.com/FarcasDavid/CryptoMarket) | README describes UIKit, a local CryptoAPI and Realm; repository includes an xcframework | Potential older mobile-work example after reproducible setup, screenshots and dependency review; do not describe it as AI work or a verified live product |
+| [FlyEventsApp](https://github.com/FarcasDavid/FlyEventsApp) | Swift app, develop branch, one-line purpose README | Needs setup, ownership/context, working demo and validation before featuring |
+| [RecipeBook](https://github.com/FarcasDavid/RecipeBook) | Swift/Xcode structure and committed Pods; no README visible on repository landing page | Needs dependency cleanup/review and product documentation before featuring |
+| [GameDashboard](https://github.com/FarcasDavid/GameDashboard) | TypeScript game dashboard source and Vite-style configuration; no README returned from main | Possible frontend example after running, documenting authorship and evaluating accessibility; do not infer professional React experience from it |
+| [SwiftUI-Projects](https://github.com/FarcasDavid/SwiftUI-Projects) | Repository description calls it learning work; multiple exercises, README only “WeSplit” | Keep as learning history; do not present tutorial exercises as original AI achievements |
+| [ioio](https://github.com/FarcasDavid/ioio) | API marks it as a fork; Valentine interaction README links to the upstream demo | Do not feature as original professional work |
+
+The API returned no repository license metadata for these six. This is not a legal conclusion; clarify ownership and third-party rights before repackaging assets or promoting examples. No external repository was copied or changed. Keep the real GitHub profile link on the portfolio and leave personal-project cards out until a project meets the finish criteria above.

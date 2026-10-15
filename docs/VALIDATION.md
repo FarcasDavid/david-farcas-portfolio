@@ -15,7 +15,7 @@ The PDF is recognized as a PDF 1.5 document. A successful download check must co
 
 - Verified `origin` matches the user-supplied repository and remote HEAD is `main` using read-only Git operations.
 - Researched current official GitHub Pages, Cloudflare Pages, and Vercel documentation; linked sources and practical setup are in `HOSTING.md`.
-- Prepared Pages workflow with build artifact deployment, `main`/manual triggers, and minimal deployment token permissions. Workflow execution remains unverified until it runs on GitHub.
+- Prepared Pages workflow with build artifact deployment, `main`/manual triggers, and minimal deployment token permissions. The corrected GitHub Actions run passed installation, production build and validation; configure-pages failed because Pages is not enabled.
 - No domain, DNS, paid account, or hosting settings changed during this research.
 
 ## Final application checks
@@ -27,8 +27,8 @@ The PDF is recognized as a PDF 1.5 document. A successful download check must co
 - Reviewed every rendered link target: correct profile URLs, email `mailto:farcas.david@yahoo.com`, telephone `tel:+40720806333`, existing section anchors, and relative CV paths. No messages were sent or calls initiated; external social login destinations were not exhaustively crawled.
 - Downloaded the CV through the browser link and compared SHA-256: `e723ecc57ccd175d901a3450ab2ae83266e252335c80300e98c3bba16000853d`, exactly matching the approved PDF.
 - Browser captured warning/error log was empty during these interactions. No font CDN, third-party script, or application dependency is required by the source. This is a source/resource review, not a Lighthouse performance score.
-- Source includes reduced-motion CSS disabling smooth scrolling, animations, and transitions. Preference emulation was not performed in the in-app browser; this behavior was inspected in CSS.
-- GitHub Actions execution and public-host verification remain pending. The static build uses relative asset/PDF links and does not consume a `BASE_PATH` environment variable.
+- Source includes reduced-motion CSS disabling smooth scrolling, animations, and transitions. CSS was reviewed; a later Playwright check emulated reduced motion and confirmed auto scroll behavior.
+- GitHub Actions build/check execution is verified. Public-host verification remains pending Pages enablement. The static build uses relative asset/PDF links and does not consume a `BASE_PATH` environment variable.
 
 Screenshots were inspected through the browser tool during QA; no generated reports or screenshots were added to Git. This is a focused browser and source review, not a complete assistive-technology certification.
 
@@ -39,3 +39,9 @@ The owner also ran Playwright with installed Google Chrome at 1440×1000, 768×1
 ## Integrated deployment
 
 The owner-private Sites deployment completed successfully (native status verified) at https://david-farcas-portfolio.rockyglade2.chatgpt.site. Public GitHub Pages hosting is separate and remains pending. The exact built artifact was packaged from committed source with the Sites helper; no credentials were written to this repository.
+
+## Public source and Pages result
+
+Public source is published in the intended FarcasDavid repository, with local main synchronized and a clean working tree. The first workflow exposed a check-before-build ordering defect; this was corrected and rerun from a clean install. [Run 38742141809](https://github.com/FarcasDavid/david-farcas-portfolio/actions/runs/38742141809) passes install/build/check, then fails configure-pages with Not Found and an explicit request to enable Pages for GitHub Actions. The signed-out browser cannot access repository settings. No public portfolio URL is claimed.
+
+The deployed private Site was also inspected at 390×844: hero and mobile menu render correctly; Escape closes the menu. The PDF downloaded from the deployed link has the same approved SHA-256. The temporary viewport override was reset.

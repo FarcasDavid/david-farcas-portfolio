@@ -4,9 +4,9 @@ Researched 15 October 2026. Recommend **GitHub Pages** for this static professio
 
 ## Current status
 
-The local `origin` is `https://github.com/FarcasDavid/david-farcas-portfolio.git`; remote HEAD resolves to `main`. Public read access works. `gh` is not installed in this environment. That alone does not establish whether ordinary Git push authentication works. No hosting settings, DNS, plan, or domain have been changed by this research.
+The local `origin` is `https://github.com/FarcasDavid/david-farcas-portfolio.git`; remote HEAD resolves to `main`. Public read access works. `gh` is not installed in this environment. That alone does not establish whether ordinary Git push authentication works. No public-host settings, DNS, paid plan, or domain have been changed.
 
-An owner-private Sites preview is successfully deployed at https://david-farcas-portfolio.rockyglade2.chatgpt.site (native deployment status: succeeded). It is a review link for the owner, not a public portfolio URL. The public GitHub Pages workflow is prepared for deployment, but a workflow file alone does not prove a live website exists. Use the successful deployment output as the authoritative URL and verify it before sharing or adding it to the CV. The approved CV remains unchanged.
+An owner-private Sites preview is successfully deployed at https://david-farcas-portfolio.rockyglade2.chatgpt.site (native deployment status: succeeded). It is a review link for the owner, not a public portfolio URL. The public source has been published through the GitHub connection and local main synchronized. The corrected [GitHub Actions run](https://github.com/FarcasDavid/david-farcas-portfolio/actions/runs/38742141809) passes npm ci, build and checks, then stops at configure-pages with “Get Pages site failed” / Not Found because Pages is not enabled. The browser is signed out, so account settings cannot be completed here. Use the successful deployment output as the authoritative URL and verify it before sharing or adding it to the CV. The approved CV remains unchanged.
 
 ## Publish with GitHub Pages
 

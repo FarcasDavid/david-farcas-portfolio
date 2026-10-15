@@ -1,23 +1,38 @@
-# David Farcas — Personal Portfolio
+# David Farcas — professional portfolio
 
-Handoff repository for David Farcas's professional AI/ML engineering and full-stack portfolio.
+An experience-led, responsive portfolio for David Farcas, AI/ML Engineer & Full Stack Developer in Cluj-Napoca. Original editorial design, static HTML/CSS/JavaScript, and no runtime dependencies, trackers, backend, or API keys.
 
-**Status:** project brief and final CV prepared; website implementation and deployment have not started. Start with [CODEX_PROMPT.md](CODEX_PROMPT.md), then [the profile brief](docs/PROFILE.md). Repository publication status is recorded in [HANDOFF_STATUS.md](HANDOFF_STATUS.md).
+## Run locally
 
-## Contents
+Requires Node.js 22 or later.
 
-- [CODEX_PROMPT.md](CODEX_PROMPT.md): complete instructions for the next Codex session.
-- [AGENTS.md](AGENTS.md): implementation and content rules.
-- [docs/PROFILE.md](docs/PROFILE.md): approved facts, experience, outcomes, links, and uncertainties.
-- [docs/PROJECT_IDEAS.md](docs/PROJECT_IDEAS.md): proposed personal projects, clearly separate from completed work.
-- [docs/BUILD_AND_HOSTING.md](docs/BUILD_AND_HOSTING.md): design, implementation, validation, and hosting brief.
-- [cv/David_Farcas_2026_CV.tex](cv/David_Farcas_2026_CV.tex): final editable CV.
-- [public/cv/David_Farcas_2026_CV.pdf](public/cv/David_Farcas_2026_CV.pdf): final one-page CV, ready for a download link.
+```sh
+npm ci
+npm run build
+npm run check
+npm run preview
+```
 
-## Direction
+Open http://localhost:4173. `npm run dev` serves the built `dist/` directory too; rebuild after source edits and refresh. To change the port, use `PORT=4174 npm run preview`.
 
-A polished, responsive site inspired by the presentation quality of [nicolaemogage.com](https://nicolaemogage.com), with original design and writing tailored to David. Emphasize substantial AI engineering work, technical ownership, measurable outcomes, certifications, and the person behind the work: running and triathlon.
+## Edit and build
 
-The reference site still needs a rendered desktop/mobile audit. No framework, hosting provider, domain, or live URL has been selected. There are no build commands yet; the implementation session should add accurate setup instructions with the chosen stack.
+- `src/index.html`: page content, metadata, contact links, semantic sections.
+- `src/styles.css`: colors, layout, responsive behavior, focus and reduced-motion styles.
+- `src/main.js`: accessible mobile navigation.
+- `public/cv/David_Farcas_2026_CV.pdf`: approved downloadable CV, preserved unchanged.
+- `cv/David_Farcas_2026_CV.tex`: approved editable CV source, preserved unchanged.
+- `scripts/build.mjs`: copies `src/` and `public/` into ignored `dist/`.
+- `scripts/check.mjs`: internal links, anchor/ID integrity, primary heading and approved PDF hash.
 
-The CV files are exact copies of the approved originals. Client source code and data are deliberately outside this public repository. Contact information in the CV and brief was supplied for this portfolio. No license has been selected.
+All asset and CV links are relative, so the build works at a domain root or GitHub Pages project subpath. No framework base-path rewrite is required. `BASE_PATH` is not consumed by this static build. Generated output and QA screenshots stay out of Git.
+
+## Deployment and evidence
+
+[Hosting comparison and exact steps](docs/HOSTING.md) · [Validation record](docs/VALIDATION.md) · [Reference audit](docs/REFERENCE_AUDIT.md) · [Content review](docs/CONTENT_REVIEW.md) · [Prioritized project roadmap](docs/PROJECT_IDEAS.md).
+
+GitHub Pages is the recommended public host. `.github/workflows/deploy.yml` builds and deploys on pushes to `main` once Pages is enabled for GitHub Actions. See `HANDOFF_STATUS.md` for the actual publication status; a configured workflow alone does not establish a live deployment.
+
+## Content integrity
+
+`docs/PROFILE.md` and the approved CV are the source of truth. Professional client work is anonymized. Project recommendations are proposals, not finished work; there are no fabricated demos. Outcome figures retain their supplied scope. The CV must not gain a portfolio URL until the URL is verified and David requests the edit.

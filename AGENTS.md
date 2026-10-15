@@ -22,3 +22,17 @@ Build David Farcas's professional portfolio using CODEX_PROMPT.md and docs/ as t
 - Keep credentials, .env files, dependencies, generated build output, reports, and private source out of Git. Commit deliberate changes only.
 - Public GitHub publication under FarcasDavid is explicitly authorized. Reuse the intended remote only after verifying ownership. Never overwrite an existing unrelated repository or force-push.
 - Explain current hosting options and recommend a practical route. Do not buy a domain, incur charges, or change DNS without specific authorization. Document actual deployment status and blockers precisely.
+
+## Agent skills
+
+### Issue tracker
+
+Use GitHub Issues; read `docs/agents/issue-tracker.md` before tracker operations.
+
+### Triage labels
+
+Use the default five-label vocabulary; read `docs/agents/triage-labels.md` before triaging.
+
+### Domain docs
+
+Use a single-context layout; read `docs/agents/domain.md` before exploring domain concepts or decisions.

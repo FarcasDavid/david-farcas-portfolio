@@ -35,3 +35,7 @@ Screenshots were inspected through the browser tool during QA; no generated repo
 ## Integration follow-up
 
 The owner also ran Playwright with installed Google Chrome at 1440×1000, 768×1024, 390×844 and 320×740: no horizontal overflow or page errors, one main landmark, menu/Escape/disclosure checks passed, and the PDF returned HTTP 200 with `application/pdf`. Reduced-motion emulation returned `scroll-behavior: auto`. Desktop hero and experience screenshots were inspected separately. A mobile metric wrap was identified and corrected by placing each before/after measurement on its own row, followed by a fresh build/check.
+
+## Integrated deployment
+
+The owner-private Sites deployment completed successfully (native status verified) at https://david-farcas-portfolio.rockyglade2.chatgpt.site. Public GitHub Pages hosting is separate and remains pending. The exact built artifact was packaged from committed source with the Sites helper; no credentials were written to this repository.

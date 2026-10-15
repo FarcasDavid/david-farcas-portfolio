@@ -6,7 +6,7 @@ Researched 15 October 2026. Recommend **GitHub Pages** for this static professio
 
 The local `origin` is `https://github.com/FarcasDavid/david-farcas-portfolio.git`; remote HEAD resolves to `main`. Public read access works. `gh` is not installed in this environment. That alone does not establish whether ordinary Git push authentication works. No hosting settings, DNS, plan, or domain have been changed by this research.
 
-The committed workflow is prepared for deployment, but a workflow file alone does not prove a live website exists. Use the successful deployment output as the authoritative URL and verify it before sharing or adding it to the CV. The approved CV remains unchanged.
+An owner-private Sites preview is successfully deployed at https://david-farcas-portfolio.rockyglade2.chatgpt.site (native deployment status: succeeded). It is a review link for the owner, not a public portfolio URL. The public GitHub Pages workflow is prepared for deployment, but a workflow file alone does not prove a live website exists. Use the successful deployment output as the authoritative URL and verify it before sharing or adding it to the CV. The approved CV remains unchanged.
 
 ## Publish with GitHub Pages
 

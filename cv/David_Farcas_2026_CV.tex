@@ -1,0 +1,155 @@
+% David Farcas | AI Engineer | 2026
+% Standalone LaTeX. Compile with pdfLaTeX or Tectonic.
+\documentclass[a4paper,10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[a4paper,left=15mm,right=15mm,top=14mm,bottom=13mm]{geometry}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{soul}
+\usepackage{tikz}
+\usepackage[hidelinks]{hyperref}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[utf8]{inputenc}
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\fi
+
+\definecolor{Ink}{HTML}{18212B}
+\definecolor{Muted}{HTML}{58616E}
+\definecolor{Blue}{HTML}{225BA5}
+\definecolor{Rule}{HTML}{D8DDE4}
+\definecolor{Pill}{HTML}{F7F8FA}
+\hypersetup{pdftitle={David Farcas - AI Engineer CV 2026},pdfauthor={David Farcas}}
+\pagestyle{empty}
+\urlstyle{same}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{1.5em}
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\raggedright
+\raggedbottom
+\sodef\tracked{}{.13em}{.45em}{.55em}
+\setlist[itemize]{leftmargin=11pt,label={\color{Muted}\raisebox{.15ex}{\scriptsize$\bullet$}},itemsep=2.5pt,topsep=3pt,parsep=0pt,partopsep=0pt}
+
+\newcommand{\sectionlabel}[1]{%
+  {\color{Blue}\fontsize{8.6}{10}\selectfont\bfseries\tracked{#1}}\par
+  \vspace{3pt}{\color{Rule}\hrule height .45pt}\vspace{6pt}}
+\newcommand{\assignment}[3]{%
+  \vspace{6pt}{\fontsize{10.4}{12.1}\selectfont\bfseries #1}%
+  \hfill{\color{Muted}\fontsize{9}{11}\selectfont #2}\par
+  \vspace{1.5pt}{\color{Muted}\fontsize{8.8}{10.5}\selectfont #3}\par}
+\newcommand{\skilltag}[1]{%
+  \tikz[baseline=(tag.base)]\node[draw=Rule,fill=Pill,rounded corners=2pt,
+  inner xsep=5pt,inner ysep=3pt,line width=.4pt] (tag)
+  {\color{Ink}\fontsize{8.2}{9.2}\selectfont #1};\hspace{3pt}}
+\newcommand{\skillline}[2]{\textbf{#1:} #2\par\vspace{4pt}}
+
+\begin{document}
+\color{Ink}\fontsize{9.7}{11.7}\selectfont
+
+{\fontsize{26}{28}\selectfont\bfseries DAVID FARCAS}\par
+\vspace{3pt}
+{\color{Blue}\fontsize{10}{12}\selectfont\bfseries\tracked{AI ENGINEER}}\par
+\vspace{10pt}
+{\color{Muted}\fontsize{8.5}{10}\selectfont
+Cluj-Napoca, Romania\enspace\textcolor{Rule}{\textbar}\enspace
+\href{tel:+40720806333}{+40 720 806 333}\enspace\textcolor{Rule}{\textbar}\enspace
+\href{mailto:farcas.david@yahoo.com}{farcas.david@yahoo.com}\enspace\textcolor{Rule}{\textbar}\enspace
+\href{https://www.linkedin.com/in/farcas-david/}{linkedin.com/in/farcas-david}}\par
+\vspace{11pt}{\color{Rule}\hrule height .55pt}\vspace{13pt}
+
+\sectionlabel{EXPERIENCE}
+{\fontsize{10.8}{13}\selectfont\bfseries AI Engineer \textbar\ RebelDot}
+\hfill{\color{Muted}\fontsize{9}{11}\selectfont Nov. 2024 -- Present}\par
+\vspace{2pt}{\color{Muted}\fontsize{8.8}{10.5}\selectfont Cluj-Napoca, Romania}\par
+
+\assignment{RAG-based Email Response Automation}{Aug. 2026 -- Present}
+{Automotive marketplace client \textbar\ Python, DSPy, AWS Bedrock, PostgreSQL/pgvector}
+\begin{itemize}
+  \item \textbf{Independently architected and delivered} an \textbf{11-category RAG email assistant}, combining
+  classification, pgvector/Cohere retrieval and Haiku reranking to generate cited replies for human review.
+  \item Raised \textbf{correct drafting from 45\% to 88\%} and \textbf{top-5 retrieval from 70\% to 91\%} by turning
+  historical agent replies into a reusable, source-grounded knowledge base.
+  \item Replaced ad hoc prompt tuning with \textbf{DSPy/GEPA programmatic optimization} against defined classification
+  and safety metrics, making prompt selection repeatable and quality changes measurable.
+  \item Added \textbf{GLiNER/Presidio PII masking}, \textbf{MPNet clustering} and \textbf{DeBERTa NLI} before indexing agent
+  replies, limiting personal-data exposure and keeping knowledge-base answers traceable to source evidence.
+\end{itemize}
+
+\assignment{LLM-based Call Quality Assurance}{2026}
+{Insurance client \textbar\ Python, LangChain, DSPy, HuggingFace Transformers}
+\begin{itemize}
+  \item Built a \textbf{rubric-driven LLM scoring system} that turns call transcripts into weighted, per-criterion
+  assessments with cited evidence, standardizing quality reviews and making scores auditable.
+  \item Designed \textbf{RapidFuzz and DeBERTa NLI verification} to flag fabricated citations and unsupported reasoning
+  \textbf{without extra LLM calls}; local NLI checks benchmarked at \textbf{108--151 ms per criterion}.
+  \item Implemented \textbf{DSPy/GEPA prompt optimization} against macro-F1 and Cohen's kappa; benchmarked
+  \textbf{eight criteria across 119 calls (952 judgments)} to track human agreement and identify quality regressions.
+\end{itemize}
+
+\assignment{AI Applications \& Platform Engineering}{Nov. 2024 -- Dec. 2025}
+{Insurance, automotive \& enterprise clients \textbar\ Python, FastAPI, Streamlit, AWS/Azure, Terraform}
+\begin{itemize}
+  \item Delivered \textbf{19 self-scoped optimization tickets}, cutting \textbf{2.5M-row queries from 25s to under 2s}; expanded
+  filtering from \textbf{3 to 40+ parameters} under a Q4 deadline using PostgreSQL, batched APIs and Redis.
+  \item Delivered \textbf{multimodal OCR and cloud AI applications} using FastAPI, Streamlit, Terraform and Azure Pipelines;
+  added Microsoft Entra ID/JWT authentication, LLM caching and cross-region AWS Bedrock load balancing.
+\end{itemize}
+
+\vspace{2pt}
+\textbf{Engineering \& collaboration:} Established shared AI coding-agent rules and pre-commit checks for style,
+tests and commits; wrote architecture and contribution guides adopted by the team.
+
+\vspace{13pt}
+\noindent
+\begin{minipage}[t]{.51\textwidth}
+  \vspace{0pt}
+  \raggedright
+  \sectionlabel{SKILLS}
+  \skilltag{Python}\skilltag{RAG}\skilltag{LangChain}\skilltag{LangGraph}\par
+  \vspace{4pt}
+  \skilltag{DSPy/GEPA}\skilltag{AWS Bedrock}\skilltag{pgvector}\par
+  \vspace{7pt}
+  \fontsize{8.8}{10.6}\selectfont
+  \skillline{LLM engineering}{Prompt optimization, structured outputs, grounding, reranking, evaluation;
+  LiteLLM, OpenWebUI.}
+  \skillline{Models \& NLP}{Claude Sonnet/Haiku/Opus; Cohere Embed English v3, MPNet, DeBERTa NLI,
+  GLiNER, Presidio, spaCy, PyTorch, Sentence Transformers, HuggingFace Transformers, BERTopic, UMAP.}
+  \skillline{Backend \& data}{SQL, FastAPI, Pydantic, Streamlit, SQLAlchemy, PostgreSQL, Redis, Qdrant,
+  Pinecone, FAISS, pandas, NumPy, scikit-learn, SciPy, RapidFuzz, BM25, ROUGE-L.}
+  \skillline{Cloud \& delivery}{AWS: S3, RDS, EC2, Secrets Manager. Azure: App Service, ACR, Key Vault,
+  Entra. Terraform, Docker, Podman, Kubernetes, Azure DevOps, Azure Pipelines, Git, Bash, pytest, Ruff, mypy.}
+  \vspace{5pt}
+  \sectionlabel{PROFESSIONAL STRENGTHS}
+  End-to-end ownership; initiative; analytical problem-solving; technical communication; delivery under deadlines.\par
+  \vspace{4pt}
+  \textbf{Languages:} Romanian, English.
+\end{minipage}\hfill
+{\color{Rule}\vrule width .45pt}\hfill
+\begin{minipage}[t]{.44\textwidth}
+  \vspace{0pt}
+  \raggedright
+  \sectionlabel{CERTIFICATIONS}
+  {\fontsize{9.1}{11}\selectfont\bfseries Claude Certified Architect - Foundations}\par
+  \vspace{2pt}{\color{Muted}\fontsize{8.3}{10}\selectfont 20 Jun 2026 -- Jun 2027}\par
+  \vspace{4pt}{\fontsize{8.8}{10.6}\selectfont
+  Agentic orchestration with Claude API/Agent SDK; tools and \textbf{MCP integration}; Claude Code workflows;
+  prompt engineering, structured outputs, context management and reliability.}\par
+  \vspace{9pt}
+  {\fontsize{9.1}{11}\selectfont\bfseries Microsoft Certified: Azure AI Engineer\par Associate (AI-102)}\par
+  \vspace{2pt}{\color{Muted}\fontsize{8.3}{10}\selectfont Earned 2024}\par
+  \vspace{4pt}{\fontsize{8.8}{10.6}\selectfont Azure AI design and deployment; NLP, computer vision,
+  document extraction, search and responsible AI.}\par
+  \vspace{12pt}
+  \sectionlabel{EDUCATION}
+  {\fontsize{9.1}{11}\selectfont\bfseries Technical University of Cluj-Napoca}\par
+  \vspace{2pt}{\color{Muted}\fontsize{8.3}{10}\selectfont 2020 -- 2024}\par
+  \vspace{4pt}{\fontsize{8.8}{10.6}\selectfont Bachelor's Degree in Electronics, Telecommunications and Information Technology.}\par
+\end{minipage}
+
+\end{document}

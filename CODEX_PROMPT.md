@@ -1,0 +1,41 @@
+# Full prompt for the implementation session
+
+Work in this repository and build my professional personal portfolio end to end. I am **David Farcas**, based in **Cluj-Napoca, Romania**, an **AI/ML Engineer and Full Stack Developer**, currently an AI Engineer at **RebelDot (November 2024–present)**.
+
+Read AGENTS.md, README.md, HANDOFF_STATUS.md, docs/PROFILE.md, docs/PROJECT_IDEAS.md, docs/BUILD_AND_HOSTING.md, and my final CV source before starting. My approved one-page CV is copied here as cv/David_Farcas_2026_CV.tex and public/cv/David_Farcas_2026_CV.pdf. Preserve both. Use its actual facts, technologies, outcomes, education, certifications, and contact details. The handoff repository contains no completed website yet.
+
+## Reference and creative direction
+
+Inspect **https://nicolaemogage.com** thoroughly, including its rendered desktop and mobile views, content structure, typography, colors, spacing, navigation, interactions, experience/project treatment, personality, and contact section. A prior text fetch returned almost no content; a real visual audit is still needed. Tell me briefly what works, what you would improve, and which aspects suit my profile. Create an original, polished site inspired by that quality; do not copy another person's identity, writing, assets, or achievements. A direct, confident professional voice and restrained, technically accomplished visual design should reflect my actual strengths.
+
+**Fan out a workflow with subagents**, as I originally requested. Useful divisions are reference/design research, content and project roadmap, and implementation/testing. Give agents distinct responsibilities and file ownership. You own integration and the final result. Make sensible decisions and keep moving rather than asking for approval for routine reversible work.
+
+## My content
+
+- Hero positioning: AI/ML engineering with end-to-end delivery, strong backend/cloud skills, and full-stack product execution. Avoid unsupported seniority labels and generic hype.
+- Experience: show progression from November 2024 through 2026, with the two recent AI systems prominent. Use descriptive headings such as **RAG-based Email Response Automation** (automotive marketplace; August 2026–present) and **LLM-based Call Quality Assurance** (insurance; 2026). Older work is grouped as **AI Applications & Platform Engineering**, November 2024–December 2025. No invented individual date ranges.
+- Explain what I owned, the challenge, engineering choices, and measured impact. The email system was independently designed and implemented by me. Its user-reported measured outcomes are **correct drafting 45% to 88%** and **top-5 retrieval 70% to 91%**, associated with the pipeline that converts historical agent replies into reusable knowledge. DSPy/GEPA makes prompt optimization repeatable against evaluation metrics; do not falsely attribute all gains to it or invent an 80% improvement/50% time saving.
+- Include PII masking, grounding, source traceability, classification/reranking, evaluation, and reliable delivery where relevant. Email replies are drafted for human review. Call-quality verification flags unsupported reasoning; it is not a factuality guarantee. The CV contains additional validated benchmark details and older performance outcomes.
+- Preserve professional strengths: end-to-end ownership, initiative, analytical problem-solving, technical communication, and delivery under deadlines. Mention shared coding-agent rules, pre-commit checks, architecture/contribution guidance, and collaboration naturally.
+- Skills should be scannable and grouped, with clear searchable names. Write **HuggingFace Transformers**, never HF. Prioritize Python, RAG, DSPy/GEPA, LangChain/LangGraph, Claude/AWS Bedrock, PostgreSQL/pgvector, FastAPI, evaluation, NLP, cloud and delivery; use the CV for the complete inventory. Do not imply every tool has equal depth of expertise or invent React experience.
+- Certifications: **Claude Certified Architect - Foundations**, earned **20 June 2026**, valid to **June 2027**; and **Microsoft Certified: Azure AI Engineer Associate (AI-102)**, earned **2024**, renewal status unconfirmed. Include a concise line about the skills learned with each. Do not invent badge/verification URLs.
+- Education: Technical University of Cluj-Napoca, 2020–2024, Bachelor's Degree in Electronics, Telecommunications and Information Technology. Languages: Romanian and English.
+- Personal side: I enjoy **running and triathlon** and am **registered for IM 70.3 Mamaia 2027**. This is a future goal; verify official naming/date before using a countdown, and do not invent results, training statistics, or finisher status.
+- Links: GitHub **https://github.com/FarcasDavid**; LinkedIn **https://www.linkedin.com/in/farcas-david/**; Instagram **https://www.instagram.com/david.seiph/**.
+- Contact: **farcas.david@yahoo.com**, **+40 720 806 333**. Provide functioning email/phone links and a clear CV download. Do not claim a contact form sends messages without a working configured service.
+
+## NDA and personal projects
+
+My employer/client work is confidential. Never publish internal project names, client names, proprietary source/data, real email/transcript examples, or identifying screenshots. Broad industries and the approved CV's descriptive headings are sufficient. Do not call the work “PoC” or use the phrase “selected delivery.” Do not import anything from the original client repositories outside this portfolio repo. Do not claim deployment/production status beyond the evidence.
+
+I have no portfolio-ready personal AI projects yet. Inspect my public GitHub repositories before deciding if any deserve a link; do not present proposed projects as built. Recommend a prioritized set of substantial, feasible AI/ML projects that complement my experience and hobbies. For each, give the problem, MVP, stack, public/synthetic data, evaluation plan, demonstration, and what makes it worth showing to employers. docs/PROJECT_IDEAS.md contains a starting shortlist. Keep this roadmap distinct from completed work on the website; an experience-led portfolio can launch before these exist. Do not build all the proposed projects as part of this website task.
+
+## Implementation and hosting
+
+Choose a sensible maintainable stack after the reference audit. Build the actual site, not just a plan or mockup. Keep all source, content, setup instructions, and deployment configuration in this repository. Prefer a static architecture unless a real requirement justifies a backend. Use installed skills as appropriate, including the Sites workflow if available and applicable; do not let provider-specific storage replace this GitHub source repository.
+
+Make it responsive, accessible, fast, polished, and easy for me to edit. Provide appropriate page metadata, real social links, semantic headings, keyboard navigation, reduced-motion handling, and the real downloadable CV. No fabricated portraits or social photos; I have not provided an approved headshot. Avoid unnecessary analytics, trackers, API keys, or forms. Review desktop and mobile screenshots, run the production build and relevant checks, verify links and PDF download, and fix problems before showing me the result.
+
+Research current hosting options and explain the tradeoffs of GitHub Pages, Cloudflare Pages, Vercel, or an applicable Sites deployment. Recommend a practical route and give me a working preview plus exact hosting steps or a deployed URL if supported and authorized. I have not confirmed ownership of a custom domain. Do not purchase anything, incur charges, or change DNS without my explicit authorization. Never invent a live URL. Public GitHub publication of this repository was explicitly requested; if authentication is still blocked, tell me the exact minimal action needed and continue local work.
+
+Deliver the finished preview, actual source and validation results, a prioritized project roadmap, an honest reference/design assessment, and clear hosting instructions/status. Leave my current CV unchanged until the portfolio URL is real and I ask you to add it. Ask only for missing information that materially affects the result; continue independent work while waiting.

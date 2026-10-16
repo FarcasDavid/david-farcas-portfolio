@@ -1,56 +1,1319 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#172422">
-  <title>David Farcas — AI/ML Engineer & Full Stack Developer</title>
-  <meta name="description" content="David Farcas, AI/ML Engineer and Full Stack Developer in Cluj-Napoca. RAG systems, evaluation, backend engineering, and end-to-end product delivery.">
-  <meta property="og:title" content="David Farcas — AI/ML Engineer & Full Stack Developer">
-  <meta property="og:description" content="From retrieval and evaluation to the systems that make AI useful. Explore David’s engineering experience and get in touch.">
-  <meta property="og:type" content="website">
-  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css">
-  <script src="./main.js" defer></script>
-</head>
-<body>
-<a class="skip" href="#main">Skip to content</a>
-<div class="dark-top" id="top">
-<header class="site-header wrap">
-  <a class="wordmark" href="#top" aria-label="David Farcas home">df<span>.</span></a>
-  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation">Menu <span aria-hidden="true">＋</span></button>
-  <nav id="navigation" aria-label="Main navigation"><a href="#experience">Experience</a><a href="#expertise">Expertise</a><a href="#about">About</a><a class="nav-contact" href="#contact">Let’s talk <span aria-hidden="true">↗</span></a></nav>
-</header>
-</div>
-<main id="main">
-<div class="dark-top">
-<section class="hero wrap" aria-labelledby="hero-title">
-  <div class="hero-meta"><span><i></i> AI/ML ENGINEER & FULL STACK DEVELOPER</span><span>CLUJ-NAPOCA, ROMANIA · 46.77° N</span></div>
-  <div class="hero-grid">
-    <div><p class="intro-name">Hi, I’m David Farcas.</p><h1 id="hero-title">Engineering AI.<br>Delivering the<br><em>whole system.</em></h1></div>
-    <div class="hero-aside"><div class="system-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div><div class="art-core">df<span>.</span></div><span class="art-label label-a">RETRIEVE</span><span class="art-label label-b">EVALUATE</span><span class="art-label label-c">DELIVER</span><span class="art-point point-a"></span><span class="art-point point-b"></span></div><p>I turn complex AI problems into useful applications — connecting retrieval, evaluation, backend systems, and cloud delivery.</p><div class="hero-actions"><a class="button button-copper" href="#experience">Explore my work <span aria-hidden="true">↘</span></a><a class="text-link" href="./cv/David_Farcas_2026_CV.pdf" download>Download CV <span aria-hidden="true">↓</span></a></div></div>
-  </div>
-  <div class="hero-bottom"><span>AI Engineer at <strong>RebelDot</strong> <span class="muted">/ November 2024–present</span></span><a href="#experience" aria-label="Scroll to experience">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a></div>
-</section>
-</div>
-<section class="experience section wrap" id="experience" aria-labelledby="experience-title">
-  <div class="section-heading"><p class="eyebrow">01 / EXPERIENCE</p><h2 id="experience-title">Built around the problem.<br><span>Measured by the outcome.</span></h2><p>AI engineering at RebelDot, from November 2024 to today. A closer look at the systems I’ve built and the decisions behind them.</p></div>
-  <article class="case case-primary">
-    <div class="case-top"><span class="case-number">01</span><p class="eyebrow">AUTOMOTIVE MARKETPLACE</p><p class="date">AUGUST 2026–PRESENT</p></div>
-    <div class="case-grid"><div><h3>RAG-based Email<br>Response Automation</h3><p class="case-summary">Turning past replies into better answers.</p><p>I independently designed and implemented an 11-category RAG assistant that converts historical agent replies into reusable knowledge and drafts cited responses for human review.</p><ul class="tags" aria-label="Core technologies"><li>Python</li><li>DSPy / GEPA</li><li>AWS Bedrock</li><li>PostgreSQL / pgvector</li></ul></div><div class="metric-panel"><p class="eyebrow">KNOWLEDGE PIPELINE OUTCOMES</p><div class="metric"><span>45% <b aria-hidden="true">→</b> <strong>88%</strong></span><p>Correct drafting</p></div><div class="metric"><span>70% <b aria-hidden="true">→</b> <strong>91%</strong></span><p>Top-5 retrieval</p></div><p class="metric-note">User-reported measurements for the integrated agent-reply knowledge pipeline.</p></div></div>
-    <details><summary>The engineering behind it <span aria-hidden="true">＋</span></summary><div class="detail-grid"><div><h4>Retrieve the right evidence</h4><p>Classification routes requests across 11 categories. Cohere embeddings and PostgreSQL/pgvector retrieve relevant knowledge; Haiku reranks it before drafting source-cited replies.</p></div><div><h4>Make knowledge reusable</h4><p>GLiNER and Presidio mask PII, MPNet clusters related replies, and DeBERTa NLI checks grounding before indexing. Source traceability keeps answers reviewable.</p></div><div><h4>Optimize with a repeatable test</h4><p>DSPy/GEPA replaces ad hoc prompt tuning with optimization against classification and safety metrics. The reported gains belong to the integrated pipeline, rather than one isolated tool.</p></div></div></details>
-  </article>
-  <article class="case">
-    <div class="case-top"><span class="case-number">02</span><p class="eyebrow">INSURANCE</p><p class="date">2026</p></div>
-    <div class="case-grid"><div><h3>LLM-based Call<br>Quality Assurance</h3><p class="case-summary">Making AI assessments auditable.</p><p>I built weighted, rubric-driven scoring with cited evidence for each criterion. RapidFuzz and DeBERTa NLI flag fabricated citations and unsupported reasoning without extra LLM verification calls.</p><ul class="tags" aria-label="Core technologies"><li>Python</li><li>LangChain</li><li>DSPy</li><li>HuggingFace Transformers</li></ul></div><div class="evidence-panel"><span class="big-number">952<span>judgments</span></span><p>8 criteria · 119 calls</p><hr><p>Prompt optimization evaluated against <strong>macro-F1</strong> and <strong>Cohen’s kappa</strong> to track agreement and regressions.</p></div></div>
-    <details><summary>Evaluation & grounding <span aria-hidden="true">＋</span></summary><div class="detail-grid two"><div><h4>Evidence you can inspect</h4><p>Per-criterion citations connect weighted scores to transcript evidence. Verification raises advisory flags for unsupported reasoning; it does not guarantee factual correctness or automatically block scores.</p></div><div><h4>Keep verification lightweight</h4><p>Local NLI checks benchmarked at 108–151 ms per criterion. This measures the verification component, not end-to-end system latency.</p></div></div></details>
-  </article>
-  <article class="platform"><div><p class="eyebrow">03 / NOVEMBER 2024–DECEMBER 2025</p><h3>AI Applications &<br>Platform Engineering</h3><p>Across insurance, automotive, and enterprise work, I delivered cloud AI applications and improved the foundations they depend on.</p></div><div class="platform-facts"><div><strong>25s <span>→</span> &lt;2s</strong><p>Queries across 2.5 million rows, using PostgreSQL, batched APIs, and Redis.</p></div><div><strong>3 <span>→</span> 40+</strong><p>Filtering parameters, delivered alongside 19 self-scoped optimization tickets under a Q4 deadline.</p></div></div><p class="platform-foot">FastAPI and Streamlit applications · Multimodal OCR · Terraform and Azure Pipelines · Entra ID/JWT authentication · LLM caching · Cross-region AWS Bedrock load balancing</p></article>
-  <p class="confidentiality"><span aria-hidden="true">↳</span> Client work is confidential. These summaries use broad industry labels and approved outcomes; proprietary code and data remain private.</p>
-</section>
-<section class="expertise section" id="expertise" aria-labelledby="expertise-title"><div class="wrap"><div class="section-heading"><p class="eyebrow">02 / EXPERTISE</p><h2 id="expertise-title">Across the stack.<br><span>Accountable for the result.</span></h2></div><div class="expertise-list"><article><span>01</span><div><h3>AI that can be evaluated</h3><p>Grounded answers, repeatable prompt optimization, and evidence that makes quality changes visible.</p><p class="tool-line">Python · RAG · DSPy / GEPA · LangChain / LangGraph · Claude / AWS Bedrock · Evaluation · Structured outputs</p></div></article><article><span>02</span><div><h3>Retrieval & language systems</h3><p>Finding relevant information, protecting sensitive content, and connecting model outputs to their sources.</p><p class="tool-line">PostgreSQL / pgvector · Cohere · HuggingFace Transformers · PyTorch · DeBERTa NLI · GLiNER / Presidio · Reranking</p></div></article><article><span>03</span><div><h3>Applications built to be maintained</h3><p>APIs, data, cloud infrastructure, and delivery practices that turn an AI capability into a usable product.</p><p class="tool-line">FastAPI · Pydantic · SQLAlchemy · Redis · AWS / Azure · Terraform · Docker · Azure Pipelines · pytest / Ruff / mypy</p></div></article></div><div class="practice-note"><span aria-hidden="true">↗</span><p><strong>Good engineering is shared.</strong> I established coding-agent rules and pre-commit checks, and wrote architecture and contribution guides adopted by the team — making collaboration clearer and delivery more consistent.</p></div></div></section>
-<section class="about section wrap" id="about" aria-labelledby="about-title"><div class="about-grid"><div><p class="eyebrow">03 / THE PERSON BEHIND THE WORK</p><h2 id="about-title">Curiosity in the work.<br><span>Consistency beyond it.</span></h2><p class="about-lead">I like taking a problem from the first unanswered question to a working system.</p><p>That means owning the architecture, getting into the details, communicating tradeoffs clearly, and keeping delivery moving under real deadlines.</p><p>Outside engineering, I’m into running and triathlon. I’m training toward a future goal: IM 70.3 Mamaia 2027, for which I’m registered. The same patience for steady progress carries into how I build.</p><p class="language">BASED IN CLUJ-NAPOCA · ROMANIAN & ENGLISH</p></div><div class="credentials"><h3>Learning, put into practice.</h3><article><p class="eyebrow">CERTIFICATION / 2026</p><h4>Claude Certified Architect – Foundations</h4><p>Agentic orchestration, tool and MCP integration, structured outputs, context management, and reliability.</p><small>Earned 20 June 2026 · Valid to June 2027</small></article><article><p class="eyebrow">CERTIFICATION / 2024</p><h4>Microsoft Certified: Azure AI Engineer Associate (AI-102)</h4><p>Azure AI design and deployment, NLP, computer vision, document extraction, search, and responsible AI.</p><small>Earned 2024 · Renewal status unconfirmed</small></article><article><p class="eyebrow">EDUCATION / 2020–2024</p><h4>Technical University of Cluj-Napoca</h4><p>Bachelor’s Degree in Electronics, Telecommunications and Information Technology.</p></article></div></div></section>
-<section class="contact section" id="contact" aria-labelledby="contact-title"><div class="wrap"><p class="eyebrow">04 / CONTACT</p><div class="contact-grid"><div><h2 id="contact-title">Have a meaningful<br>problem to <em>solve?</em></h2><p>Let’s talk about AI engineering, useful products,<br class="desktop-br"> and what we could build together.</p><a class="email" href="mailto:farcas.david@yahoo.com">farcas.david@yahoo.com <span aria-hidden="true">↗</span></a><a class="phone" href="tel:+40720806333">+40 720 806 333</a></div><div class="contact-links"><a href="https://github.com/FarcasDavid">GitHub <span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/farcas-david/">LinkedIn <span aria-hidden="true">↗</span></a><a href="https://www.instagram.com/david.seiph/">Instagram <span aria-hidden="true">↗</span></a><a href="./cv/David_Farcas_2026_CV.pdf" download>Download CV <span aria-hidden="true">↓</span></a></div></div><footer><a class="wordmark" href="#top" aria-label="Back to top">df<span>.</span></a><p>© 2026 David Farcas</p><a href="#top">BACK TO TOP ↑</a></footer></div></section>
-</main>
-</body>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101014" />
+    <title>David Farcas — AI/ML Engineer & Full Stack Developer</title>
+    <meta
+      name="description"
+      content="David Farcas, AI/ML Engineer & Full Stack Developer. Explore RAG systems, measurable evaluation, backend engineering and cloud delivery in Cluj-Napoca, Romania."
+    />
+    <meta
+      property="og:title"
+      content="David Farcas — AI/ML Engineer & Full Stack Developer"
+    />
+    <meta
+      property="og:description"
+      content="AI engineering. End-to-end thinking. Explore the experience, tools and person behind the systems."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      href="./assets/fonts/space-grotesk-latin-variable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="./assets/fonts/manrope-latin-variable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="./assets/fonts/font-faces.css" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./main.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <svg
+      class="icon-definitions"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <symbol id="i-arrow" viewBox="0 0 24 24">
+        <path d="M7 17 17 7M7 7h10v10" />
+      </symbol>
+      <symbol id="i-chevron" viewBox="0 0 24 24">
+        <path d="m9 5 7 7-7 7" />
+      </symbol>
+      <symbol id="i-download" viewBox="0 0 24 24">
+        <path d="M12 3v12m-5-5 5 5 5-5M5 16v5h14v-5" />
+      </symbol>
+      <symbol id="i-cv" viewBox="0 0 24 24">
+        <path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Z" />
+        <path d="M14 3v6h5M8 13h8m-8 4h5" />
+      </symbol>
+      <symbol id="i-email" viewBox="0 0 24 24">
+        <rect x="3" y="5" width="18" height="14" rx="3" />
+        <path d="m3 7 9 6 9-6" />
+      </symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24">
+        <path
+          d="m8 3 3 5-3 3c2 3 3 4 6 5l3-3 4 3c-1 6-5 5-10 2C6 15 2 9 3 6c1-2 2-3 5-3Z"
+        />
+      </symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="4" />
+        <path
+          d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1 1m12 12 1 1M5 19l1-1M18 6l1-1"
+        />
+      </symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24">
+        <path d="M20 14A8 8 0 0 1 10 4a8 8 0 1 0 10 10Z" />
+      </symbol>
+      <symbol id="i-home" viewBox="0 0 24 24">
+        <path d="m3 10 9-7 9 7v11h-6v-7H9v7H3Z" />
+      </symbol>
+      <symbol id="i-briefcase" viewBox="0 0 24 24">
+        <rect x="3" y="7" width="18" height="14" rx="3" />
+        <path d="M8 7V3h8v4M3 12c6 4 12 4 18 0m-9 0v4" />
+      </symbol>
+      <symbol id="i-layers" viewBox="0 0 24 24">
+        <path d="m12 3 10 5-10 5L2 8Zm-10 9 10 5 10-5M2 16l10 5 10-5" />
+      </symbol>
+      <symbol id="i-person" viewBox="0 0 24 24">
+        <circle cx="12" cy="7" r="4" />
+        <path d="M4 21v-2a8 8 0 0 1 16 0v2" />
+      </symbol>
+      <symbol id="i-code" viewBox="0 0 24 24">
+        <path d="m8 6-6 6 6 6m8-12 6 6-6 6M14 3l-4 18" />
+      </symbol>
+      <symbol id="i-search" viewBox="0 0 24 24">
+        <circle cx="10" cy="10" r="6" />
+        <path d="m15 15 6 6" />
+      </symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24">
+        <path d="m12 2 9 4v6c0 5-9 10-9 10S3 17 3 12V6Z" />
+        <path d="m8 12 3 3 5-6" />
+      </symbol>
+      <symbol id="i-data" viewBox="0 0 24 24">
+        <ellipse cx="12" cy="5" rx="8" ry="3" />
+        <path d="M4 5v14c0 4 16 4 16 0V5M4 12c0 4 16 4 16 0" />
+      </symbol>
+      <symbol id="i-check" viewBox="0 0 24 24">
+        <path d="m5 12 4 4 10-10" />
+      </symbol>
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="8" y="8" width="13" height="13" rx="2" />
+        <path d="M16 8V3H3v13h5" />
+      </symbol>
+      <symbol id="i-run" viewBox="0 0 24 24">
+        <circle cx="15" cy="4" r="2" />
+        <path d="m12 9 4-2 3 4h3M7 21l4-7 3 3v5M5 10l5-3 4 5-5 5H3" />
+      </symbol>
+      <symbol id="i-spark" viewBox="0 0 24 24">
+        <path
+          d="m12 2 2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5ZM20 2v4m-2-2h4"
+        />
+      </symbol>
+      <symbol id="i-globe" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" />
+        <ellipse cx="12" cy="12" rx="4" ry="9" />
+        <path d="M3 12h18" />
+      </symbol>
+    </svg>
+    <div class="site-noise" aria-hidden="true"></div>
+    <header class="site-header">
+      <div class="header-inner">
+        <a
+          class="identity"
+          href="#home"
+          data-view="home"
+          aria-label="David Farcas overview"
+          ><span class="monogram">d<span>f</span><i>.</i></span
+          ><span class="identity-name">DAVID<br />FARCAS</span></a
+        >
+        <nav
+          class="app-navigation"
+          id="navigation"
+          role="tablist"
+          aria-label="Portfolio sections"
+        >
+          <a
+            id="tab-home"
+            class="nav-tab is-active"
+            href="#home"
+            role="tab"
+            tabindex="0"
+            aria-controls="home"
+            aria-selected="true"
+            data-view="home"
+            ><svg class="icon" aria-hidden="true">
+              <use href="#i-home"></use></svg
+            ><span>Overview</span></a
+          >
+          <a
+            id="tab-experience"
+            class="nav-tab"
+            href="#experience"
+            role="tab"
+            tabindex="-1"
+            aria-controls="experience"
+            aria-selected="false"
+            data-view="experience"
+            ><svg class="icon" aria-hidden="true">
+              <use href="#i-briefcase"></use></svg
+            ><span>Experience</span></a
+          >
+          <a
+            id="tab-stack"
+            class="nav-tab"
+            href="#stack"
+            role="tab"
+            tabindex="-1"
+            aria-controls="stack"
+            aria-selected="false"
+            data-view="stack"
+            ><svg class="icon" aria-hidden="true">
+              <use href="#i-layers"></use></svg
+            ><span>Toolkit</span></a
+          >
+          <a
+            id="tab-about"
+            class="nav-tab"
+            href="#about"
+            role="tab"
+            tabindex="-1"
+            aria-controls="about"
+            aria-selected="false"
+            data-view="about"
+            ><svg class="icon" aria-hidden="true">
+              <use href="#i-person"></use></svg
+            ><span>About</span></a
+          >
+          <a
+            id="tab-contact"
+            class="nav-tab"
+            href="#contact"
+            role="tab"
+            tabindex="-1"
+            aria-controls="contact"
+            aria-selected="false"
+            data-view="contact"
+            ><svg class="icon" aria-hidden="true">
+              <use href="#i-email"></use></svg
+            ><span>Contact</span></a
+          >
+        </nav>
+        <div class="header-tools">
+          <button
+            class="theme-toggle"
+            type="button"
+            data-theme-toggle
+            aria-label="Switch to light theme"
+            aria-pressed="false"
+          >
+            <svg class="icon theme-sun" aria-hidden="true">
+              <use href="#i-sun"></use></svg
+            ><svg class="icon theme-moon" aria-hidden="true">
+              <use href="#i-moon"></use>
+            </svg></button
+          ><a
+            class="circle-link header-cv"
+            href="./cv/David_Farcas_2026_CV.pdf"
+            aria-label="Download CV (PDF)"
+            download
+            ><span class="circle-face"
+              ><svg class="icon" aria-hidden="true">
+                <use href="#i-download"></use></svg></span
+            ><span class="circle-tooltip" aria-hidden="true"
+              >Download CV (PDF)</span
+            ></a
+          >
+        </div>
+      </div>
+    </header>
+    <main id="main" tabindex="-1">
+      <section
+        class="view is-active"
+        id="home"
+        role="tabpanel"
+        aria-labelledby="tab-home"
+      >
+        <div class="page-width">
+          <div class="view-topline">
+            <span class="eyebrow"
+              ><span class="signal-dot"></span> ENGINEERING, WITH INTENT.</span
+            ><span class="coordinates"
+              >CLUJ-NAPOCA, RO <span>46.77° N / 23.59° E</span></span
+            >
+          </div>
+          <div class="home-hero">
+            <div class="hero-copy">
+              <p class="hero-intro">
+                Hi, I’m David. <span class="wave" aria-hidden="true">↗</span>
+              </p>
+              <h1>
+                I build AI.<br />And everything<br /><span class="hero-accent"
+                  >around it.<svg viewBox="0 0 470 22" aria-hidden="true">
+                    <path
+                      d="M4 15C100 2 340 1 465 9M28 20c118-8 279-11 406-5"
+                    /></svg
+                ></span>
+              </h1>
+              <p class="hero-role">
+                AI/ML Engineer <span>&</span> Full Stack Developer
+              </p>
+              <p class="hero-description">
+                From a retrieval problem to a working application. I connect
+                models, evaluation, backend systems, and cloud delivery.
+              </p>
+              <div class="hero-action-row">
+                <a
+                  class="primary-button"
+                  href="#experience"
+                  data-view="experience"
+                  >Explore my experience
+                  <span
+                    ><svg class="icon" aria-hidden="true">
+                      <use href="#i-arrow"></use></svg></span
+                ></a>
+                <div class="social-dock" aria-label="CV and social profiles">
+                  <a
+                    class="circle-link circle-cv"
+                    href="./cv/David_Farcas_2026_CV.pdf"
+                    aria-label="Download CV (PDF)"
+                    download
+                    ><span class="circle-face"
+                      ><svg class="icon" aria-hidden="true">
+                        <use href="#i-cv"></use></svg
+                      ><span class="cv-mini">CV</span></span
+                    ><span class="circle-tooltip" aria-hidden="true"
+                      >Download CV (PDF)</span
+                    ></a
+                  >
+                  <a
+                    class="circle-link"
+                    href="https://github.com/FarcasDavid"
+                    aria-label="GitHub"
+                    ><span class="circle-face"
+                      ><span
+                        class="brand-icon"
+                        style="
+                          --brand: url(&quot;./assets/icons/github.svg&quot;);
+                        "
+                        aria-hidden="true"
+                      ></span></span
+                    ><span class="circle-tooltip" aria-hidden="true"
+                      >GitHub</span
+                    ></a
+                  >
+                  <a
+                    class="circle-link"
+                    href="https://www.linkedin.com/in/farcas-david/"
+                    aria-label="LinkedIn"
+                    ><span class="circle-face"
+                      ><span
+                        class="brand-icon"
+                        style="
+                          --brand: url(&quot;./assets/icons/linkedin.svg&quot;);
+                        "
+                        aria-hidden="true"
+                      ></span></span
+                    ><span class="circle-tooltip" aria-hidden="true"
+                      >LinkedIn</span
+                    ></a
+                  >
+                  <a
+                    class="circle-link"
+                    href="https://www.instagram.com/david.seiph/"
+                    aria-label="Instagram"
+                    ><span class="circle-face"
+                      ><span
+                        class="brand-icon"
+                        style="
+                          --brand: url(&quot;./assets/icons/instagram.svg&quot;);
+                        "
+                        aria-hidden="true"
+                      ></span></span
+                    ><span class="circle-tooltip" aria-hidden="true"
+                      >Instagram</span
+                    ></a
+                  >
+                  <a
+                    class="circle-link"
+                    href="mailto:farcas.david@yahoo.com"
+                    aria-label="Email David"
+                    ><span class="circle-face"
+                      ><svg class="icon" aria-hidden="true">
+                        <use href="#i-email"></use></svg></span
+                    ><span class="circle-tooltip" aria-hidden="true"
+                      >Email David</span
+                    ></a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="hero-workbench interactive-field" data-pipeline>
+              <div class="workbench-heading">
+                <span class="eyebrow">THE SYSTEM BEHIND THE ANSWER</span
+                ><span class="interactive-label"
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-spark"></use>
+                  </svg>
+                  Explore</span
+                >
+              </div>
+              <div class="system-map">
+                <svg
+                  class="map-lines"
+                  viewBox="0 0 420 280"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <path class="map-track" d="M94 70H326V210H94Z" />
+                  <path class="map-cross" d="M94 70 326 210M326 70 94 210" />
+                  <path class="map-travel" d="M94 70H326V210H94Z" />
+                </svg>
+                <div class="map-center" aria-hidden="true">
+                  <span>df.</span><small>END-TO-END</small>
+                </div>
+                <button
+                  type="button"
+                  class="stage-node node-ingest"
+                  data-stage="ingest"
+                  aria-pressed="false"
+                >
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-data"></use></svg
+                  ><span>01 / Ingest</span>
+                </button>
+                <button
+                  type="button"
+                  class="stage-node node-retrieve is-selected"
+                  data-stage="retrieve"
+                  aria-pressed="true"
+                >
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-search"></use></svg
+                  ><span>02 / Retrieve</span>
+                </button>
+                <button
+                  type="button"
+                  class="stage-node node-evaluate"
+                  data-stage="evaluate"
+                  aria-pressed="false"
+                >
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-shield"></use></svg
+                  ><span>03 / Evaluate</span>
+                </button>
+                <button
+                  type="button"
+                  class="stage-node node-deliver"
+                  data-stage="deliver"
+                  aria-pressed="false"
+                >
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-code"></use></svg
+                  ><span>04 / Deliver</span>
+                </button>
+                <span class="map-crosshair crosshair-one" aria-hidden="true"
+                  >+</span
+                ><span class="map-crosshair crosshair-two" aria-hidden="true"
+                  >+</span
+                >
+              </div>
+              <div class="stage-output" aria-live="polite" aria-atomic="true">
+                <span class="stage-index" id="stage-index">02</span>
+                <div>
+                  <h2 id="stage-title">Find the useful signal.</h2>
+                  <p id="stage-description">
+                    Classification, semantic retrieval, and reranking bring the
+                    right evidence into context.
+                  </p>
+                </div>
+              </div>
+              <div class="workbench-footer">
+                <span
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-check"></use>
+                  </svg>
+                  Source traceability</span
+                ><span
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-person"></use>
+                  </svg>
+                  Human review</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="home-footnote">
+            <p>
+              <span class="tiny-square"></span> Currently
+              <strong>AI Engineer @ RebelDot</strong
+              ><span class="footnote-date"> / Nov 2024–present</span>
+            </p>
+            <a href="#about" data-view="about"
+              >A little about me
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-arrow"></use></svg
+            ></a>
+          </div>
+          <section class="skill-playground" aria-labelledby="home-skills-title">
+            <div class="skill-heading">
+              <div>
+                <p class="eyebrow">MY EVERYDAY BUILDING BLOCKS</p>
+                <h2 id="home-skills-title">
+                  Tools with a purpose<span>.</span>
+                </h2>
+              </div>
+              <p>Pick a tool. See where it fits.</p>
+            </div>
+            <div class="skill-buttons">
+              <button
+                class="skill-button is-selected"
+                type="button"
+                data-skill="python"
+                aria-pressed="true"
+              >
+                <span
+                  class="brand-icon"
+                  style="--brand: url(&quot;./assets/icons/python.svg&quot;)"
+                  aria-hidden="true"
+                ></span
+                ><span>Python</span>
+              </button>
+              <button
+                class="skill-button"
+                type="button"
+                data-skill="rag"
+                aria-pressed="false"
+              >
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-layers"></use></svg
+                ><span>RAG</span>
+              </button>
+              <button
+                class="skill-button"
+                type="button"
+                data-skill="dspy"
+                aria-pressed="false"
+              >
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-spark"></use></svg
+                ><span>DSPy / GEPA</span>
+              </button>
+              <button
+                class="skill-button"
+                type="button"
+                data-skill="bedrock"
+                aria-pressed="false"
+              >
+                <span
+                  class="brand-icon"
+                  style="
+                    --brand: url(&quot;./assets/icons/amazonwebservices.svg&quot;);
+                  "
+                  aria-hidden="true"
+                ></span
+                ><span>AWS Bedrock</span>
+              </button>
+              <button
+                class="skill-button"
+                type="button"
+                data-skill="postgres"
+                aria-pressed="false"
+              >
+                <span
+                  class="brand-icon"
+                  style="
+                    --brand: url(&quot;./assets/icons/postgresql.svg&quot;);
+                  "
+                  aria-hidden="true"
+                ></span
+                ><span>PostgreSQL</span>
+              </button>
+              <button
+                class="skill-button"
+                type="button"
+                data-skill="fastapi"
+                aria-pressed="false"
+              >
+                <span
+                  class="brand-icon"
+                  style="--brand: url(&quot;./assets/icons/fastapi.svg&quot;)"
+                  aria-hidden="true"
+                ></span
+                ><span>FastAPI</span>
+              </button>
+              <button
+                class="skill-button"
+                type="button"
+                data-skill="huggingface"
+                aria-pressed="false"
+              >
+                <span
+                  class="brand-icon"
+                  style="
+                    --brand: url(&quot;./assets/icons/huggingface.svg&quot;);
+                  "
+                  aria-hidden="true"
+                ></span
+                ><span>HuggingFace Transformers</span>
+              </button>
+            </div>
+            <div class="skill-context" aria-live="polite" aria-atomic="true">
+              <span class="context-icon"
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-code"></use></svg
+              ></span>
+              <div>
+                <h3 id="skill-title">Python</h3>
+                <p id="skill-description">
+                  The connective tissue across my AI systems, APIs, and
+                  evaluation pipelines.
+                </p>
+              </div>
+              <p id="skill-proof">
+                Used across RAG, call quality assurance, and platform
+                engineering.
+              </p>
+            </div>
+          </section>
+          <div class="home-evidence">
+            <a href="#experience" data-view="experience"
+              ><span class="evidence-kicker">EMAIL KNOWLEDGE PIPELINE</span
+              ><strong>45% <span>→</span> 88%</strong
+              ><span
+                >Reported correct drafting
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-arrow"></use></svg></span></a
+            ><a href="#experience" data-view="experience"
+              ><span class="evidence-kicker">CALL QUALITY EVALUATION</span
+              ><strong>952<span class="number-unit"> judgments</span></strong
+              ><span
+                >8 criteria across 119 calls
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-arrow"></use></svg></span></a
+            ><a href="#experience" data-view="experience"
+              ><span class="evidence-kicker">PLATFORM OPTIMIZATION</span
+              ><strong>25s <span>→</span> &lt;2s</strong
+              ><span
+                >Queries over 2.5 million rows
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-arrow"></use></svg></span
+            ></a>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="view"
+        id="experience"
+        hidden
+        role="tabpanel"
+        aria-labelledby="tab-experience"
+      >
+        <div class="page-width view-content">
+          <div class="page-heading">
+            <div>
+              <p class="eyebrow">
+                <span class="signal-dot"></span> THE WORK / 2024–PRESENT
+              </p>
+              <h2>Engineering choices.<br /><span>Visible outcomes.</span></h2>
+            </div>
+            <p>
+              AI Engineer at RebelDot.<br />Real systems, personal ownership,
+              and the evidence behind the work.
+            </p>
+          </div>
+          <div class="experience-employer">
+            <div class="employer-icon">R<span>.</span></div>
+            <div>
+              <h3>RebelDot</h3>
+              <p>AI Engineer · Cluj-Napoca, Romania</p>
+            </div>
+            <span>Nov 2024–present</span>
+          </div>
+          <article class="work-card featured-work">
+            <div class="work-card-top">
+              <span class="work-number">01</span
+              ><span class="industry">AUTOMOTIVE MARKETPLACE</span
+              ><span class="work-date">Aug 2026–present</span>
+            </div>
+            <div class="work-card-grid">
+              <div>
+                <h3>RAG-based Email<br />Response Automation</h3>
+                <p class="work-lead">
+                  From past replies to reusable knowledge.
+                </p>
+                <p>
+                  I independently architected and implemented an 11-category RAG
+                  assistant. It retrieves relevant knowledge and generates
+                  source-cited email drafts for human review.
+                </p>
+                <div class="tag-row">
+                  <span>Python</span><span>DSPy / GEPA</span
+                  ><span>AWS Bedrock</span><span>PostgreSQL / pgvector</span>
+                </div>
+              </div>
+              <div class="results-card">
+                <p class="eyebrow">AGENT-REPLY KNOWLEDGE PIPELINE</p>
+                <div>
+                  <p>Correct drafting</p>
+                  <strong
+                    >45%
+                    <svg class="icon" aria-hidden="true">
+                      <use href="#i-arrow"></use>
+                    </svg>
+                    <b>88%</b></strong
+                  >
+                </div>
+                <div>
+                  <p>Top-5 retrieval</p>
+                  <strong
+                    >70%
+                    <svg class="icon" aria-hidden="true">
+                      <use href="#i-arrow"></use>
+                    </svg>
+                    <b>91%</b></strong
+                  >
+                </div>
+                <small
+                  >Reported measurements for the integrated pipeline.</small
+                >
+              </div>
+            </div>
+            <details class="engineering-detail">
+              <summary>
+                <span
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-code"></use>
+                  </svg>
+                  Inside the engineering</span
+                ><span class="detail-plus">+</span>
+              </summary>
+              <div class="detail-columns">
+                <div>
+                  <h4>Get the evidence right</h4>
+                  <p>
+                    Classification routes requests across 11 categories. Cohere
+                    embeddings and PostgreSQL/pgvector retrieve relevant
+                    sources; Haiku reranks them before drafting.
+                  </p>
+                </div>
+                <div>
+                  <h4>Protect & prepare knowledge</h4>
+                  <p>
+                    GLiNER and Presidio mask PII. MPNet clusters historical
+                    replies, and DeBERTa NLI checks grounding before indexing.
+                    Sources remain traceable for review.
+                  </p>
+                </div>
+                <div>
+                  <h4>Make tuning repeatable</h4>
+                  <p>
+                    DSPy/GEPA optimizes prompts against classification and
+                    safety metrics. The reported gains belong to the integrated
+                    knowledge pipeline, rather than a single tool.
+                  </p>
+                </div>
+              </div>
+            </details>
+          </article>
+          <article class="work-card">
+            <div class="work-card-top">
+              <span class="work-number">02</span
+              ><span class="industry">INSURANCE</span
+              ><span class="work-date">2026</span>
+            </div>
+            <div class="work-card-grid">
+              <div>
+                <h3>LLM-based Call<br />Quality Assurance</h3>
+                <p class="work-lead">Assessments you can actually inspect.</p>
+                <p>
+                  I built weighted, rubric-driven LLM scoring with evidence for
+                  each criterion. RapidFuzz and DeBERTa NLI flag fabricated
+                  citations and unsupported reasoning without extra LLM
+                  verification calls.
+                </p>
+                <div class="tag-row">
+                  <span>Python</span><span>LangChain</span><span>DSPy</span
+                  ><span>HuggingFace Transformers</span>
+                </div>
+              </div>
+              <div class="judgments-card">
+                <span class="large-number">952<span>judgments</span></span>
+                <p>8 criteria · 119 calls</p>
+                <div
+                  class="criterion-blocks"
+                  aria-label="Eight evaluation criteria"
+                >
+                  <span>01</span><span>02</span><span>03</span><span>04</span
+                  ><span>05</span><span>06</span><span>07</span><span>08</span>
+                </div>
+                <small
+                  >Evaluated with macro-F1 and Cohen’s kappa to track agreement
+                  and regressions.</small
+                >
+              </div>
+            </div>
+            <details class="engineering-detail">
+              <summary>
+                <span
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-shield"></use>
+                  </svg>
+                  Evaluation & grounding</span
+                ><span class="detail-plus">+</span>
+              </summary>
+              <div class="detail-columns two-columns">
+                <div>
+                  <h4>Advisory verification</h4>
+                  <p>
+                    Per-criterion citations make weighted scores auditable.
+                    Grounding checks raise flags; they do not guarantee factual
+                    correctness or automatically block scores.
+                  </p>
+                </div>
+                <div>
+                  <h4>Lightweight checks</h4>
+                  <p>
+                    Local NLI verification benchmarked at 108–151 ms per
+                    criterion. This is component latency, not end-to-end system
+                    latency.
+                  </p>
+                </div>
+              </div>
+            </details>
+          </article>
+          <article class="work-card platform-work">
+            <div class="work-card-top">
+              <span class="work-number">03</span
+              ><span class="industry"
+                >AI APPLICATIONS & PLATFORM ENGINEERING</span
+              ><span class="work-date">Nov 2024–Dec 2025</span>
+            </div>
+            <div class="platform-grid">
+              <div>
+                <h3>Strong foundations.<br />Better applications.</h3>
+                <p>
+                  Across insurance, automotive, and enterprise work, I delivered
+                  cloud AI applications and improved the systems they depend on.
+                </p>
+                <div class="tag-row">
+                  <span>FastAPI</span><span>Streamlit</span
+                  ><span>AWS / Azure</span><span>Terraform</span>
+                </div>
+              </div>
+              <div class="platform-metrics">
+                <div>
+                  <strong>25s → &lt;2s</strong>
+                  <p>
+                    Queries across 2.5 million rows with PostgreSQL, batched
+                    APIs, and Redis.
+                  </p>
+                </div>
+                <div>
+                  <strong>3 → 40+</strong>
+                  <p>
+                    Filtering parameters, alongside 19 self-scoped optimization
+                    tickets under a Q4 deadline.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <p class="work-footnote">
+              Multimodal OCR · Entra ID/JWT authentication · Terraform & Azure
+              Pipelines · LLM caching · Cross-region AWS Bedrock load balancing
+            </p>
+          </article>
+          <div class="nda-note">
+            <svg class="icon" aria-hidden="true">
+              <use href="#i-shield"></use>
+            </svg>
+            <p>
+              Client work stays confidential. These summaries use approved
+              outcomes and broad industry labels. Proprietary code, data, and
+              identifying examples remain private.
+            </p>
+          </div>
+          <a class="next-view" href="#stack" data-view="stack"
+            ><span>THE TOOLS BEHIND THE WORK</span
+            ><strong
+              >Explore my toolkit
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-arrow"></use></svg></strong
+          ></a>
+        </div>
+      </section>
+
+      <section
+        class="view"
+        id="stack"
+        hidden
+        role="tabpanel"
+        aria-labelledby="tab-stack"
+      >
+        <div class="page-width view-content">
+          <div class="page-heading">
+            <div>
+              <p class="eyebrow">
+                <span class="signal-dot"></span> TOOLKIT / INTENT BEFORE TOOLS
+              </p>
+              <h2>The right tool.<br /><span>For the real problem.</span></h2>
+            </div>
+            <p>
+              My strongest work happens at the intersection of AI, data, backend
+              engineering, and cloud delivery.
+            </p>
+          </div>
+          <div class="toolkit-grid">
+            <article class="toolkit-card">
+              <span class="toolkit-icon orange-icon"
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-spark"></use></svg
+              ></span>
+              <p class="eyebrow">01 / AI ENGINEERING</p>
+              <h3>Quality you can measure.</h3>
+              <p>
+                Grounded answers, repeatable optimization, and evaluation that
+                makes regressions visible.
+              </p>
+              <div class="toolkit-chips">
+                <span
+                  ><span
+                    class="brand-icon"
+                    style="--brand: url(&quot;./assets/icons/python.svg&quot;)"
+                    aria-hidden="true"
+                  ></span
+                  >Python</span
+                ><span
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-layers"></use></svg
+                  >RAG</span
+                ><span
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-spark"></use></svg
+                  >DSPy / GEPA</span
+                ><span>LangChain / LangGraph</span
+                ><span
+                  ><span
+                    class="brand-icon"
+                    style="
+                      --brand: url(&quot;./assets/icons/amazonwebservices.svg&quot;);
+                    "
+                    aria-hidden="true"
+                  ></span
+                  >AWS Bedrock</span
+                ><span>Claude</span><span>Structured outputs</span
+                ><span>Evaluation</span>
+              </div>
+            </article>
+            <article class="toolkit-card">
+              <span class="toolkit-icon blue-icon"
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-search"></use></svg
+              ></span>
+              <p class="eyebrow">02 / RETRIEVAL & NLP</p>
+              <h3>Evidence, in context.</h3>
+              <p>
+                Relevant retrieval, sensitive-data masking, reranking, and
+                traceable sources.
+              </p>
+              <div class="toolkit-chips">
+                <span
+                  ><span
+                    class="brand-icon"
+                    style="
+                      --brand: url(&quot;./assets/icons/postgresql.svg&quot;);
+                    "
+                    aria-hidden="true"
+                  ></span
+                  >PostgreSQL / pgvector</span
+                ><span
+                  ><span
+                    class="brand-icon"
+                    style="
+                      --brand: url(&quot;./assets/icons/huggingface.svg&quot;);
+                    "
+                    aria-hidden="true"
+                  ></span
+                  >HuggingFace Transformers</span
+                ><span>Cohere</span><span>PyTorch</span><span>DeBERTa NLI</span
+                ><span>MPNet</span><span>GLiNER / Presidio</span>
+              </div>
+            </article>
+            <article class="toolkit-card">
+              <span class="toolkit-icon pink-icon"
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-code"></use></svg
+              ></span>
+              <p class="eyebrow">03 / BACKEND & DATA</p>
+              <h3>From model to application.</h3>
+              <p>
+                Typed APIs, reliable data access, caching, and interfaces people
+                can use.
+              </p>
+              <div class="toolkit-chips">
+                <span
+                  ><span
+                    class="brand-icon"
+                    style="--brand: url(&quot;./assets/icons/fastapi.svg&quot;)"
+                    aria-hidden="true"
+                  ></span
+                  >FastAPI</span
+                ><span>Pydantic</span><span>SQLAlchemy</span><span>SQL</span
+                ><span>Redis</span><span>Streamlit</span
+                ><span>pandas / NumPy</span>
+              </div>
+            </article>
+            <article class="toolkit-card">
+              <span class="toolkit-icon purple-icon"
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-globe"></use></svg
+              ></span>
+              <p class="eyebrow">04 / CLOUD & DELIVERY</p>
+              <h3>Built to keep moving.</h3>
+              <p>
+                Infrastructure, identity, testing, and delivery practices that
+                support maintainable systems.
+              </p>
+              <div class="toolkit-chips">
+                <span
+                  ><span
+                    class="brand-icon"
+                    style="
+                      --brand: url(&quot;./assets/icons/amazonwebservices.svg&quot;);
+                    "
+                    aria-hidden="true"
+                  ></span
+                  >AWS / Azure</span
+                ><span>Terraform</span
+                ><span
+                  ><span
+                    class="brand-icon"
+                    style="--brand: url(&quot;./assets/icons/docker.svg&quot;)"
+                    aria-hidden="true"
+                  ></span
+                  >Docker</span
+                ><span>Azure Pipelines</span><span>Git</span><span>pytest</span
+                ><span>Ruff / mypy</span>
+              </div>
+            </article>
+          </div>
+          <div class="collaboration-card">
+            <span class="collaboration-mark" aria-hidden="true">&lt;/&gt;</span>
+            <div>
+              <p class="eyebrow">HOW I WORK</p>
+              <h3>Good engineering is a team sport.</h3>
+              <p>
+                I established shared coding-agent rules and pre-commit checks
+                for style, tests, and commits. Architecture and contribution
+                guides I wrote were adopted by the team, making technical
+                collaboration clearer.
+              </p>
+            </div>
+          </div>
+          <a class="next-view" href="#experience" data-view="experience"
+            ><span>TOOLS, APPLIED</span
+            ><strong
+              >See them in the work
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-arrow"></use></svg></strong
+          ></a>
+        </div>
+      </section>
+
+      <section
+        class="view"
+        id="about"
+        hidden
+        role="tabpanel"
+        aria-labelledby="tab-about"
+      >
+        <div class="page-width view-content">
+          <div class="page-heading">
+            <div>
+              <p class="eyebrow">
+                <span class="signal-dot"></span> ABOUT / THE HUMAN PART
+              </p>
+              <h2>
+                Curious by nature.<br /><span>Engineer by practice.</span>
+              </h2>
+            </div>
+            <p>
+              Cluj-Napoca, Romania.<br />Romanian & English.<br />Usually
+              thinking about the next problem—or the next run.
+            </p>
+          </div>
+          <div class="about-bento">
+            <article class="about-story">
+              <span class="eyebrow">01 / MY APPROACH</span>
+              <h3>I like owning<br />the whole puzzle<span>.</span></h3>
+              <p>
+                From the first unanswered question to the working application. I
+                enjoy shaping the architecture, solving the awkward details, and
+                communicating the tradeoffs.
+              </p>
+              <p>
+                My work combines initiative, analytical problem-solving, and
+                technical communication with a practical focus on delivery under
+                real deadlines.
+              </p>
+              <a class="small-action" href="#experience" data-view="experience"
+                >See how that translates into work
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-arrow"></use></svg
+              ></a>
+            </article>
+            <article class="endurance-card">
+              <div class="endurance-top">
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-run"></use></svg
+                ><span class="eyebrow">OFF THE KEYBOARD</span>
+              </div>
+              <div class="race-art" aria-hidden="true">
+                <span class="race-line line-one"></span
+                ><span class="race-line line-two"></span
+                ><span class="race-line line-three"></span
+                ><span class="race-orbit"></span
+                ><strong>KEEP<br />MOVING<span>↗</span></strong>
+              </div>
+              <h3>Running. Triathlon.<br />Steady progress.</h3>
+              <p>
+                I’m registered for IM 70.3 Mamaia 2027. A future goal I’m
+                working toward, one session at a time.
+              </p>
+              <span class="future-label">ON THE HORIZON / 2027</span>
+            </article>
+          </div>
+          <div class="credentials-heading">
+            <p class="eyebrow">LEARNING, PUT TO WORK</p>
+            <h3>Credentials & foundations.</h3>
+          </div>
+          <div class="credential-grid">
+            <article class="credential-card">
+              <span class="credential-number">01</span>
+              <p class="eyebrow">CERTIFICATION</p>
+              <h4>Claude Certified Architect – Foundations</h4>
+              <p>
+                Claude API/Agent SDK, agentic orchestration, tools and MCP
+                integration, structured outputs, context management, and
+                reliability.
+              </p>
+              <small>20 June 2026–June 2027</small>
+            </article>
+            <article class="credential-card">
+              <span class="credential-number">02</span>
+              <p class="eyebrow">CERTIFICATION</p>
+              <h4>Microsoft Certified: Azure AI Engineer Associate (AI-102)</h4>
+              <p>
+                Azure AI design and deployment, NLP, computer vision, document
+                extraction, search, and responsible AI.
+              </p>
+              <small>Earned 2024 · Renewal status unconfirmed</small>
+            </article>
+            <article class="credential-card">
+              <span class="credential-number">03</span>
+              <p class="eyebrow">EDUCATION</p>
+              <h4>Technical University of Cluj-Napoca</h4>
+              <p>
+                Bachelor’s Degree in Electronics, Telecommunications and
+                Information Technology.
+              </p>
+              <small>2020–2024</small>
+            </article>
+          </div>
+          <a class="next-view" href="#contact" data-view="contact"
+            ><span>START A CONVERSATION</span
+            ><strong
+              >Let’s connect
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-arrow"></use></svg></strong
+          ></a>
+        </div>
+      </section>
+
+      <section
+        class="view"
+        id="contact"
+        hidden
+        role="tabpanel"
+        aria-labelledby="tab-contact"
+      >
+        <div class="page-width view-content">
+          <div class="contact-layout">
+            <div class="contact-main">
+              <p class="eyebrow">
+                <span class="signal-dot"></span> CONTACT / GOOD THINGS START
+                HERE
+              </p>
+              <h2>Something<br />on your mind<span>?</span></h2>
+              <p>
+                AI engineering, a useful product, a hard problem.<br />Let’s
+                talk about what we could build together.
+              </p>
+              <div
+                class="social-dock contact-socials"
+                aria-label="Contact and profile actions"
+              >
+                <a
+                  class="circle-link circle-cv"
+                  href="./cv/David_Farcas_2026_CV.pdf"
+                  aria-label="Download CV (PDF)"
+                  download
+                  ><span class="circle-face"
+                    ><svg class="icon" aria-hidden="true">
+                      <use href="#i-cv"></use></svg
+                    ><span class="cv-mini">CV</span></span
+                  ><span class="circle-tooltip" aria-hidden="true"
+                    >Download CV (PDF)</span
+                  ></a
+                >
+                <a
+                  class="circle-link"
+                  href="https://github.com/FarcasDavid"
+                  aria-label="GitHub"
+                  ><span class="circle-face"
+                    ><span
+                      class="brand-icon"
+                      style="
+                        --brand: url(&quot;./assets/icons/github.svg&quot;);
+                      "
+                      aria-hidden="true"
+                    ></span></span
+                  ><span class="circle-tooltip" aria-hidden="true"
+                    >GitHub</span
+                  ></a
+                >
+                <a
+                  class="circle-link"
+                  href="https://www.linkedin.com/in/farcas-david/"
+                  aria-label="LinkedIn"
+                  ><span class="circle-face"
+                    ><span
+                      class="brand-icon"
+                      style="
+                        --brand: url(&quot;./assets/icons/linkedin.svg&quot;);
+                      "
+                      aria-hidden="true"
+                    ></span></span
+                  ><span class="circle-tooltip" aria-hidden="true"
+                    >LinkedIn</span
+                  ></a
+                >
+                <a
+                  class="circle-link"
+                  href="https://www.instagram.com/david.seiph/"
+                  aria-label="Instagram"
+                  ><span class="circle-face"
+                    ><span
+                      class="brand-icon"
+                      style="
+                        --brand: url(&quot;./assets/icons/instagram.svg&quot;);
+                      "
+                      aria-hidden="true"
+                    ></span></span
+                  ><span class="circle-tooltip" aria-hidden="true"
+                    >Instagram</span
+                  ></a
+                >
+                <a
+                  class="circle-link"
+                  href="mailto:farcas.david@yahoo.com"
+                  aria-label="Email David"
+                  ><span class="circle-face"
+                    ><svg class="icon" aria-hidden="true">
+                      <use href="#i-email"></use></svg></span
+                  ><span class="circle-tooltip" aria-hidden="true"
+                    >Email David</span
+                  ></a
+                >
+              </div>
+              <div class="contact-address">
+                <span class="eyebrow">STRAIGHT TO MY INBOX</span>
+                <div>
+                  <span>farcas.david@yahoo.com</span
+                  ><button
+                    type="button"
+                    data-copy-email="farcas.david@yahoo.com"
+                    aria-label="Copy email address"
+                  >
+                    <svg class="icon" aria-hidden="true">
+                      <use href="#i-copy"></use>
+                    </svg>
+                  </button>
+                </div>
+                <p
+                  id="copy-status"
+                  role="status"
+                  aria-live="polite"
+                  aria-atomic="true"
+                ></p>
+              </div>
+              <a class="contact-phone" href="tel:+40720806333"
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-phone"></use>
+                </svg>
+                +40 720 806 333</a
+              >
+            </div>
+            <aside class="contact-card interactive-field">
+              <span class="contact-asterisk" aria-hidden="true">✳</span>
+              <p class="eyebrow">BASED IN ROMANIA.<br />THINKING END TO END.</p>
+              <h3>From first idea<br />to final detail.</h3>
+              <p>
+                My focus: evidence-grounded AI, useful applications, and
+                thoughtful engineering.
+              </p>
+              <a
+                class="contact-email-circle"
+                href="mailto:farcas.david@yahoo.com"
+                aria-label="Email David"
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-arrow"></use></svg></a
+              ><span class="contact-location"
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-globe"></use>
+                </svg>
+                CLUJ-NAPOCA / RO</span
+              >
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer page-width">
+      <a class="footer-name" href="#home" data-view="home"
+        >David Farcas<span>↗</span></a
+      ><span>Built with intention. © 2026</span
+      ><a
+        href="./cv/David_Farcas_2026_CV.pdf"
+        class="footer-cv"
+        download
+        aria-label="Download David Farcas CV (PDF)"
+        ><svg class="icon" aria-hidden="true">
+          <use href="#i-download"></use></svg
+        ><span>CV / PDF</span></a
+      >
+    </footer>
+    <noscript
+      ><style>
+        .view[hidden] {
+          display: block !important;
+        }
+      </style>
+      <p class="noscript-note page-width">
+        JavaScript is off. All portfolio sections are shown below the
+        navigation; contact and CV links still work.
+      </p></noscript
+    >
+  </body>
 </html>

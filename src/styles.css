@@ -39,52 +39,52 @@
 }
 /* Accent choices change the whole application, independently of dark/light mode. */
 :root[data-accent="cobalt"] {
-  --accent: #91acff;
-  --accent-fill: #315be8;
+  --accent: #4d82ff;
+  --accent-fill: #174fff;
   --accent-ink: #ffffff;
-  --accent-on-dark: #a7baff;
-  --diagram-fill: #315be8;
+  --accent-on-dark: #4d82ff;
+  --diagram-fill: #174fff;
   --diagram-ink: #ffffff;
 }
 :root[data-accent="crimson"] {
-  --accent: #ff7b88;
-  --accent-fill: #bf2d43;
+  --accent: #ff375f;
+  --accent-fill: #dc1745;
   --accent-ink: #ffffff;
-  --accent-on-dark: #ff8d99;
-  --diagram-fill: #bf2d43;
+  --accent-on-dark: #ff375f;
+  --diagram-fill: #dc1745;
   --diagram-ink: #ffffff;
 }
 :root[data-accent="violet"] {
-  --accent: #bc9dff;
-  --accent-fill: #7345d5;
+  --accent: #bd55ff;
+  --accent-fill: #8719e0;
   --accent-ink: #ffffff;
-  --accent-on-dark: #c4aaff;
-  --diagram-fill: #7345d5;
+  --accent-on-dark: #bd55ff;
+  --diagram-fill: #8719e0;
   --diagram-ink: #ffffff;
 }
 :root[data-accent="raspberry"] {
-  --accent: #ff8ec2;
-  --accent-fill: #b92669;
+  --accent: #ff2aab;
+  --accent-fill: #cf007d;
   --accent-ink: #ffffff;
-  --accent-on-dark: #ff9fcb;
-  --diagram-fill: #b92669;
+  --accent-on-dark: #ff2aab;
+  --diagram-fill: #cf007d;
   --diagram-ink: #ffffff;
 }
 :root[data-theme="light"][data-accent="cobalt"] {
-  --accent: #244ac8;
-  --accent-fill: #244ac8;
+  --accent: #174fff;
+  --accent-fill: #174fff;
 }
 :root[data-theme="light"][data-accent="crimson"] {
-  --accent: #aa2137;
-  --accent-fill: #aa2137;
+  --accent: #c40037;
+  --accent-fill: #c40037;
 }
 :root[data-theme="light"][data-accent="violet"] {
-  --accent: #6637b5;
-  --accent-fill: #6637b5;
+  --accent: #7f00d9;
+  --accent-fill: #7f00d9;
 }
 :root[data-theme="light"][data-accent="raspberry"] {
-  --accent: #a31e5b;
-  --accent-fill: #a31e5b;
+  --accent: #c60076;
+  --accent-fill: #c60076;
 }
 * {
   box-sizing: border-box;

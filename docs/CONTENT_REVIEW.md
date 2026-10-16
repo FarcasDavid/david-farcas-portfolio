@@ -46,7 +46,7 @@ Approved outcomes: 19 self-scoped optimization tickets; 2.5M-row queries from 25
 
 Group expertise into AI systems/evaluation, backend/data and cloud/delivery. Include searchable names **Python, RAG, DSPy, GEPA, LangChain, LangGraph, HuggingFace Transformers, FastAPI, PostgreSQL, pgvector and AWS Bedrock**. Tie the groups to the work above. A framework chosen for this website is an implementation choice, not proof of prior professional experience.
 
-Include both credentials with learning context and honest dates: **Claude Certified Architect - Foundations**, 20 June 2026–June 2027; **Microsoft Certified: Azure AI Engineer Associate (AI-102)**, earned 2024, with renewal unconfirmed. No verification badge URL was supplied. Include the Technical University of Cluj-Napoca degree, 2020–2024, and Romanian/English.
+Include both credentials with learning context and their earned dates: **Claude Certified Architect - Foundations**, 20 June 2026–June 2027; **Microsoft Certified: Azure AI Engineer Associate (AI-102)**, earned 2024. David explicitly confirmed on 16 October 2026 that all certifications listed in his CV remain valid. No verification badge URL was supplied. Include the Technical University of Cluj-Napoca degree, 2020–2024, and Romanian/English.
 
 Professional strengths should sound concrete: independent ownership, analytical problem-solving, initiative, technical communication and delivery under deadlines. Shared coding-agent rules, pre-commit checks and architecture/contribution guides demonstrate collaboration. No time-saving percentage is established.
 

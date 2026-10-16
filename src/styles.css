@@ -212,6 +212,7 @@ p {
   padding-left: 15px;
 }
 .app-navigation {
+  position: relative;
   display: flex;
   padding: 5px;
   gap: 3px;
@@ -220,6 +221,8 @@ p {
   border: 1px solid var(--line);
 }
 .nav-tab {
+  position: relative;
+  z-index: 1;
   font-size: 12px;
   padding: 11px 19px;
   border-radius: 100px;
@@ -245,8 +248,7 @@ p {
   align-items: center;
   gap: 9px;
 }
-.theme-toggle,
-.header-cv {
+.theme-toggle {
   width: 42px !important;
   height: 42px !important;
   border: 1px solid var(--line);
@@ -281,13 +283,13 @@ p {
 .view {
   min-height: calc(100vh - 220px);
 }
-.view.is-active {
-  animation: view-enter 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+.view.is-active:not(.is-targeted) {
+  animation: view-enter 0.52s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 @keyframes view-enter {
   from {
-    opacity: 0.1;
-    transform: translateY(12px);
+    opacity: 0;
+    transform: translateY(20px) scale(0.992);
   }
   to {
     opacity: 1;
@@ -2056,14 +2058,9 @@ details[open] .detail-plus {
   .header-tools {
     gap: 8px;
   }
-  .theme-toggle,
-  .header-cv {
+  .theme-toggle {
     width: 39px !important;
     height: 39px !important;
-  }
-  .header-cv .circle-face .icon {
-    width: 17px;
-    height: 17px;
   }
   .app-navigation {
     position: fixed;
@@ -2977,19 +2974,6 @@ h1 {
   }
 }
 /* Keep logo tooltips inside the viewport, including while hidden. */
-.header-cv .circle-tooltip {
-  left: auto;
-  right: 0;
-  transform: translateY(6px);
-}
-.header-cv:hover .circle-tooltip,
-.header-cv:focus-visible .circle-tooltip {
-  transform: translateY(0);
-}
-.header-cv .circle-tooltip::after {
-  left: auto;
-  right: 15px;
-}
 .social-dock .circle-link:first-child .circle-tooltip {
   left: 0;
   transform: translateY(6px);
@@ -3217,5 +3201,47 @@ body.has-contact-dialog {
 @media (min-width: 2300px) and (min-height: 1200px) {
   :root {
     --display-scale: 1.5;
+  }
+}
+
+/* A sliding selection and short panel reveal give navigation a consistent rhythm. */
+.nav-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: var(--text);
+  pointer-events: none;
+  transition:
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 360ms ease;
+}
+.has-indicator .nav-tab.is-active {
+  background: transparent;
+}
+/* Native view transitions crossfade the complete theme without intermediate mismatched colors. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 420ms;
+  animation-timing-function: ease-in-out;
+}
+.theme-changing,
+.theme-changing *:not(.nav-indicator) {
+  transition-property: background-color, color, border-color, box-shadow;
+  transition-duration: 360ms;
+  transition-timing-function: ease;
+}
+@media (max-width: 760px) {
+  .nav-indicator {
+    border-radius: 16px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
   }
 }

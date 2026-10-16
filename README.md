@@ -45,3 +45,11 @@ The five views are Overview (`#home`), Experience (`#experience`), Toolkit (`#st
 The Overview skill buttons update explanatory copy stored in the `skills` object in `src/main.js`; the diagram uses the `stages` object. Keep those explanations grounded in `docs/PROFILE.md`. `src/styles.css` starts with dark/light color tokens. Both themes exclude green, including the monochrome brand icons. `portfolio-theme` is the only stored browser preference. Reduced-motion preferences disable animation.
 
 Font and icon licenses/source links are recorded in [ASSET_SOURCES.md](docs/ASSET_SOURCES.md). No personal projects are displayed.
+
+## Contact form and case-study links
+
+The orange Contact action opens a native dialog with name, email, subject and message fields. The static form validates input and opens an encoded email draft for the visitor to review and send in their own mail app. Copy message is available as a fallback; inputs stay in the current page and are not stored or submitted to a server. No delivery service or browser key is configured.
+
+The Overview diagram describes a general Prepare → Inference → Evaluate → Deliver workflow. Project-specific technologies and benchmarks remain in the experience summaries and skill explanations.
+
+Overview evidence cards link directly to `#experience-email`, `#experience-calls` and `#experience-platform`. These fragments select the Experience tab and scroll to the corresponding article below the header; direct links and browser history use the same destinations.

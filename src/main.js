@@ -48,22 +48,30 @@ function closeMenu({ restoreFocus = false } = {}) {
   if (restoreFocus) menuToggle.focus();
 }
 
-function viewFromHash() {
+function routeFromHash() {
   try {
     const id = decodeURIComponent(window.location.hash.slice(1));
-    return panelById.has(id) ? id : undefined;
+    if (panelById.has(id)) return { view: id };
+    const target = document.getElementById(id);
+    if (target?.matches("[data-experience-case]")) {
+      const view = target.closest(".view")?.id;
+      if (panelById.has(view)) return { view, target: id };
+    }
   } catch {
-    return undefined;
+    // Malformed or unknown fragments fall back to the overview.
   }
 }
 
+let pendingViewScroll;
+
 function selectView(
   id,
-  { history = "none", focusPanel = false, scroll = true } = {},
+  { history = "none", focusPanel = false, scroll = true, target } = {},
 ) {
   const selectedPanel = panelById.get(id);
   if (!selectedPanel) return;
-  const changed = activeView !== id;
+  const contactDialog = document.querySelector("#contact-form-dialog");
+  if (id !== "contact" && contactDialog?.open) contactDialog.close();
   activeView = id;
 
   for (const tab of tabs) {
@@ -81,18 +89,40 @@ function selectView(
   }
 
   document.body.dataset.view = id;
-  if (history !== "none" && window.location.hash !== `#${id}`) {
-    const url = `${window.location.pathname}${window.location.search}#${id}`;
+  const targetElement = target ? document.getElementById(target) : undefined;
+  const validTarget =
+    targetElement?.matches("[data-experience-case]") &&
+    targetElement.closest(".view") === selectedPanel
+      ? targetElement
+      : undefined;
+  const fragment = validTarget?.id || id;
+  if (history !== "none" && window.location.hash !== `#${fragment}`) {
+    const url = `${window.location.pathname}${window.location.search}#${fragment}`;
     window.history[history === "replace" ? "replaceState" : "pushState"](
-      { view: id },
+      { view: id, target: validTarget?.id },
       "",
       url,
     );
   }
 
   closeMenu();
-  if (changed && scroll) window.scrollTo({ top: 0, behavior: "instant" });
-  if (focusPanel) selectedPanel.focus({ preventScroll: true });
+  window.cancelAnimationFrame(pendingViewScroll);
+  if (validTarget) {
+    pendingViewScroll = window.requestAnimationFrame(() => {
+      validTarget.focus({ preventScroll: true });
+      // On a stacked mobile layout, land on the fact itself rather than the prose above it.
+      const scrollTarget = window.matchMedia("(max-width: 760px)").matches
+        ? validTarget.querySelector("[data-case-evidence]") || validTarget
+        : validTarget;
+      scrollTarget.scrollIntoView({
+        block: "start",
+        behavior: reducedMotion.matches ? "instant" : "smooth",
+      });
+    });
+  } else {
+    if (scroll) window.scrollTo({ top: 0, behavior: "instant" });
+    if (focusPanel) selectedPanel.focus({ preventScroll: true });
+  }
 }
 
 document.addEventListener("click", (event) => {
@@ -110,6 +140,7 @@ document.addEventListener("click", (event) => {
   selectView(link.dataset.view, {
     history: "push",
     focusPanel: link.getAttribute("role") !== "tab",
+    target: link.dataset.target,
   });
 });
 
@@ -154,8 +185,8 @@ navigation?.addEventListener("keydown", (event) => {
 });
 
 function restoreView() {
-  const id = viewFromHash();
-  if (id) selectView(id, { scroll: true });
+  const route = routeFromHash();
+  if (route) selectView(route.view, { target: route.target, scroll: true });
   else if (window.location.hash !== "#main" && panelById.has("home")) {
     selectView("home", { history: "replace" });
   }
@@ -164,11 +195,13 @@ function restoreView() {
 window.addEventListener("popstate", restoreView);
 window.addEventListener("hashchange", restoreView);
 if (panels.length) {
+  const initialRoute = routeFromHash();
   selectView(
-    viewFromHash() || (panelById.has("home") ? "home" : panels[0].id),
+    initialRoute?.view || (panelById.has("home") ? "home" : panels[0].id),
     {
       history: "replace",
       scroll: false,
+      target: initialRoute?.target,
     },
   );
 }
@@ -268,29 +301,29 @@ const initialSkill =
 if (initialSkill) selectSkill(initialSkill.dataset.skill);
 
 const stages = {
-  ingest: {
+  prepare: {
     index: "01",
-    title: "Make knowledge reusable.",
+    title: "Start with data you can trust.",
     description:
-      "Historical agent replies become reusable knowledge. GLiNER and Presidio mask PII, MPNet groups related replies, and DeBERTa NLI checks grounding before indexing.",
+      "Garbage in, garbage out. I collect relevant inputs, clean and validate them, and prepare a consistent foundation for the model.",
   },
-  retrieve: {
+  inference: {
     index: "02",
-    title: "Find the right evidence.",
+    title: "Turn inputs into useful output.",
     description:
-      "Classification routes requests across 11 categories. Cohere embeddings and PostgreSQL/pgvector retrieve relevant knowledge; Claude Haiku reranks it before drafting.",
+      "I shape the model workflow around the problem, with clear inputs, outputs, and constraints. Prepared data becomes predictions or generated results.",
   },
   evaluate: {
     index: "03",
-    title: "Measure. Optimize. Repeat.",
+    title: "Define success. Test. Refine.",
     description:
-      "DSPy/GEPA optimizes prompts against classification and safety metrics. Repeatable evaluation makes quality changes visible across the integrated pipeline.",
+      "I test against representative examples, inspect failure cases, and compare changes against measurable baselines. Quality is checked, not assumed.",
   },
   deliver: {
     index: "04",
-    title: "Keep a human in the loop.",
+    title: "Make it useful. Keep improving.",
     description:
-      "The assistant drafts source-cited email replies for human review. Evidence stays traceable, so a reviewer can inspect the answer before sending.",
+      "I connect the model to an application with clear interfaces, validation, and practical safeguards. Feedback and monitoring guide the next improvement.",
   },
 };
 
@@ -361,3 +394,77 @@ for (const field of document.querySelectorAll(
     field.style.removeProperty("--pointer-y");
   });
 }
+
+// This static form prepares a draft; the visitor reviews and sends it in their email app.
+const contactDialog = document.querySelector("#contact-form-dialog");
+const contactForm = document.querySelector("#contact-form");
+const contactFormStatus = document.querySelector("#contact-form-status");
+let contactFormOpener;
+
+for (const button of document.querySelectorAll("[data-open-contact-form]")) {
+  button.addEventListener("click", () => {
+    contactFormOpener = button;
+    contactDialog.showModal();
+    document.body.classList.add("has-contact-dialog");
+  });
+}
+for (const button of document.querySelectorAll("[data-close-contact-form]")) {
+  button.addEventListener("click", () => contactDialog.close());
+}
+contactDialog?.addEventListener("close", () => {
+  document.body.classList.remove("has-contact-dialog");
+  if (activeView === "contact")
+    contactFormOpener?.focus({ preventScroll: true });
+});
+
+function contactDraft() {
+  for (const field of contactForm.querySelectorAll("[required]")) {
+    field.setCustomValidity(
+      field.value.trim() ? "" : "Please fill in this field.",
+    );
+  }
+  if (!contactForm.reportValidity()) return;
+  const values = new FormData(contactForm);
+  const name = values
+    .get("name")
+    .trim()
+    .replace(/[\r\n]+/g, " ");
+  const email = values.get("email").trim();
+  const subject = values
+    .get("subject")
+    .trim()
+    .replace(/[\r\n]+/g, " ");
+  const message = values.get("message").trim();
+  const body = `Name: ${name}\r\nEmail: ${email}\r\n\r\n${message}`;
+  return {
+    body,
+    copy: `To: farcas.david@yahoo.com\nSubject: ${subject}\n\n${body}`,
+    uri: `mailto:farcas.david@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
+  };
+}
+contactForm?.addEventListener("input", (event) => {
+  event.target.setCustomValidity?.("");
+  contactFormStatus.textContent = "";
+});
+contactForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const draft = contactDraft();
+  if (!draft) return;
+  contactFormStatus.textContent =
+    "Your email app should open with the draft. Review it and send when you’re ready. You can also use Copy message.";
+  window.location.assign(draft.uri);
+});
+document
+  .querySelector("[data-copy-message]")
+  ?.addEventListener("click", async () => {
+    const draft = contactDraft();
+    if (!draft) return;
+    try {
+      await navigator.clipboard.writeText(draft.copy);
+      contactFormStatus.textContent =
+        "Message copied. Paste it into an email to farcas.david@yahoo.com when you’re ready.";
+    } catch {
+      contactFormStatus.textContent =
+        "Copy is unavailable in this browser. Your message is still here; select and copy it, then email farcas.david@yahoo.com.";
+    }
+  });

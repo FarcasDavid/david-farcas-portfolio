@@ -347,12 +347,12 @@
                   <a
                     class="circle-link"
                     href="mailto:farcas.david@yahoo.com"
-                    aria-label="Email David"
+                    aria-label="Email"
                     ><span class="circle-face"
                       ><svg class="icon" aria-hidden="true">
                         <use href="#i-email"></use></svg></span
                     ><span class="circle-tooltip" aria-hidden="true"
-                      >Email David</span
+                      >Email</span
                     ></a
                   >
                 </div>
@@ -360,7 +360,7 @@
             </div>
             <div class="hero-workbench interactive-field" data-pipeline>
               <div class="workbench-heading">
-                <span class="eyebrow">THE SYSTEM BEHIND THE ANSWER</span
+                <span class="eyebrow">MY AI DEVELOPMENT FLOW</span
                 ><span class="interactive-label"
                   ><svg class="icon" aria-hidden="true">
                     <use href="#i-spark"></use>
@@ -384,23 +384,23 @@
                 </div>
                 <button
                   type="button"
-                  class="stage-node node-ingest"
-                  data-stage="ingest"
-                  aria-pressed="false"
-                >
-                  <svg class="icon" aria-hidden="true">
-                    <use href="#i-data"></use></svg
-                  ><span>01 / Ingest</span>
-                </button>
-                <button
-                  type="button"
-                  class="stage-node node-retrieve is-selected"
-                  data-stage="retrieve"
+                  class="stage-node node-prepare is-selected"
+                  data-stage="prepare"
                   aria-pressed="true"
                 >
                   <svg class="icon" aria-hidden="true">
-                    <use href="#i-search"></use></svg
-                  ><span>02 / Retrieve</span>
+                    <use href="#i-data"></use></svg
+                  ><span>01 / Prepare</span>
+                </button>
+                <button
+                  type="button"
+                  class="stage-node node-inference"
+                  data-stage="inference"
+                  aria-pressed="false"
+                >
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-spark"></use></svg
+                  ><span>02 / Inference</span>
                 </button>
                 <button
                   type="button"
@@ -429,12 +429,13 @@
                 >
               </div>
               <div class="stage-output" aria-live="polite" aria-atomic="true">
-                <span class="stage-index" id="stage-index">02</span>
+                <span class="stage-index" id="stage-index">01</span>
                 <div>
-                  <h2 id="stage-title">Find the useful signal.</h2>
+                  <h2 id="stage-title">Start with data you can trust.</h2>
                   <p id="stage-description">
-                    Classification, semantic retrieval, and reranking bring the
-                    right evidence into context.
+                    Garbage in, garbage out. I collect relevant inputs, clean
+                    and validate them, and prepare a consistent foundation for
+                    the model.
                   </p>
                 </div>
               </div>
@@ -443,12 +444,12 @@
                   ><svg class="icon" aria-hidden="true">
                     <use href="#i-check"></use>
                   </svg>
-                  Source traceability</span
+                  Clean inputs</span
                 ><span
                   ><svg class="icon" aria-hidden="true">
                     <use href="#i-person"></use>
                   </svg>
-                  Human review</span
+                  Measured quality</span
                 >
               </div>
             </div>
@@ -587,21 +588,30 @@
             </div>
           </section>
           <div class="home-evidence">
-            <a href="#experience" data-view="experience"
+            <a
+              href="#experience-email"
+              data-view="experience"
+              data-target="experience-email"
               ><span class="evidence-kicker">EMAIL KNOWLEDGE PIPELINE</span
               ><strong>45% <span>→</span> 88%</strong
               ><span
                 >Reported correct drafting
                 <svg class="icon" aria-hidden="true">
                   <use href="#i-arrow"></use></svg></span></a
-            ><a href="#experience" data-view="experience"
+            ><a
+              href="#experience-calls"
+              data-view="experience"
+              data-target="experience-calls"
               ><span class="evidence-kicker">CALL QUALITY EVALUATION</span
               ><strong>952<span class="number-unit"> judgments</span></strong
               ><span
                 >8 criteria across 119 calls
                 <svg class="icon" aria-hidden="true">
                   <use href="#i-arrow"></use></svg></span></a
-            ><a href="#experience" data-view="experience"
+            ><a
+              href="#experience-platform"
+              data-view="experience"
+              data-target="experience-platform"
               ><span class="evidence-kicker">PLATFORM OPTIMIZATION</span
               ><strong>25s <span>→</span> &lt;2s</strong
               ><span
@@ -641,7 +651,13 @@
             </div>
             <span>Nov 2024–present</span>
           </div>
-          <article class="work-card featured-work">
+          <article
+            class="work-card featured-work"
+            id="experience-email"
+            aria-labelledby="experience-email-title"
+            data-experience-case
+            tabindex="-1"
+          >
             <div class="work-card-top">
               <span class="work-number">01</span
               ><span class="industry">AUTOMOTIVE MARKETPLACE</span
@@ -649,7 +665,9 @@
             </div>
             <div class="work-card-grid">
               <div>
-                <h3>RAG-based Email<br />Response Automation</h3>
+                <h3 id="experience-email-title">
+                  RAG-based Email<br />Response Automation
+                </h3>
                 <p class="work-lead">
                   From past replies to reusable knowledge.
                 </p>
@@ -663,7 +681,7 @@
                   ><span>AWS Bedrock</span><span>PostgreSQL / pgvector</span>
                 </div>
               </div>
-              <div class="results-card">
+              <div class="results-card" data-case-evidence>
                 <p class="eyebrow">AGENT-REPLY KNOWLEDGE PIPELINE</p>
                 <div>
                   <p>Correct drafting</p>
@@ -727,7 +745,13 @@
               </div>
             </details>
           </article>
-          <article class="work-card">
+          <article
+            class="work-card"
+            id="experience-calls"
+            aria-labelledby="experience-calls-title"
+            data-experience-case
+            tabindex="-1"
+          >
             <div class="work-card-top">
               <span class="work-number">02</span
               ><span class="industry">INSURANCE</span
@@ -735,7 +759,9 @@
             </div>
             <div class="work-card-grid">
               <div>
-                <h3>LLM-based Call<br />Quality Assurance</h3>
+                <h3 id="experience-calls-title">
+                  LLM-based Call<br />Quality Assurance
+                </h3>
                 <p class="work-lead">Assessments you can actually inspect.</p>
                 <p>
                   I built weighted, rubric-driven LLM scoring with evidence for
@@ -748,7 +774,7 @@
                   ><span>HuggingFace Transformers</span>
                 </div>
               </div>
-              <div class="judgments-card">
+              <div class="judgments-card" data-case-evidence>
                 <span class="large-number">952<span>judgments</span></span>
                 <p>8 criteria · 119 calls</p>
                 <div
@@ -793,7 +819,13 @@
               </div>
             </details>
           </article>
-          <article class="work-card platform-work">
+          <article
+            class="work-card platform-work"
+            id="experience-platform"
+            aria-labelledby="experience-platform-title"
+            data-experience-case
+            tabindex="-1"
+          >
             <div class="work-card-top">
               <span class="work-number">03</span
               ><span class="industry"
@@ -802,7 +834,9 @@
             </div>
             <div class="platform-grid">
               <div>
-                <h3>Strong foundations.<br />Better applications.</h3>
+                <h3 id="experience-platform-title">
+                  Strong foundations.<br />Better applications.
+                </h3>
                 <p>
                   Across insurance, automotive, and enterprise work, I delivered
                   cloud AI applications and improved the systems they depend on.
@@ -812,7 +846,7 @@
                   ><span>AWS / Azure</span><span>Terraform</span>
                 </div>
               </div>
-              <div class="platform-metrics">
+              <div class="platform-metrics" data-case-evidence>
                 <div>
                   <strong>25s → &lt;2s</strong>
                   <p>
@@ -1228,12 +1262,12 @@
                 <a
                   class="circle-link"
                   href="mailto:farcas.david@yahoo.com"
-                  aria-label="Email David"
+                  aria-label="Email"
                   ><span class="circle-face"
                     ><svg class="icon" aria-hidden="true">
                       <use href="#i-email"></use></svg></span
                   ><span class="circle-tooltip" aria-hidden="true"
-                    >Email David</span
+                    >Email</span
                   ></a
                 >
               </div>
@@ -1273,12 +1307,17 @@
                 My focus: evidence-grounded AI, useful applications, and
                 thoughtful engineering.
               </p>
-              <a
+              <button
+                type="button"
                 class="contact-email-circle"
-                href="mailto:farcas.david@yahoo.com"
-                aria-label="Email David"
-                ><svg class="icon" aria-hidden="true">
-                  <use href="#i-arrow"></use></svg></a
+                data-open-contact-form
+                aria-controls="contact-form-dialog"
+                aria-haspopup="dialog"
+                aria-label="Open contact form"
+              >
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-arrow"></use>
+                </svg></button
               ><span class="contact-location"
                 ><svg class="icon" aria-hidden="true">
                   <use href="#i-globe"></use>
@@ -1290,6 +1329,99 @@
         </div>
       </section>
     </main>
+    <dialog
+      id="contact-form-dialog"
+      class="contact-form-dialog"
+      aria-labelledby="contact-form-title"
+      aria-describedby="contact-form-note"
+    >
+      <div class="contact-form-heading">
+        <p class="eyebrow">LET’S START A CONVERSATION</p>
+        <button
+          type="button"
+          class="contact-form-close"
+          data-close-contact-form
+          aria-label="Close contact form"
+        >
+          ×
+        </button>
+      </div>
+      <h2 id="contact-form-title">Tell me what’s on your mind<span>.</span></h2>
+      <p id="contact-form-note">
+        Write a note, then review and send it in your email app. Nothing is sent
+        automatically.
+      </p>
+      <form id="contact-form">
+        <div class="contact-form-fields">
+          <div class="form-field">
+            <label for="contact-name">Your name</label>
+            <input
+              id="contact-name"
+              name="name"
+              type="text"
+              autocomplete="name"
+              maxlength="100"
+              required
+              autofocus
+            />
+          </div>
+          <div class="form-field">
+            <label for="contact-email">Your email</label>
+            <input
+              id="contact-email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              maxlength="254"
+              required
+            />
+          </div>
+          <div class="form-field form-field-wide">
+            <label for="contact-subject">Subject</label>
+            <input
+              id="contact-subject"
+              name="subject"
+              type="text"
+              maxlength="160"
+              required
+            />
+          </div>
+          <div class="form-field form-field-wide">
+            <label for="contact-message">Your message</label>
+            <textarea
+              id="contact-message"
+              name="message"
+              rows="5"
+              maxlength="3000"
+              required
+            ></textarea>
+          </div>
+        </div>
+        <div class="contact-form-actions">
+          <button class="primary-button" type="submit">
+            Open email draft
+            <span
+              ><svg class="icon" aria-hidden="true">
+                <use href="#i-arrow"></use></svg
+            ></span>
+          </button>
+          <button class="copy-message-button" type="button" data-copy-message>
+            <svg class="icon" aria-hidden="true"><use href="#i-copy"></use></svg
+            >Copy message
+          </button>
+        </div>
+        <p
+          id="contact-form-status"
+          class="contact-form-status"
+          role="status"
+          aria-live="polite"
+        ></p>
+        <p class="contact-form-fallback">
+          No email app? Copy your message and email it to
+          <a href="mailto:farcas.david@yahoo.com">farcas.david@yahoo.com</a>.
+        </p>
+      </form>
+    </dialog>
     <footer class="site-footer page-width">
       <a class="footer-name" href="#home" data-view="home"
         >David Farcas<span>↗</span></a

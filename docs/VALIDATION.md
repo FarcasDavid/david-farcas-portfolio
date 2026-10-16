@@ -55,3 +55,11 @@ The redesigned application has five active views, interactive skills and pipelin
 Saved viewport/full-page screenshots were inspected outside Git. The final local production artifact is approximately 360 KB on disk including fonts, SVGs, licenses and the approved PDF; this is a size observation, not a Lighthouse score.
 
 The Sites deployment succeeded for source commit `0ab6f4e600e0a4f85a7af354f728d596d5db82c6` at https://david-farcas-portfolio.rockyglade2.chatgpt.site. The browser reached the private host's sign-in gate; ChatGPT session authentication is required for another hosted visual pass. Native deployment success is verified, and the exact local artifact was fully reviewed. No authentication protection was bypassed. Public Pages setup remains separate.
+
+## Contact, workflow and evidence links — 16 October 2026
+
+- Added the native Contact dialog with labeled required name/email/subject/message fields. Empty and invalid email submissions are blocked; copy-draft content includes the supplied fields and remains local until the visitor chooses their mail app. No email was sent during testing. Escape/close restore focus, input survives reopening, and desktop/390px/320px layouts have no overflow.
+- The primary action is explicitly “Open email draft”; a Copy message fallback is available. No server delivery service is configured and no “sent” state is shown. Both Overview and Contact email circles are labeled “Email”.
+- The diagram now explains a general Prepare → Inference → Evaluate → Deliver approach, with clean inputs, problem-led inference, measurable evaluation and reliable delivery. All four selections and the initial Prepare state were checked.
+- All three Overview fact cards route to distinct Experience fragments. Desktop lands on the corresponding case-study card; phone layouts land on its evidence panel so the fact is visible above the navigation dock. Clicks, direct links, reload, Back/Forward, standard Experience navigation, focus and default/reduced-motion behavior pass at 1440px, 390px and 320px.
+- Production build, updated static checks and whitespace checks pass. Browser verification found no page errors or outgoing message submissions. Screenshots were inspected outside Git; the approved CV is unchanged.

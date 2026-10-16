@@ -59,8 +59,10 @@ Do not invent experience with frontend frameworks just because one is selected f
 
 ## Certifications and education
 
+David explicitly confirmed on 16 October 2026 that all certifications listed in his CV remain valid.
+
 - Claude Certified Architect - Foundations: 20 June 2026–June 2027. User-supplied credential. Skills: Claude API/Agent SDK, agentic orchestration, tool and MCP integration, Claude Code workflows, prompt engineering, structured outputs, context management and reliability. No badge URL provided.
-- Microsoft Certified: Azure AI Engineer Associate (AI-102): earned 2024. Renewal/current active status unknown. Skills: Azure AI design/deployment, NLP, computer vision, document extraction, search, responsible AI. No badge URL provided.
+- Microsoft Certified: Azure AI Engineer Associate (AI-102): earned 2024; current validity confirmed by David. Skills: Azure AI design/deployment, NLP, computer vision, document extraction, search, responsible AI. No badge URL provided.
 - Technical University of Cluj-Napoca, 2020–2024: Bachelor's Degree in Electronics, Telecommunications and Information Technology.
 
 ## Life outside engineering

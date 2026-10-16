@@ -206,19 +206,20 @@ for (const id of [
   );
 }
 assert(!/Email\s+David/i.test(html), "Email action labels should read Email");
-const emailCircles = anchors.filter(
+const emailCircles = tags.filter(
   ({ attrs }) =>
-    attrs.href?.startsWith("mailto:") &&
-    attrs.class
-      ?.split(/\s+/)
-      .some((name) => name === "circle-link" || name.includes("email-circle")),
+    attrs["aria-label"] === "Email" &&
+    attrs.class?.split(/\s+/).includes("circle-link"),
 );
-assert(emailCircles.length >= 2, "Overview and Contact need email circles");
-for (const { attrs } of emailCircles) {
-  assert.equal(
-    attrs["aria-label"],
-    "Email",
-    "Email circles need the concise accessible label Email",
+assert.equal(
+  emailCircles.length,
+  2,
+  "Overview and Contact need an Email circle",
+);
+for (const { tag, attrs } of emailCircles) {
+  assert(
+    tag.startsWith("<button") && "data-open-contact-form" in attrs,
+    "Email circles must open the contact form using native buttons",
   );
 }
 for (const href of [
@@ -242,8 +243,8 @@ for (const href of [
     );
   }
 }
-for (const { attrs } of anchors.filter(({ attrs }) =>
-  attrs.href?.endsWith(".pdf"),
+for (const { attrs } of anchors.filter(
+  ({ attrs }) => attrs.href === "./cv/David_Farcas_2026_CV.pdf",
 )) {
   assert("download" in attrs, "CV actions must download the approved PDF");
 }
@@ -257,19 +258,26 @@ assert(
   "Theme control needs an accessible name",
 );
 
-const contactOpener = tags.find(
+const contactOpeners = tags.filter(
   ({ attrs }) => "data-open-contact-form" in attrs,
 );
-assert(
-  contactOpener?.tag.startsWith("<button"),
-  "Contact form action must be a native button",
-);
 assert.equal(
-  contactOpener.attrs.type,
-  "button",
-  "Opening the contact form must not submit a form",
+  contactOpeners.length,
+  3,
+  "Overview and Contact need three form entry points",
 );
-assert.equal(contactOpener.attrs["aria-controls"], "contact-form-dialog");
+for (const { tag, attrs } of contactOpeners) {
+  assert(
+    tag.startsWith("<button"),
+    "Contact form actions must be native buttons",
+  );
+  assert.equal(
+    attrs.type,
+    "button",
+    "Opening the contact form must not submit a form",
+  );
+  assert.equal(attrs["aria-controls"], "contact-form-dialog");
+}
 const dialog = [...html.matchAll(/<dialog\b[^>]*>[\s\S]*?<\/dialog\s*>/g)].find(
   ([markup]) =>
     attributes(markup.match(/^<dialog\b[^>]*>/)[0]).id ===
@@ -291,12 +299,35 @@ const contactForm = [
 )?.[0];
 assert(contactForm, "Contact dialog needs form#contact-form");
 const formAttributes = attributes(contactForm.match(/^<form\b[^>]*>/)[0]);
-assert(
-  !formAttributes.action || formAttributes.action === "#",
-  "The default contact form must not submit to an unconfigured service",
+assert.equal(
+  formAttributes.action,
+  "https://formsubmit.co/ajax/farcas.david@yahoo.com",
+  "Contact form must use the configured FormSubmit AJAX destination",
+);
+assert.equal(
+  formAttributes.method?.toLowerCase(),
+  "post",
+  "Contact form must submit using POST",
 );
 const fields = [...contactForm.matchAll(/<(?:input|textarea)\b[^>]*>/g)].map(
   ([tag]) => ({ tag, attrs: attributes(tag) }),
+);
+const honeypot = fields.find(({ attrs }) => attrs.name === "_honey");
+assert(
+  honeypot?.tag.startsWith("<input"),
+  "Contact form needs the FormSubmit honeypot",
+);
+assert(
+  !("required" in honeypot.attrs),
+  "The honeypot must remain optional for human visitors",
+);
+assert(
+  !fields.some(({ attrs }) =>
+    /^(?:api[_-]?key|access[_-]?key|secret|secret[_-]?key|token)$/i.test(
+      attrs.name || "",
+    ),
+  ),
+  "Public contact markup must not contain secret-key fields",
 );
 const labels = [
   ...contactForm.matchAll(/<label\b[^>]*>[\s\S]*?<\/label\s*>/g),
@@ -334,8 +365,8 @@ const submitButton = [
     attributes(markup.match(/^<button\b[^>]*>/)[0]).type === "submit",
 )?.[0];
 assert(
-  submitButton && textContent(submitButton) === "Open email draft",
-  "Default submission must honestly offer to open an email draft",
+  submitButton && textContent(submitButton) === "Send message",
+  "The direct contact submission action must read Send message",
 );
 
 const source = await readFile("public/cv/David_Farcas_2026_CV.pdf");
@@ -363,5 +394,5 @@ assert(
 );
 assert(css.includes("focus-visible"), "Keyboard focus must remain visible");
 console.log(
-  "Passed: five accessible tab/panel mappings, four workflow stages, contact draft form, interactive controls, logo/contact links, local assets, unique IDs, searchable skills, motion/focus support, approved CV integrity.",
+  "Passed: five accessible tab/panel mappings, four workflow stages, FormSubmit contact form, interactive controls, logo/contact links, local assets, unique IDs, searchable skills, motion/focus support, approved CV integrity.",
 );

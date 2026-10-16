@@ -395,11 +395,12 @@ for (const field of document.querySelectorAll(
   });
 }
 
-// This static form prepares a draft; the visitor reviews and sends it in their email app.
+// FormSubmit delivers messages server-side; no mailbox credentials live in the browser.
 const contactDialog = document.querySelector("#contact-form-dialog");
 const contactForm = document.querySelector("#contact-form");
 const contactFormStatus = document.querySelector("#contact-form-status");
 let contactFormOpener;
+let contactFormSending = false;
 
 for (const button of document.querySelectorAll("[data-open-contact-form]")) {
   button.addEventListener("click", () => {
@@ -413,11 +414,10 @@ for (const button of document.querySelectorAll("[data-close-contact-form]")) {
 }
 contactDialog?.addEventListener("close", () => {
   document.body.classList.remove("has-contact-dialog");
-  if (activeView === "contact")
-    contactFormOpener?.focus({ preventScroll: true });
+  contactFormOpener?.focus({ preventScroll: true });
 });
 
-function contactDraft() {
+function contactMessage() {
   for (const field of contactForm.querySelectorAll("[required]")) {
     field.setCustomValidity(
       field.value.trim() ? "" : "Please fill in this field.",
@@ -437,27 +437,90 @@ function contactDraft() {
   const message = values.get("message").trim();
   const body = `Name: ${name}\r\nEmail: ${email}\r\n\r\n${message}`;
   return {
-    body,
+    name,
+    email,
+    subject,
+    message,
     copy: `To: farcas.david@yahoo.com\nSubject: ${subject}\n\n${body}`,
-    uri: `mailto:farcas.david@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
   };
 }
 contactForm?.addEventListener("input", (event) => {
   event.target.setCustomValidity?.("");
   contactFormStatus.textContent = "";
 });
-contactForm?.addEventListener("submit", (event) => {
+contactForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
-  const draft = contactDraft();
-  if (!draft) return;
+  if (contactFormSending) return;
+  const message = contactMessage();
+  if (!message) return;
+  const payload = {
+    name: message.name,
+    email: message.email,
+    subject: message.subject,
+    message: message.message,
+    _subject: `Portfolio — ${message.subject}`,
+    _template: "table",
+    _honey: contactForm.elements._honey.value,
+    _url: `${window.location.origin}${window.location.pathname}#contact`,
+  };
+  const controls = [...contactForm.querySelectorAll("input, textarea, button")];
+  const label = contactForm.querySelector("[data-send-label]");
+  contactFormSending = true;
+  contactForm.setAttribute("aria-busy", "true");
+  controls.forEach((control) => {
+    control.disabled = true;
+  });
+  label.textContent = "Sending…";
   contactFormStatus.textContent =
-    "Your email app should open with the draft. Review it and send when you’re ready. You can also use Copy message.";
-  window.location.assign(draft.uri);
+    "Sending your message. Please keep this page open.";
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), 20000);
+  try {
+    const response = await fetch(contactForm.action, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(payload),
+      signal: controller.signal,
+      credentials: "omit",
+    });
+    const result = await response.json();
+    if (!response.ok) throw new Error("The delivery service is unavailable.");
+    const activationPending = /activat|confirm.*email|email.*confirm/i.test(
+      result.message || "",
+    );
+    if (activationPending) {
+      contactFormStatus.textContent =
+        "Email delivery is awaiting David’s inbox activation. Your message is still here; please try again later or use Copy message.";
+    } else if (result.success === true || result.success === "true") {
+      contactFormStatus.textContent =
+        "Message submitted. Thanks for reaching out — I’ll get back to you by email.";
+      contactForm.reset();
+    } else {
+      throw new Error("The delivery service did not accept the message.");
+    }
+  } catch (error) {
+    contactFormStatus.textContent =
+      error.name === "AbortError"
+        ? "The request timed out, so delivery couldn’t be confirmed. Your message is still here. You can retry or use Copy message."
+        : "Your message couldn’t be submitted. It’s still here — please try again or use Copy message.";
+  } finally {
+    window.clearTimeout(timeout);
+    contactFormSending = false;
+    contactForm.removeAttribute("aria-busy");
+    controls.forEach((control) => {
+      control.disabled = false;
+    });
+    label.textContent = "Send message";
+  }
 });
 document
   .querySelector("[data-copy-message]")
   ?.addEventListener("click", async () => {
-    const draft = contactDraft();
+    if (contactFormSending) return;
+    const draft = contactMessage();
     if (!draft) return;
     try {
       await navigator.clipboard.writeText(draft.copy);

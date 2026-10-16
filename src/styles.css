@@ -398,7 +398,7 @@ h1 {
     box-shadow 0.2s,
     transform 0.2s;
 }
-.primary-button > span {
+.primary-button > span:not([data-send-label]) {
   width: 34px;
   height: 34px;
   border-radius: 50%;
@@ -2996,7 +2996,7 @@ h1 {
   }
 }
 
-/* Message composer: local form state, with an explicit email-draft handoff. */
+/* Message composer: direct delivery with accessible request feedback. */
 body.has-contact-dialog {
   overflow: hidden;
 }
@@ -3110,6 +3110,11 @@ body.has-contact-dialog {
 }
 .contact-form-actions .primary-button {
   border: 0;
+}
+.contact-form-actions .primary-button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+  transform: none;
 }
 .copy-message-button {
   display: inline-flex;

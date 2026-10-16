@@ -1,6 +1,6 @@
 # David Farcas — professional portfolio
 
-An experience-led, responsive portfolio for David Farcas, AI/ML Engineer & Full Stack Developer in Cluj-Napoca. A five-view application with an original near-black, white, orange and cobalt identity, circular SVG logo controls, interactive skills and a system explorer. Static HTML/CSS/JavaScript with no runtime dependencies, trackers, backend, or API keys.
+An experience-led, responsive portfolio for David Farcas, AI/ML Engineer & Full Stack Developer in Cluj-Napoca. A five-view application with an original near-black, white, orange and cobalt identity, circular SVG logo controls, interactive skills and a system explorer. Static HTML/CSS/JavaScript with no runtime dependencies, trackers, or browser API keys. The contact form uses FormSubmit for server-side email delivery.
 
 ## Run locally
 
@@ -19,7 +19,7 @@ Open http://localhost:4173. `npm run dev` serves the built `dist/` directory too
 
 - `src/index.html`: page content, metadata, contact links, semantic sections.
 - `src/styles.css`: colors, layout, responsive behavior, focus and reduced-motion styles.
-- `src/main.js`: view/hash/history routing, keyboard tabs, skill and system selectors, theme persistence, and email copying.
+- `src/main.js`: view/hash/history routing, keyboard tabs, skill and system selectors, theme persistence, and the contact form with direct email delivery.
 - `src/assets/`: self-hosted variable fonts and monochrome SVG logos, with licenses and a hash manifest.
 - `public/cv/David_Farcas_2026_CV.pdf`: approved downloadable CV, preserved unchanged.
 - `cv/David_Farcas_2026_CV.tex`: approved editable CV source, preserved unchanged.
@@ -48,7 +48,11 @@ Font and icon licenses/source links are recorded in [ASSET_SOURCES.md](docs/ASSE
 
 ## Contact form and case-study links
 
-The orange Contact action opens a native dialog with name, email, subject and message fields. The static form validates input and opens an encoded email draft for the visitor to review and send in their own mail app. Copy message is available as a fallback; inputs stay in the current page and are not stored or submitted to a server. No delivery service or browser key is configured.
+The orange Contact action and both Email circles open a native dialog with name, email, subject and message fields. **Send message** submits over HTTPS to FormSubmit without leaving the site or opening an email app. The provider emails `farcas.david@yahoo.com`; the visitor’s email becomes Reply-To. No Yahoo password, API key, paid plan, or sending domain is required. FormSubmit processes the submitted details; the form links its privacy policy.
+
+**Owner setup:** the recipient must activate the form using FormSubmit’s confirmation email. Check the Yahoo inbox and spam folder after the first submission. Delivery is not verified until that link is clicked and an actual test reaches the inbox. Activation applies to the form URL; recheck after moving to a public host. See [delivery options and current status](docs/CONTACT_DELIVERY_OPTIONS.md).
+
+During a request, controls are disabled to prevent duplicate clicks and an accessible status is shown. Only an explicit successful provider response clears the form. Activation, rejection, network errors, malformed responses and the 20-second timeout preserve the message. A timeout cannot establish whether the provider received it. Copy message and the direct address remain fallbacks. The `_honey` field supplements the provider’s spam filtering; the AJAX flow does not claim CAPTCHA or automatic visitor confirmations.
 
 The Overview diagram describes a general Prepare → Inference → Evaluate → Deliver workflow. Project-specific technologies and benchmarks remain in the experience summaries and skill explanations.
 

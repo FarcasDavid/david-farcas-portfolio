@@ -344,17 +344,21 @@
                       >Instagram</span
                     ></a
                   >
-                  <a
+                  <button
                     class="circle-link"
-                    href="mailto:farcas.david@yahoo.com"
+                    type="button"
+                    data-open-contact-form
+                    aria-controls="contact-form-dialog"
+                    aria-haspopup="dialog"
                     aria-label="Email"
-                    ><span class="circle-face"
+                  >
+                    <span class="circle-face"
                       ><svg class="icon" aria-hidden="true">
                         <use href="#i-email"></use></svg></span
                     ><span class="circle-tooltip" aria-hidden="true"
                       >Email</span
-                    ></a
-                  >
+                    >
+                  </button>
                 </div>
               </div>
             </div>
@@ -1259,17 +1263,19 @@
                     >Instagram</span
                   ></a
                 >
-                <a
+                <button
                   class="circle-link"
-                  href="mailto:farcas.david@yahoo.com"
+                  type="button"
+                  data-open-contact-form
+                  aria-controls="contact-form-dialog"
+                  aria-haspopup="dialog"
                   aria-label="Email"
-                  ><span class="circle-face"
+                >
+                  <span class="circle-face"
                     ><svg class="icon" aria-hidden="true">
                       <use href="#i-email"></use></svg></span
-                  ><span class="circle-tooltip" aria-hidden="true"
-                    >Email</span
-                  ></a
-                >
+                  ><span class="circle-tooltip" aria-hidden="true">Email</span>
+                </button>
               </div>
               <div class="contact-address">
                 <span class="eyebrow">STRAIGHT TO MY INBOX</span>
@@ -1348,10 +1354,21 @@
       </div>
       <h2 id="contact-form-title">Tell me what’s on your mind<span>.</span></h2>
       <p id="contact-form-note">
-        Write a note, then review and send it in your email app. Nothing is sent
-        automatically.
+        A question, an idea, or something worth building together? Send me a
+        note right here.
       </p>
-      <form id="contact-form">
+      <form
+        id="contact-form"
+        action="https://formsubmit.co/ajax/farcas.david@yahoo.com"
+        method="post"
+      >
+        <input
+          type="text"
+          name="_honey"
+          hidden
+          tabindex="-1"
+          autocomplete="off"
+        />
         <div class="contact-form-fields">
           <div class="form-field">
             <label for="contact-name">Your name</label>
@@ -1399,7 +1416,7 @@
         </div>
         <div class="contact-form-actions">
           <button class="primary-button" type="submit">
-            Open email draft
+            <span data-send-label>Send message</span>
             <span
               ><svg class="icon" aria-hidden="true">
                 <use href="#i-arrow"></use></svg
@@ -1417,7 +1434,14 @@
           aria-live="polite"
         ></p>
         <p class="contact-form-fallback">
-          No email app? Copy your message and email it to
+          Your details are processed by
+          <a
+            href="https://formsubmit.co/privacy.pdf"
+            target="_blank"
+            rel="noopener"
+            >FormSubmit</a
+          >
+          to email me. You can also reach me at
           <a href="mailto:farcas.david@yahoo.com">farcas.david@yahoo.com</a>.
         </p>
       </form>

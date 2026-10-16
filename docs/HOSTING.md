@@ -57,3 +57,15 @@ A custom domain is optional and can be considered after launch. Ownership is unc
 - [Vercel Hobby plan](https://vercel.com/docs/plans/hobby)
 
 Provider limits and terms can change; consult these sources before migration or paid use.
+
+## Custom domain diagnosis — 16 October 2026, 16:07 UTC
+
+David purchased davidfarcas.ro from ROMARG and assigned it in GitHub Pages. The default Pages URL redirects to http://davidfarcas.ro/. The Pages workflow is working: the last verified motion-update run, 38927432723, passed build and deploy. A diagnostic HTTP request directed to the correct GitHub IP with the domain hostname returns the portfolio, so hosting and custom-domain routing are configured.
+
+All four ROMARG authoritative nameservers and public resolvers 1.1.1.1/8.8.8.8 return these root A records: 93.115.53.130, 185.199.109.153, 185.199.110.153, 185.199.111.153. The old parking address remains and GitHub's 185.199.108.153 is missing. The www CNAME already correctly targets farcasdavid.github.io. Delegation and the zone are working; no conflicting root AAAA/CAA or parent DS record was found. The local resolver still has negative caching, which explains some remaining failures to resolve, but waiting alone will not remove the incorrect parking address.
+
+**Owner action:** ROMARG Zone Editor → Manage → locate davidfarcas.ro. / A / 93.115.53.130 → Edit → change Record to 185.199.108.153 → Save Record / Save All Records. Keep the other three GitHub root A records and the existing www CNAME. No DNS records were changed by the agent.
+
+Strict HTTPS validation currently fails because the served certificate does not cover davidfarcas.ro or www.davidfarcas.ro. After the DNS correction, open [repository Pages settings](https://github.com/FarcasDavid/david-farcas-portfolio/settings/pages), wait for the domain DNS check/certificate provisioning, then enable **Enforce HTTPS** when available. GitHub supplies a free certificate; no paid ROMARG SSL or workflow/CNAME-file change is needed. GitHub documents up to 24 hours for the checkbox to become available. If certificate provisioning remains stuck after DNS is confirmed correct, its documented fallback is removing/re-adding the same custom domain. The agent could not read internal certificate queue/checkbox state through the available GitHub API, so no certificate status beyond the external TLS failure is claimed.
+
+Sources: [GitHub custom domains](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site), [GitHub HTTPS](https://docs.github.com/en/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https), [ROMARG DNS zone editor](https://support.romarg.com/en-US/kb/articles/gestionarea-zonei-dns-din-aria-de-client-romarg).

@@ -1,6 +1,6 @@
 # David Farcas — professional portfolio
 
-An experience-led, responsive portfolio for David Farcas, AI/ML Engineer & Full Stack Developer in Cluj-Napoca. A five-view application with an original near-black, white, orange and cobalt identity, circular SVG logo controls, interactive skills and a system explorer. Static HTML/CSS/JavaScript with no runtime dependencies, trackers, or browser API keys. The contact form uses FormSubmit for server-side email delivery.
+An experience-led, responsive portfolio for David Farcas, AI/ML Engineer & Full Stack Developer in Cluj-Napoca. A five-view application with an original near-black and white identity with five selectable accent palettes, circular SVG logo controls, interactive skills and a system explorer. Static HTML/CSS/JavaScript with no runtime dependencies, trackers, or browser API keys. The contact form uses FormSubmit for server-side email delivery.
 
 ## Run locally
 

@@ -91,3 +91,5 @@ The public-source commit `e80013d4ecd1af3737210917a76d9df4501767ef` was also che
 ## Accent palette comparison — 16 October 2026
 
 Added a compact header picker for Orange, Cobalt, Crimson, Ultraviolet and Raspberry, with Cobalt as the default. Shared tokens cover filled controls, foreground highlights, diagram details, contact card, glows and metric surfaces. Main dark backgrounds and white text are retained. Local appearance preference persists independently from light/dark mode; no data leaves the browser. All five dark foreground/fill pairs measure at least 4.5:1 against their text/surface pair. Build/static checks and the existing 22 contact regressions pass. Hosted checks verify one active palette, distinct card fills, and a picker within the viewport at 1440px, 390px and 320px.
+
+All five light-mode variants also select correctly. Reload preserves the saved choice; exactly one option remains pressed. Escape closes the picker and restores summary focus. Header blur was removed to prevent a repaint artifact when changing colors with the picker open. Final screenshots of cobalt and crimson were inspected; no horizontal overflow at 320px/390px.

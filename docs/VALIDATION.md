@@ -87,3 +87,9 @@ All five views were smoke-tested at 1440×1000, 390×844, and 320×740: exactly 
 Launch assessment: code and workflow are ready for GitHub Pages; enabling Pages with GitHub Actions remains the account setup step. Publish to the default Pages URL first, then connect a chosen domain and recheck HTTPS/contact delivery from that origin. No final custom domain has been chosen or purchased.
 
 The public-source commit `e80013d4ecd1af3737210917a76d9df4501767ef` was also checked by [GitHub Actions run 38918680760](https://github.com/FarcasDavid/david-farcas-portfolio/actions/runs/38918680760): installation, production build, static checks and all contact regression tests pass. The run stops only at `configure-pages`; upload and deployment are skipped because Pages still needs enabling.
+
+## Accent palette comparison — 16 October 2026
+
+Added a compact header picker for Orange, Cobalt, Crimson, Ultraviolet and Raspberry, with Cobalt as the default. Shared tokens cover filled controls, foreground highlights, diagram details, contact card, glows and metric surfaces. Main dark backgrounds and white text are retained. Local appearance preference persists independently from light/dark mode; no data leaves the browser. All five dark foreground/fill pairs measure at least 4.5:1 against their text/surface pair. Build/static checks and the existing 22 contact regressions pass. Hosted checks verify one active palette, distinct card fills, and a picker within the viewport at 1440px, 390px and 320px.
+
+All five light-mode variants also select correctly. Reload preserves the saved choice; exactly one option remains pressed. Escape closes the picker and restores summary focus. Header blur was removed to prevent a repaint artifact when changing colors with the picker open. Final screenshots of cobalt and crimson were inspected; no horizontal overflow at 320px/390px.

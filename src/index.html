@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="dark" data-accent="cobalt">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -210,6 +210,97 @@
           >
         </nav>
         <div class="header-tools">
+          <details class="palette-picker" data-palette-picker>
+            <summary
+              aria-label="Choose accent palette"
+              title="Choose accent palette"
+            >
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 3a9 9 0 1 0 0 18h1.3a2 2 0 0 0 1.7-3c-.6-1 .1-2.3 1.3-2.3H18a3 3 0 0 0 3-3C21 7.3 17 3 12 3Z"
+                />
+                <circle cx="7.5" cy="10" r=".8" />
+                <circle cx="11" cy="7" r=".8" />
+                <circle cx="15.5" cy="8" r=".8" />
+              </svg>
+            </summary>
+            <div
+              class="palette-options"
+              role="group"
+              aria-label="Accent palette"
+            >
+              <p class="eyebrow">MAKE IT YOUR SHADE</p>
+              <button
+                type="button"
+                data-accent-choice="orange"
+                aria-label="Orange"
+                aria-pressed="false"
+              >
+                <span
+                  class="palette-swatch"
+                  style="--swatch: #ff7947"
+                  aria-hidden="true"
+                ></span
+                >Orange<span class="palette-check" aria-hidden="true">✓</span>
+              </button>
+              <button
+                type="button"
+                data-accent-choice="cobalt"
+                aria-label="Cobalt"
+                aria-pressed="true"
+              >
+                <span
+                  class="palette-swatch"
+                  style="--swatch: #315be8"
+                  aria-hidden="true"
+                ></span
+                >Cobalt<span class="palette-check" aria-hidden="true">✓</span>
+              </button>
+              <button
+                type="button"
+                data-accent-choice="crimson"
+                aria-label="Crimson"
+                aria-pressed="false"
+              >
+                <span
+                  class="palette-swatch"
+                  style="--swatch: #bf2d43"
+                  aria-hidden="true"
+                ></span
+                >Crimson<span class="palette-check" aria-hidden="true">✓</span>
+              </button>
+              <button
+                type="button"
+                data-accent-choice="violet"
+                aria-label="Ultraviolet"
+                aria-pressed="false"
+              >
+                <span
+                  class="palette-swatch"
+                  style="--swatch: #7345d5"
+                  aria-hidden="true"
+                ></span
+                >Ultraviolet<span class="palette-check" aria-hidden="true"
+                  >✓</span
+                >
+              </button>
+              <button
+                type="button"
+                data-accent-choice="raspberry"
+                aria-label="Raspberry"
+                aria-pressed="false"
+              >
+                <span
+                  class="palette-swatch"
+                  style="--swatch: #b92669"
+                  aria-hidden="true"
+                ></span
+                >Raspberry<span class="palette-check" aria-hidden="true"
+                  >✓</span
+                >
+              </button>
+            </div>
+          </details>
           <button
             class="theme-toggle"
             type="button"

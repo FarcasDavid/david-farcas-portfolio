@@ -218,7 +218,6 @@ p {
   top: 0;
   z-index: 30;
   background: var(--header);
-  backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--line);
 }
 .header-inner {

@@ -22,8 +22,8 @@ Open http://localhost:4173. `npm run dev` serves the built `dist/` directory too
 - `src/styles.css`: colors, layout, responsive behavior, focus and reduced-motion styles.
 - `src/main.js`: view/hash/history routing, keyboard tabs, skill and system selectors, theme persistence, and the contact form with direct email delivery.
 - `src/assets/`: self-hosted variable fonts and monochrome SVG logos, with licenses and a hash manifest.
-- `public/cv/David_Farcas_2026_CV.pdf`: approved downloadable CV, preserved unchanged.
-- `cv/David_Farcas_2026_CV.tex`: approved editable CV source, preserved unchanged.
+- `public/cv/David_Farcas_2026_CV.pdf`: approved downloadable CV, including the verified website in its contact row at David's request.
+- `cv/David_Farcas_2026_CV.tex`: matching editable LaTeX source.
 - `scripts/build.mjs`: copies `src/` and `public/` into ignored `dist/`.
 - `scripts/check.mjs`: internal links, anchor/ID integrity, primary heading and approved PDF hash.
 
@@ -37,7 +37,7 @@ GitHub Pages is the recommended public host. `.github/workflows/deploy.yml` buil
 
 ## Content integrity
 
-`docs/PROFILE.md` and the approved CV are the source of truth. Professional client work is anonymized. Project recommendations are proposals, not finished work; there are no fabricated demos. Outcome figures retain their supplied scope. The CV must not gain a portfolio URL until the URL is verified and David requests the edit.
+`docs/PROFILE.md` and the approved CV are the source of truth. Professional client work is anonymized. Project recommendations are proposals, not finished work; there are no fabricated demos. Outcome figures retain their supplied scope. David requested the verified `https://davidfarcas.ro/` link in the CV contact row on 16 October 2026; the remaining CV content is unchanged.
 
 ## Editing the application
 

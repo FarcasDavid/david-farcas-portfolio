@@ -129,3 +129,9 @@ Build, static checks and all 22 contact regressions pass. Independent source rev
 David’s iPhone screenshot exposed native color-emoji rendering of the contact-card asterisk and decorative diagonal arrows. Replaced the asterisk with a local inline SVG watermark and the footer, Keep Moving and homepage-greeting arrows with the shared SVG arrow. The watermark has a fixed 195px box, theme-derived translucent color and no pointer events; hero/race/footer SVGs have explicit sizes and are hidden from accessibility APIs. No emoji-presentation glyphs remain in these decorations. Metric arrow text is preserved.
 
 Production build/static checks and whitespace checks pass. Independent source audit found the three affected diagonal-arrow locations and no additional decorative emoji risks. Browser checks at 390×844 and 320×740 show the subtle asterisk, blue footer arrow and red Keep Moving arrow without horizontal overflow; screenshots were inspected. Existing reduced-motion behavior, controls, contact flow and CV integrity checks remain intact. No email was submitted.
+
+## CV website contact link — 16 October 2026
+
+At David's explicit request, added `davidfarcas.ro` linked to `https://davidfarcas.ro/` after LinkedIn in the approved LaTeX contact row. The custom domain returns HTTPS 200. Built-in LaTeX compilation and the exported PDF pass validation: one A4 page, no overfull/underfull layout warnings, all existing contact links retained, and the new website URI present as a PDF hyperlink. Extracted text matches the previous approved PDF after excluding the added URL and separator. The rendered full page was inspected; the contact line fits within the page margins.
+
+The matching downloadable PDF and integrity guard now use SHA-256 `9a30450e0996d2369e27514c823074c971b5b9c235d66f4040343d53efdb90d9`. Prior validation entries refer to the earlier approved PDF and remain historical records.

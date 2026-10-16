@@ -374,7 +374,7 @@ const built = await readFile("dist/cv/David_Farcas_2026_CV.pdf");
 assert(source.equals(built), "Built CV differs from approved CV");
 assert.equal(
   createHash("sha256").update(source).digest("hex"),
-  "e723ecc57ccd175d901a3450ab2ae83266e252335c80300e98c3bba16000853d",
+  "9a30450e0996d2369e27514c823074c971b5b9c235d66f4040343d53efdb90d9",
 );
 assert.equal((html.match(/<h1\b/g) || []).length, 1);
 for (const term of [

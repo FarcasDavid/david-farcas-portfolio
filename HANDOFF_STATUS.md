@@ -4,7 +4,7 @@ Updated 16 October 2026.
 
 - Redesigned: five separate Overview, Experience, Toolkit, About and Contact views; near-black/white/orange/cobalt palette with no green; circular SVG CV/social controls; clickable priority skills; interactive system map; dark/light themes; desktop tab bar and mobile bottom dock.
 - Latest refinements: Contact form with FormSubmit AJAX delivery, activated recipient and user-confirmed Yahoo receipt, plus copy fallback; concise Email labels; general Prepare → Inference → Evaluate → Deliver diagram; Overview fact cards deep-link to their matching Experience articles.
-- Approved LaTeX/PDF CV preserved byte-for-byte. No portfolio URL added.
+- Approved LaTeX/PDF CV updated at David's explicit request on 16 October 2026: clickable davidfarcas.ro added to the existing contact row. All other text remains unchanged; the rendered PDF is still one page. Current SHA-256: `9a30450e0996d2369e27514c823074c971b5b9c235d66f4040343d53efdb90d9`.
 - Validation: production build, static contracts and independent functional/visual checks pass. All five views reviewed at 320px/390px and desktop, both themes; keyboard routing, history, skills/stages, clipboard fallback and exact CV bytes verified. See `docs/REDESIGN_QA.md`.
 - Local preview: `npm ci && npm run build && npm run preview`, then http://localhost:4173.
 - Public source published: https://github.com/FarcasDavid/david-farcas-portfolio. Connected account and repository ownership verified as FarcasDavid. Local main is synchronized with remote main via the GitHub connection; ordinary HTTPS Git authentication still fails.

@@ -23,6 +23,7 @@ function selectAccent(accent) {
     );
   }
 }
+selectAccent(document.documentElement.dataset.accent);
 try {
   selectAccent(window.localStorage.getItem("portfolio-accent"));
 } catch {

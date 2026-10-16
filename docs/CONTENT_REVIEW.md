@@ -59,3 +59,14 @@ Use descriptive headings and broad industries. No employer/client source, real m
 Use the exact approved email, phone and social links from PROFILE.md. The contact section should open mailto/tel links and download the existing PDF. Preserve both approved CV files byte-for-byte. Add a real portfolio URL to the CV only when David asks.
 
 The GitHub review and recommendations are documented in PROJECT_IDEAS.md. No existing repository was validated as a portfolio-ready AI project, and no repository was run or security-audited as part of this content review.
+
+## Expanded project evidence — 16 October 2026
+
+David explicitly requested details from his older CV in Downloads/Archive. Only CV material was consulted; no neighboring proprietary source, data or assets were imported. The approved final CV remains unchanged. The older four-page “David Farcas CV 2026.pdf” supports these additional responsibilities:
+
+- Pages 1–2: PostgreSQL materialized views, batched endpoints and Redis; Builder/component architecture for cascading filters; memory profiling, cache management, authentication and cross-region AWS Bedrock work. These expand the approved platform summary without new outcome figures.
+- Pages 2–3: multimodal OCR with PDF-to-image conversion, multithreaded batched LLM inference, modular prompts, synthesized Markdown/Excel outputs, FastAPI/presigned S3 downloads, JWT/Entra authentication, Streamlit, Terraform and Azure Pipelines with ephemeral environments.
+- Page 3: vehicle-listing assistant responsibilities covering SSO/token validation, JWT/long-lived-token caching, LLM chain/model caching and typo-tolerant matching. System-level truthfulness/plagiarism guarantees are omitted because personal ownership is not established.
+- Page 4: workforce/sales assistants with Terraform, Azure DevOps, Docker, App Service/ACR, environment/service-connection configuration and role-specific assistant setup. Ambiguous “custom AI models” wording is not used to imply model training.
+
+The additional application cards inherit the approved Nov 2024–Dec 2025 grouping; no individual project dates or performance claims were added. An unrelated reference CV found in the archive was excluded. Main case studies now expose most approved CV bullets directly, including DSPy/GEPA agreement optimization for calls. Reported pipeline results, human review, advisory grounding and component-latency scope remain explicit. Removing the public confidentiality note changes presentation only; client identities and proprietary details remain excluded.

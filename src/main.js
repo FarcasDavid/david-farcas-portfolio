@@ -28,17 +28,63 @@ try {
   // Theme switching still works when browser storage is unavailable.
 }
 selectTheme(savedTheme);
+let requestedTheme = savedTheme;
+let themeTransition;
+let themeFallbackTimer;
+function changeTheme(theme) {
+  requestedTheme = theme;
+  themeTransition?.skipTransition();
+  window.clearTimeout(themeFallbackTimer);
+  document.documentElement.classList.remove("theme-changing");
+  const update = () => selectTheme(requestedTheme);
+  if (reducedMotion.matches) {
+    update();
+  } else if (document.startViewTransition) {
+    themeTransition = document.startViewTransition(update);
+    // Skipped transitions still apply their update; no rejected animation promise leaks.
+    themeTransition.ready.catch(() => {});
+    themeTransition.finished.catch(() => {});
+  } else {
+    document.documentElement.classList.add("theme-changing");
+    update();
+    themeFallbackTimer = window.setTimeout(() => {
+      document.documentElement.classList.remove("theme-changing");
+    }, 400);
+  }
+}
 for (const button of themeButtons) {
   button.addEventListener("click", () => {
-    const theme =
-      document.documentElement.dataset.theme === "light" ? "dark" : "light";
-    selectTheme(theme);
+    const theme = requestedTheme === "light" ? "dark" : "light";
+    changeTheme(theme);
     try {
       window.localStorage.setItem("portfolio-theme", theme);
     } catch {
       /* Keep the in-page choice. */
     }
   });
+}
+
+let navIndicator;
+function updateNavIndicator() {
+  const tab = tabs.find(
+    (item) => item.getAttribute("aria-selected") === "true",
+  );
+  if (!tab || !navIndicator) return;
+  navIndicator.style.width = `${tab.offsetWidth}px`;
+  navIndicator.style.height = `${tab.offsetHeight}px`;
+  navIndicator.style.transform = `translate(${tab.offsetLeft}px, ${tab.offsetTop}px)`;
+}
+if (navigation && tabs.length) {
+  navIndicator = document.createElement("span");
+  navIndicator.className = "nav-indicator";
+  navIndicator.setAttribute("aria-hidden", "true");
+  navigation.prepend(navIndicator);
+  navigation.classList.add("has-indicator");
+  if ("ResizeObserver" in window) {
+    new ResizeObserver(updateNavIndicator).observe(navigation);
+  }
+  window.addEventListener("resize", updateNavIndicator);
+  document.fonts?.ready.then(updateNavIndicator);
 }
 
 function closeMenu({ restoreFocus = false } = {}) {
@@ -95,6 +141,8 @@ function selectView(
     targetElement.closest(".view") === selectedPanel
       ? targetElement
       : undefined;
+  selectedPanel.classList.toggle("is-targeted", Boolean(validTarget));
+  updateNavIndicator();
   const fragment = validTarget?.id || id;
   if (history !== "none" && window.location.hash !== `#${fragment}`) {
     const url = `${window.location.pathname}${window.location.search}#${fragment}`;

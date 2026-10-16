@@ -21,3 +21,5 @@ Updated 16 October 2026.
 - Appearance comparison: header palette picker offers Orange, Cobalt (default), Crimson, Ultraviolet and Raspberry across all five views, with separate dark/light tokens and local preference persistence. Desktop and narrow-phone picker bounds, selection persistence and keyboard Escape/focus return verified. No green palette introduced.
 
 - Vivid palette follow-up: replaced pastel highlight tokens with saturated electric cobalt, crimson, ultraviolet and raspberry; Orange remains the original baseline. White text and dark surfaces remain. GitHub Pages form activation confirmed by David; subsequent real browser submission returned “Message sent”.
+
+- Final appearance: Cobalt is fixed and the palette picker is removed. No size switch was added. Automatic CSS scaling uses 125% on viewports at least 1800×950 and 150% at least 2300×1200; smaller windows retain original sizing. Dialog height and sticky-header scroll offsets account for scale.

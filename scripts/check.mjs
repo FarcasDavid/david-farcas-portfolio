@@ -8,6 +8,27 @@ const css = await readFile("dist/styles.css", "utf8");
 const script = await readFile("dist/main.js", "utf8");
 new Script(script, { filename: "dist/main.js" });
 
+function decodeEntities(value) {
+  return value.replace(
+    /&(quot|apos|amp|lt|gt|#39);/g,
+    (_, entity) =>
+      ({
+        quot: '"',
+        apos: "'",
+        amp: "&",
+        lt: "<",
+        gt: ">",
+        "#39": "'",
+      })[entity],
+  );
+}
+
+function textContent(markup) {
+  return decodeEntities(markup.replace(/<[^>]+>/g, " "))
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function attributes(tag) {
   const content = tag.replace(/^<\/?[\w-]+/, "").replace(/\/?>$/, "");
   return Object.fromEntries(
@@ -17,7 +38,7 @@ function attributes(tag) {
       ),
     ].map(([, key, double, single, unquoted]) => [
       key,
-      double ?? single ?? unquoted ?? "",
+      decodeEntities(double ?? single ?? unquoted ?? ""),
     ]),
   );
 }
@@ -103,12 +124,28 @@ for (const skill of [
     `${skill} needs a pressed state`,
   );
 }
-for (const stage of ["ingest", "retrieve", "evaluate", "deliver"]) {
+const workflowStages = ["prepare", "inference", "evaluate", "deliver"];
+assert.equal(
+  tags.filter(({ attrs }) => "data-stage" in attrs).length,
+  workflowStages.length,
+  "Expected four workflow stages",
+);
+for (const stage of workflowStages) {
   const button = tags.find(({ attrs }) => attrs["data-stage"] === stage);
   assert(button?.tag.startsWith("<button"), `Missing ${stage} pipeline button`);
   assert(
     ["true", "false"].includes(button.attrs["aria-pressed"]),
     `${stage} needs a pressed state`,
+  );
+  const markup = [
+    ...html.matchAll(/<button\b[^>]*>[\s\S]*?<\/button\s*>/g),
+  ].find(
+    ([markup]) =>
+      attributes(markup.match(/^<button\b[^>]*>/)[0])["data-stage"] === stage,
+  )?.[0];
+  assert(
+    new RegExp(`\\b${stage}\\b`, "i").test(textContent(markup)),
+    `The ${stage} workflow button needs its visible label`,
   );
 }
 for (const id of [
@@ -124,6 +161,66 @@ for (const id of [
 const anchors = [...html.matchAll(/<a\b[^>]*>[\s\S]*?<\/a\s*>/g)].map(
   ([anchor]) => ({ anchor, attrs: attributes(anchor.match(/^<a\b[^>]*>/)[0]) }),
 );
+for (const id of [
+  "experience-email",
+  "experience-calls",
+  "experience-platform",
+]) {
+  const caseStudy = tags.find(({ attrs }) => attrs.id === id);
+  assert(
+    caseStudy?.tag.startsWith("<article") &&
+      "data-experience-case" in caseStudy.attrs,
+    `Missing experience article #${id}`,
+  );
+  assert.equal(
+    caseStudy.attrs.tabindex,
+    "-1",
+    `Experience article #${id} needs programmatic focus`,
+  );
+  const caseMarkup = [
+    ...html.matchAll(/<article\b[^>]*>[\s\S]*?<\/article\s*>/g),
+  ].find(
+    ([markup]) => attributes(markup.match(/^<article\b[^>]*>/)[0]).id === id,
+  )?.[0];
+  assert(
+    caseMarkup && /\bdata-case-evidence\b/.test(caseMarkup),
+    `Experience article #${id} needs a mobile evidence target`,
+  );
+  const evidenceLinks = anchors.filter(
+    ({ attrs }) => attrs["data-target"] === id,
+  );
+  assert.equal(
+    evidenceLinks.length,
+    1,
+    `Expected one overview evidence link to #${id}`,
+  );
+  assert.equal(
+    evidenceLinks[0].attrs.href,
+    `#${id}`,
+    `Evidence link to #${id} needs a shareable fragment`,
+  );
+  assert.equal(
+    evidenceLinks[0].attrs["data-view"],
+    "experience",
+    `Evidence link to #${id} must reveal Experience`,
+  );
+}
+assert(!/Email\s+David/i.test(html), "Email action labels should read Email");
+const emailCircles = anchors.filter(
+  ({ attrs }) =>
+    attrs.href?.startsWith("mailto:") &&
+    attrs.class
+      ?.split(/\s+/)
+      .some((name) => name === "circle-link" || name.includes("email-circle")),
+);
+assert(emailCircles.length >= 2, "Overview and Contact need email circles");
+for (const { attrs } of emailCircles) {
+  assert.equal(
+    attrs["aria-label"],
+    "Email",
+    "Email circles need the concise accessible label Email",
+  );
+}
 for (const href of [
   "https://github.com/FarcasDavid",
   "https://www.linkedin.com/in/farcas-david/",
@@ -160,6 +257,87 @@ assert(
   "Theme control needs an accessible name",
 );
 
+const contactOpener = tags.find(
+  ({ attrs }) => "data-open-contact-form" in attrs,
+);
+assert(
+  contactOpener?.tag.startsWith("<button"),
+  "Contact form action must be a native button",
+);
+assert.equal(
+  contactOpener.attrs.type,
+  "button",
+  "Opening the contact form must not submit a form",
+);
+assert.equal(contactOpener.attrs["aria-controls"], "contact-form-dialog");
+const dialog = [...html.matchAll(/<dialog\b[^>]*>[\s\S]*?<\/dialog\s*>/g)].find(
+  ([markup]) =>
+    attributes(markup.match(/^<dialog\b[^>]*>/)[0]).id ===
+    "contact-form-dialog",
+)?.[0];
+assert(dialog, "Contact form needs a native dialog");
+const dialogAttributes = attributes(dialog.match(/^<dialog\b[^>]*>/)[0]);
+assert(
+  dialogAttributes["aria-label"] ||
+    ids.includes(dialogAttributes["aria-labelledby"]),
+  "Contact dialog needs an accessible name",
+);
+assert(!("open" in dialogAttributes), "Contact dialog starts closed");
+const contactForm = [
+  ...dialog.matchAll(/<form\b[^>]*>[\s\S]*?<\/form\s*>/g),
+].find(
+  ([markup]) =>
+    attributes(markup.match(/^<form\b[^>]*>/)[0]).id === "contact-form",
+)?.[0];
+assert(contactForm, "Contact dialog needs form#contact-form");
+const formAttributes = attributes(contactForm.match(/^<form\b[^>]*>/)[0]);
+assert(
+  !formAttributes.action || formAttributes.action === "#",
+  "The default contact form must not submit to an unconfigured service",
+);
+const fields = [...contactForm.matchAll(/<(?:input|textarea)\b[^>]*>/g)].map(
+  ([tag]) => ({ tag, attrs: attributes(tag) }),
+);
+const labels = [
+  ...contactForm.matchAll(/<label\b[^>]*>[\s\S]*?<\/label\s*>/g),
+].map(([label]) => ({
+  label,
+  attrs: attributes(label.match(/^<label\b[^>]*>/)[0]),
+}));
+for (const name of ["name", "email", "subject", "message"]) {
+  const field = fields.find(({ attrs }) => attrs.name === name);
+  assert(field, `Contact form needs a ${name} field`);
+  assert("required" in field.attrs, `Contact ${name} field must be required`);
+  assert(
+    field.attrs.id &&
+      labels.some(
+        ({ label, attrs }) =>
+          (attrs.for === field.attrs.id ||
+            label.includes(`id="${field.attrs.id}"`)) &&
+          textContent(label),
+      ),
+    `Contact ${name} field needs an associated visible label`,
+  );
+  if (name === "email")
+    assert.equal(
+      field.attrs.type,
+      "email",
+      "Email field needs native email validation",
+    );
+  if (name === "message")
+    assert(field.tag.startsWith("<textarea"), "Message field needs a textarea");
+}
+const submitButton = [
+  ...contactForm.matchAll(/<button\b[^>]*>[\s\S]*?<\/button\s*>/g),
+].find(
+  ([markup]) =>
+    attributes(markup.match(/^<button\b[^>]*>/)[0]).type === "submit",
+)?.[0];
+assert(
+  submitButton && textContent(submitButton) === "Open email draft",
+  "Default submission must honestly offer to open an email draft",
+);
+
 const source = await readFile("public/cv/David_Farcas_2026_CV.pdf");
 const built = await readFile("dist/cv/David_Farcas_2026_CV.pdf");
 assert(source.equals(built), "Built CV differs from approved CV");
@@ -185,5 +363,5 @@ assert(
 );
 assert(css.includes("focus-visible"), "Keyboard focus must remain visible");
 console.log(
-  "Passed: five accessible tab/panel mappings, interactive controls, logo/contact links, local assets, unique IDs, searchable skills, motion/focus support, approved CV integrity.",
+  "Passed: five accessible tab/panel mappings, four workflow stages, contact draft form, interactive controls, logo/contact links, local assets, unique IDs, searchable skills, motion/focus support, approved CV integrity.",
 );

@@ -3,6 +3,7 @@
 Updated 16 October 2026.
 
 - Redesigned: five separate Overview, Experience, Toolkit, About and Contact views; near-black/white/orange/cobalt palette with no green; circular SVG CV/social controls; clickable priority skills; interactive system map; dark/light themes; desktop tab bar and mobile bottom dock.
+- Latest refinements: Contact message composer (validated email draft plus copy fallback); concise Email labels; general Prepare → Inference → Evaluate → Deliver diagram; Overview fact cards deep-link to their matching Experience articles.
 - Approved LaTeX/PDF CV preserved byte-for-byte. No portfolio URL added.
 - Validation: production build, static contracts and independent functional/visual checks pass. All five views reviewed at 320px/390px and desktop, both themes; keyboard routing, history, skills/stages, clipboard fallback and exact CV bytes verified. See `docs/REDESIGN_QA.md`.
 - Local preview: `npm ci && npm run build && npm run preview`, then http://localhost:4173.

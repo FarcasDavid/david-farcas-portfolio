@@ -45,3 +45,13 @@ The owner-private Sites deployment completed successfully (native status verifie
 Public source is published in the intended FarcasDavid repository, with local main synchronized and a clean working tree. The first workflow exposed a check-before-build ordering defect; this was corrected and rerun from a clean install. [Run 38742141809](https://github.com/FarcasDavid/david-farcas-portfolio/actions/runs/38742141809) passes install/build/check, then fails configure-pages with Not Found and an explicit request to enable Pages for GitHub Actions. The signed-out browser cannot access repository settings. No public portfolio URL is claimed.
 
 The deployed private Site was also inspected at 390×844: hero and mobile menu render correctly; Escape closes the menu. The PDF downloaded from the deployed link has the same approved SHA-256. The temporary viewport override was reset.
+
+## Redesign — 16 October 2026
+
+The initial design was replaced following direct user feedback. See `REDESIGN_REFERENCE.md`, `REDESIGN_QA.md` and `ASSET_SOURCES.md` for the renewed reference audit, independent visual review and licensed local assets.
+
+The redesigned application has five active views, interactive skills and pipeline stages, circular SVG links, and dark/light themes without green. Functional tests passed in installed Chrome at 1440px, 390px and 320px: all view/keyboard/hash/history paths, all seven skills/four stages, theme persistence, blocked-storage/clipboard fallback, exact CV download bytes and no page errors. Static build checks verify the tab/panel mappings, links, mask assets, script syntax, approved PDF hash, focus and reduced-motion styles. Independent visual QA found and resolved the mobile dock, header opacity, tooltip overflow, focus outline, narrow icon-row wrapping and unsupported decorative data bars.
+
+Saved viewport/full-page screenshots were inspected outside Git. The final local production artifact is approximately 360 KB on disk including fonts, SVGs, licenses and the approved PDF; this is a size observation, not a Lighthouse score.
+
+The Sites deployment succeeded for source commit `0ab6f4e600e0a4f85a7af354f728d596d5db82c6` at https://david-farcas-portfolio.rockyglade2.chatgpt.site. The browser reached the private host's sign-in gate; ChatGPT session authentication is required for another hosted visual pass. Native deployment success is verified, and the exact local artifact was fully reviewed. No authentication protection was bypassed. Public Pages setup remains separate.

@@ -1,6 +1,6 @@
 # David Farcas — professional portfolio
 
-An experience-led, responsive portfolio for David Farcas, AI/ML Engineer & Full Stack Developer in Cluj-Napoca. A five-view application with an original near-black and white identity with five selectable accent palettes, circular SVG logo controls, interactive skills and a system explorer. Static HTML/CSS/JavaScript with no runtime dependencies, trackers, or browser API keys. The contact form uses FormSubmit for server-side email delivery.
+An experience-led, responsive portfolio for David Farcas, AI/ML Engineer & Full Stack Developer in Cluj-Napoca. A five-view application with an original near-black and white identity with a fixed vivid cobalt accent, circular SVG logo controls, interactive skills and a system explorer. Static HTML/CSS/JavaScript with no runtime dependencies, trackers, or browser API keys. The contact form uses FormSubmit for server-side email delivery.
 
 ## Run locally
 
@@ -43,7 +43,7 @@ GitHub Pages is the recommended public host. `.github/workflows/deploy.yml` buil
 
 The five views are Overview (`#home`), Experience (`#experience`), Toolkit (`#stack`), About (`#about`), and Contact (`#contact`). Only the selected panel is shown; browser Back/Forward and direct hash links work. The desktop tab bar becomes a fixed bottom dock on mobile. Arrow keys, Home and End move between tabs. Without JavaScript all content remains available.
 
-The Overview skill buttons update explanatory copy stored in the `skills` object in `src/main.js`; the diagram uses the `stages` object. Keep those explanations grounded in `docs/PROFILE.md`. `src/styles.css` starts with dark/light color tokens. Both themes exclude green, including the monochrome brand icons. The header palette control compares Orange, Cobalt, Crimson, Ultraviolet and Raspberry across every view. `portfolio-theme` and `portfolio-accent` store only local appearance preferences. Reduced-motion preferences disable animation.
+The Overview skill buttons update explanatory copy stored in the `skills` object in `src/main.js`; the diagram uses the `stages` object. Keep those explanations grounded in `docs/PROFILE.md`. `src/styles.css` starts with dark/light color tokens. Both themes exclude green, including the monochrome brand icons. Cobalt is fixed; there is no palette or size switch. Large viewports automatically scale to 125% at 1800×950 CSS pixels and 150% at 2300×1200; smaller windows keep the original sizing. `portfolio-theme` is the only active stored appearance preference. Reduced-motion preferences disable animation.
 
 Font and icon licenses/source links are recorded in [ASSET_SOURCES.md](docs/ASSET_SOURCES.md). No personal projects are displayed.
 

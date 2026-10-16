@@ -8,52 +8,6 @@ const panelById = new Map(panels.map((panel) => [panel.id, panel]));
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 let activeView;
 
-const palettePicker = document.querySelector("[data-palette-picker]");
-const accentChoices = [...document.querySelectorAll("[data-accent-choice]")];
-const accentNames = new Set(
-  accentChoices.map((button) => button.dataset.accentChoice),
-);
-function selectAccent(accent) {
-  if (!accentNames.has(accent)) return;
-  document.documentElement.dataset.accent = accent;
-  for (const button of accentChoices) {
-    button.setAttribute(
-      "aria-pressed",
-      String(button.dataset.accentChoice === accent),
-    );
-  }
-}
-selectAccent(document.documentElement.dataset.accent);
-try {
-  selectAccent(window.localStorage.getItem("portfolio-accent"));
-} catch {
-  /* Accent controls work even when storage is unavailable. */
-}
-for (const button of accentChoices) {
-  button.addEventListener("click", () => {
-    selectAccent(button.dataset.accentChoice);
-    try {
-      window.localStorage.setItem(
-        "portfolio-accent",
-        button.dataset.accentChoice,
-      );
-    } catch {
-      /* Keep the current in-page choice. */
-    }
-  });
-}
-document.addEventListener("click", (event) => {
-  if (palettePicker?.open && !palettePicker.contains(event.target))
-    palettePicker.open = false;
-});
-palettePicker?.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    palettePicker.open = false;
-    palettePicker.querySelector("summary").focus();
-    event.preventDefault();
-  }
-});
-
 const themeButtons = [...document.querySelectorAll("[data-theme-toggle]")];
 function selectTheme(theme) {
   document.documentElement.dataset.theme = theme;

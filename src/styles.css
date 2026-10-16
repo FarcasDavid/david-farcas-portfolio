@@ -663,6 +663,10 @@ h1 {
   letter-spacing: -4px;
   padding-right: 3px;
 }
+.map-center-mark i {
+  color: var(--accent-on-dark);
+  font-style: normal;
+}
 .map-center small {
   font-size: 6px;
   letter-spacing: 1px;
@@ -1066,21 +1070,6 @@ h1 {
   margin-bottom: 5px;
   border-top: 1px solid var(--line);
 }
-.employer-icon {
-  width: 47px;
-  height: 47px;
-  border-radius: 13px;
-  background: var(--surface-raised);
-  display: grid;
-  place-content: center;
-  grid-auto-flow: column;
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 23px;
-  font-weight: 700;
-}
-.employer-icon > span {
-  color: var(--accent);
-}
 .experience-employer h3 {
   font-size: 17px;
   margin: 0;
@@ -1380,6 +1369,24 @@ h1 {
 .application-card p {
   margin: 0 0 20px;
 }
+.application-card .application-outcome {
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.8;
+}
+.application-outcome > span {
+  display: block;
+  color: var(--accent);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.application-card li strong {
+  color: var(--text);
+  font-weight: 600;
+}
 .application-card ul {
   padding-left: 16px;
   margin: 0 0 25px;
@@ -1425,16 +1432,32 @@ h1 {
     stroke-dashoffset 800ms cubic-bezier(0.22, 1, 0.36, 1),
     opacity 250ms ease;
 }
-.contour-card:is(:hover, :focus-visible, :focus-within) {
+.home-evidence > a.contour-card:focus-visible {
   transform: translateY(-3px);
   box-shadow: 0 12px 32px color-mix(in srgb, var(--accent-fill) 9%, transparent);
+  outline-color: var(--accent);
 }
-.home-evidence > .contour-card:hover {
-  border-color: var(--line);
-}
-.contour-card:is(:hover, :focus-visible, :focus-within) > .card-contour rect {
+.home-evidence > a.contour-card:focus-visible > .card-contour rect {
   stroke-dashoffset: 0;
   opacity: 1;
+}
+.work-card:focus,
+.application-card:focus {
+  outline: none;
+}
+@media (hover: hover) {
+  .contour-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px
+      color-mix(in srgb, var(--accent-fill) 9%, transparent);
+  }
+  .home-evidence > .contour-card:hover {
+    border-color: var(--line);
+  }
+  .contour-card:hover > .card-contour rect {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
 }
 @media (max-width: 1000px) {
   .earlier-grid {
@@ -1513,33 +1536,47 @@ h1 {
   background: var(--surface);
   padding: 30px;
 }
+.toolkit-cobalt {
+  --toolkit-accent: #4d82ff;
+  --toolkit-fill: #174fff;
+}
+.toolkit-purple {
+  --toolkit-accent: #bd55ff;
+  --toolkit-fill: #8719e0;
+}
+.toolkit-crimson {
+  --toolkit-accent: #ff375f;
+  --toolkit-fill: #dc1745;
+}
+.toolkit-raspberry {
+  --toolkit-accent: #ff2aab;
+  --toolkit-fill: #cf007d;
+}
+:root[data-theme="light"] .toolkit-cobalt {
+  --toolkit-accent: #174fff;
+}
+:root[data-theme="light"] .toolkit-purple {
+  --toolkit-accent: #7f00d9;
+}
+:root[data-theme="light"] .toolkit-crimson {
+  --toolkit-accent: #c40037;
+}
+:root[data-theme="light"] .toolkit-raspberry {
+  --toolkit-accent: #c60076;
+}
 .toolkit-icon {
   display: grid;
   place-items: center;
   width: 48px;
   height: 48px;
-  border: 1px solid currentColor;
+  border: 1px solid var(--toolkit-fill);
   border-radius: 14px;
   margin-bottom: 27px;
-}
-.orange-icon {
-  color: var(--accent);
-  background: color-mix(in srgb, var(--accent-fill) 3.9%, transparent);
-}
-.blue-icon {
-  color: var(--blue);
-  background: #9aa8ff0a;
-}
-.pink-icon {
-  color: #e89fc0;
-  background: #e89fc00a;
-}
-.purple-icon {
-  color: #bb9ef1;
-  background: #bb9ef10a;
+  color: #ffffff;
+  background: var(--toolkit-fill);
 }
 .toolkit-card > .eyebrow {
-  color: var(--muted);
+  color: var(--toolkit-accent);
   font-size: 8px;
   margin-bottom: 12px;
 }
@@ -1565,7 +1602,7 @@ h1 {
   align-items: center;
   gap: 7px;
   background: var(--surface-raised);
-  border: 1px solid var(--line);
+  border: 1px solid color-mix(in srgb, var(--toolkit-accent) 28%, var(--line));
   border-radius: 100px;
   padding: 7px 12px;
   font-size: 10px;
@@ -1574,6 +1611,7 @@ h1 {
 .toolkit-chips .icon {
   width: 14px;
   height: 14px;
+  color: var(--toolkit-accent);
 }
 .collaboration-card {
   display: grid;
@@ -1658,24 +1696,32 @@ h1 {
   color: var(--accent);
 }
 .endurance-card {
-  background: #a5afff;
+  background: #111114;
+  border: 1px solid #34343c;
   border-radius: var(--radius);
   padding: 27px 32px;
   position: relative;
   overflow: hidden;
-  color: #1c1b36;
+  color: #ffffff;
 }
 .endurance-top {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-.endurance-top > .icon {
-  width: 20px;
-  height: 20px;
+.triathlon-icons {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #ff2434;
+}
+.triathlon-icons > .icon {
+  width: 18px;
+  height: 18px;
 }
 .endurance-top .eyebrow {
   font-size: 8px;
+  color: #ffffff;
 }
 .race-art {
   position: relative;
@@ -1698,12 +1744,13 @@ h1 {
   top: 13px;
   font-size: 85px;
   font-weight: 400;
+  color: #ff2434;
 }
 .race-line {
   position: absolute;
   height: 1px;
   width: 150%;
-  background: #57519450;
+  background: #e8203c66;
   transform: rotate(-15deg);
   left: -40px;
   bottom: 20px;
@@ -1720,7 +1767,7 @@ h1 {
   top: 0;
   width: 120px;
   height: 120px;
-  border: 1px solid #514b8755;
+  border: 1px solid #e8203c88;
   border-radius: 50%;
 }
 .endurance-card h3 {
@@ -1734,16 +1781,19 @@ h1 {
   font-size: 11px;
   line-height: 1.8;
   max-width: 330px;
+  color: #d9d9df;
 }
 .future-label {
   display: inline-block;
-  border: 1px solid #4d477077;
+  border: 1px solid #ff243480;
   border-radius: 100px;
   padding: 6px 10px;
   font-size: 7px;
   letter-spacing: 1px;
   font-weight: 700;
   margin-top: 5px;
+  color: #ffffff;
+  background: #ff243410;
 }
 .credentials-heading {
   margin: 48px 0 25px;
@@ -2458,12 +2508,6 @@ h1 {
   .experience-employer {
     gap: 11px;
     padding: 18px 0;
-  }
-  .employer-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    font-size: 21px;
   }
   .experience-employer h3 {
     font-size: 16px;

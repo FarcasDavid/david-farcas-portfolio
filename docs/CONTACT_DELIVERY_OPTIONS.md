@@ -72,3 +72,7 @@ The private Sites update is deployed. David activated the recipient and confirme
 ## Public Pages verification — 16 October 2026
 
 The public portfolio is live at https://farcasdavid.github.io/david-farcas-portfolio/. A first browser submission requested origin-specific activation; David confirmed activation through Yahoo. A subsequent public-origin browser submission returned explicit acceptance and the “Message sent” state, cleared the form, and stayed on site. No inbox access was used by the agent. Test again from any future custom domain, activating it if requested.
+
+## Custom-domain activation — 16 October 2026
+
+After moving to https://davidfarcas.ro, David’s own browser test returned the provider’s activation-pending response. The previous Sites and GitHub Pages activations did not activate this form address. David then confirmed “Activated davidfarcas.ro” through his Yahoo inbox. No new agent-originated email submission was made in this follow-up, so a new custom-domain success response or inbox receipt is not independently claimed. FormSubmit’s help page states that held submissions are released after activation. The delivery code was unchanged; the concurrent SVG rendering fix is unrelated to email setup.

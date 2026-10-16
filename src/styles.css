@@ -3331,6 +3331,9 @@ body.has-contact-dialog {
   background: transparent;
 }
 /* Native view transitions crossfade the complete theme without intermediate mismatched colors. */
+::view-transition {
+  pointer-events: none;
+}
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation-duration: 420ms;

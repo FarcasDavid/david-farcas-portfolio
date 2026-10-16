@@ -4,19 +4,15 @@ Rechecked 16 October 2026. Recommend **GitHub Pages** for this static profession
 
 ## Current status
 
-The local `origin` is `https://github.com/FarcasDavid/david-farcas-portfolio.git`; remote HEAD resolves to `main`. Public read access works. `gh` is not installed in this environment. That alone does not establish whether ordinary Git push authentication works. No public-host settings, DNS, paid plan, or domain have been changed.
+**Public portfolio:** https://farcasdavid.github.io/david-farcas-portfolio/ — deployed and inspected on 16 October 2026.
 
-An owner-private Sites preview is successfully deployed at https://david-farcas-portfolio.rockyglade2.chatgpt.site (native deployment status: succeeded). It is a review link for the owner, not a public portfolio URL. The public source has been published through the GitHub connection and local main synchronized. The latest inspected [GitHub Actions run](https://github.com/FarcasDavid/david-farcas-portfolio/actions/runs/38918680760) passes npm ci, build, static checks and all 22 contact regression tests, then stops at configure-pages with “Get Pages site failed” / Not Found because Pages is not enabled. The browser is signed out, so account settings cannot be completed here. Use the successful deployment output as the authoritative URL and verify it before sharing or adding it to the CV. The approved CV remains unchanged.
+David enabled Pages and selected **GitHub Actions** as the publishing source. [Run 38921760800](https://github.com/FarcasDavid/david-farcas-portfolio/actions/runs/38921760800) succeeds through installation, build, static checks, 22 contact regressions, artifact upload and deployment for source `682fd6aac166c54815c7d785c722625533029df5`. The public origin now serves the portfolio rather than the Jekyll-rendered README produced by branch publishing. Keep Source set to GitHub Actions; the workflow builds and publishes `dist`, while deliberate source stays on `main`.
 
-## Launch readiness — 16 October 2026
+The private Sites preview remains at https://david-farcas-portfolio.rockyglade2.chatgpt.site. The public GitHub repository and local checkout retain the source. Assets and the approved PDF work under the repository path; the public PDF matches the approved SHA-256 exactly. The approved CV has not been edited.
 
-The static architecture and workflow are ready for a Pages launch attempt. Read-only checks of the latest run confirm checkout, Node setup, `npm ci`, build, static checks, and `npm test` all succeeded; `actions/configure-pages@v5` failed, artifact upload was skipped, and deployment never ran. The expected default project address returned HTTP 404, so it is not a working public preview. An unauthenticated Pages API request also returned 404; that result alone cannot distinguish disabled Pages from access restrictions. Together with the earlier workflow error and handoff, enabling Pages remains the concrete account setup blocker.
+The public form initially requested separate origin activation. David completed that inbox step; a fresh browser submission from GitHub Pages then returned “Message sent” and reset the form. The agent did not access Yahoo to independently inspect the latest delivered email. A future custom domain needs its own submission check and activation if requested.
 
-The workflow matches GitHub's current documented contract: `configure-pages@v5`, `upload-pages-artifact@v4`, `deploy-pages@v4`, a dependent deployment job, the `github-pages` environment, and deployment `pages: write` / `id-token: write` permissions. Build output is only `dist`.
-
-CSS, script, icon, font, and CV URLs are relative. They resolve under the repository project path as well as a custom-domain root; no build rewrite or backend is required. View routing uses fragments. The FormSubmit endpoint is absolute HTTPS and its source URL payload includes the current pathname, so it is structurally compatible with a Pages project path. No live form was sent during this readiness check.
-
-**Contact delivery is confirmed for the existing Sites setup:** David confirmed recipient activation and actual Yahoo receipt, including receipt during the earlier browser timeout. A subsequent authorized direct API retest returned HTTP 200 with `success: "true"` in 0.724 seconds. The user’s receipt confirmation establishes inbox delivery; the API response establishes provider acceptance. Recheck an authorized submission and actual receipt from the new Pages origin, and again after moving to a custom domain. Copy-message and direct-email fallback remain available. See `CONTACT_DELIVERY_OPTIONS.md`.
+No further Pages build settings, repository secrets or paid hosting plan are needed for the configured static workflow. A custom domain is optional and has not been chosen, purchased or configured. No DNS records were changed. Follow the checklist below after selecting a domain.
 
 ## Publish with GitHub Pages
 

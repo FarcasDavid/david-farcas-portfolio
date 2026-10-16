@@ -15,3 +15,5 @@ Updated 16 October 2026.
 - No DNS, domain purchase, paid plan, confidential client assets, or proprietary source introduced.
 
 - Direct email integration: Send message stays on the website; both Email circles open the form. David activated the recipient and confirmed actual Yahoo receipt. No browser secret or Yahoo credentials are used. The misleading 20-second client abort was removed: immediate pending feedback, reassurance for slow requests, and success only after acceptance. No provider branding appears in the form. A fresh direct API retest returned HTTP 200 and explicit acceptance in 0.724 seconds. Live provider response and inbox-delivery status are tracked in `docs/CONTACT_DELIVERY_OPTIONS.md`.
+
+- Slow-send follow-up: deployed fix passed 22 contact regression tests and a real hosted submission with the “Message sent” state. All five views rechecked at desktop/390px/320px, skills/workflow/deep links and exact CV download passed. Code is ready for a Pages launch; current account setting still needs Pages → GitHub Actions. A future Pages/custom-domain origin needs a final form/HTTPS check.

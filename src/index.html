@@ -580,39 +580,54 @@
               </p>
             </div>
           </section>
-          <div class="home-evidence">
-            <a
-              href="#experience-email"
-              data-view="experience"
-              data-target="experience-email"
-              ><span class="evidence-kicker">EMAIL KNOWLEDGE PIPELINE</span
-              ><strong>45% <span>→</span> 88%</strong
-              ><span
-                >Reported correct drafting
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-arrow"></use></svg></span></a
-            ><a
-              href="#experience-calls"
-              data-view="experience"
-              data-target="experience-calls"
-              ><span class="evidence-kicker">CALL QUALITY EVALUATION</span
-              ><strong>952<span class="number-unit"> judgments</span></strong
-              ><span
-                >8 criteria across 119 calls
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-arrow"></use></svg></span></a
-            ><a
-              href="#experience-platform"
-              data-view="experience"
-              data-target="experience-platform"
-              ><span class="evidence-kicker">PLATFORM OPTIMIZATION</span
-              ><strong>25s <span>→</span> &lt;2s</strong
-              ><span
-                >Queries over 2.5 million rows
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-arrow"></use></svg></span
-            ></a>
-          </div>
+          <section class="home-results" aria-labelledby="home-results-title">
+            <div class="results-heading">
+              <h2 id="home-results-title">Some of my results<span>.</span></h2>
+              <p>The numbers behind the work. Explore each story.</p>
+            </div>
+            <div class="home-evidence">
+              <a
+                class="contour-card"
+                href="#experience-email"
+                data-view="experience"
+                data-target="experience-email"
+                ><svg class="card-contour" aria-hidden="true" focusable="false">
+                  <rect x="1" y="1" rx="22" pathLength="1"></rect></svg
+                ><span class="evidence-kicker">EMAIL KNOWLEDGE PIPELINE</span
+                ><strong>45% <span>→</span> 88%</strong
+                ><span
+                  >Reported correct drafting
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-arrow"></use></svg></span></a
+              ><a
+                class="contour-card"
+                href="#experience-calls"
+                data-view="experience"
+                data-target="experience-calls"
+                ><svg class="card-contour" aria-hidden="true" focusable="false">
+                  <rect x="1" y="1" rx="22" pathLength="1"></rect></svg
+                ><span class="evidence-kicker">CALL QUALITY EVALUATION</span
+                ><strong>952<span class="number-unit"> judgments</span></strong
+                ><span
+                  >8 criteria across 119 calls
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-arrow"></use></svg></span></a
+              ><a
+                class="contour-card"
+                href="#experience-platform"
+                data-view="experience"
+                data-target="experience-platform"
+                ><svg class="card-contour" aria-hidden="true" focusable="false">
+                  <rect x="1" y="1" rx="22" pathLength="1"></rect></svg
+                ><span class="evidence-kicker">PLATFORM OPTIMIZATION</span
+                ><strong>25s <span>→</span> &lt;2s</strong
+                ><span
+                  >Queries over 2.5 million rows
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-arrow"></use></svg></span
+              ></a>
+            </div>
+          </section>
         </div>
       </section>
 
@@ -645,12 +660,15 @@
             <span>Nov 2024–present</span>
           </div>
           <article
-            class="work-card featured-work"
+            class="contour-card work-card"
             id="experience-email"
             aria-labelledby="experience-email-title"
             data-experience-case
             tabindex="-1"
           >
+            <svg class="card-contour" aria-hidden="true" focusable="false">
+              <rect x="1" y="1" rx="22" pathLength="1"></rect>
+            </svg>
             <div class="work-card-top">
               <span class="work-number">01</span
               ><span class="industry">AUTOMOTIVE MARKETPLACE</span
@@ -701,50 +719,46 @@
                 >
               </div>
             </div>
-            <details class="engineering-detail">
-              <summary>
-                <span
-                  ><svg class="icon" aria-hidden="true">
-                    <use href="#i-code"></use>
-                  </svg>
-                  Inside the engineering</span
-                ><span class="detail-plus">+</span>
-              </summary>
-              <div class="detail-columns">
-                <div>
-                  <h4>Get the evidence right</h4>
-                  <p>
-                    Classification routes requests across 11 categories. Cohere
-                    embeddings and PostgreSQL/pgvector retrieve relevant
-                    sources; Haiku reranks them before drafting.
-                  </p>
-                </div>
-                <div>
-                  <h4>Protect & prepare knowledge</h4>
-                  <p>
-                    GLiNER and Presidio mask PII. MPNet clusters historical
-                    replies, and DeBERTa NLI checks grounding before indexing.
-                    Sources remain traceable for review.
-                  </p>
-                </div>
-                <div>
-                  <h4>Make tuning repeatable</h4>
-                  <p>
-                    DSPy/GEPA optimizes prompts against classification and
-                    safety metrics. The reported gains belong to the integrated
-                    knowledge pipeline, rather than a single tool.
-                  </p>
-                </div>
-              </div>
-            </details>
+            <div class="case-details">
+              <h4>What I built</h4>
+              <ul class="case-points" role="list">
+                <li>
+                  <strong>Retrieval with the right context.</strong> Routed
+                  requests across 11 categories, combined Cohere embeddings with
+                  PostgreSQL/pgvector search, and used Haiku reranking to
+                  prioritize evidence before drafting.
+                </li>
+                <li>
+                  <strong>A reusable knowledge pipeline.</strong> Turned
+                  historical agent replies into source-grounded knowledge. The
+                  integrated pipeline raised reported correct drafting from 45%
+                  to 88% and top-5 retrieval from 70% to 91%.
+                </li>
+                <li>
+                  <strong>Preparation before indexing.</strong> Added
+                  GLiNER/Presidio PII masking, MPNet semantic clustering and
+                  DeBERTa NLI grounding checks to limit personal-data exposure
+                  and keep answers traceable to their sources.
+                </li>
+                <li>
+                  <strong>Repeatable prompt optimization.</strong> Replaced ad
+                  hoc tuning with DSPy/GEPA against defined classification and
+                  safety metrics, making prompt selection repeatable and quality
+                  changes measurable.
+                </li>
+              </ul>
+            </div>
           </article>
           <article
-            class="work-card"
+            class="contour-card work-card"
             id="experience-calls"
             aria-labelledby="experience-calls-title"
             data-experience-case
             tabindex="-1"
           >
+            <svg class="card-contour" aria-hidden="true" focusable="false">
+              <rect x="1" y="1" rx="22" pathLength="1"></rect>
+            </svg>
             <div class="work-card-top">
               <span class="work-number">02</span
               ><span class="industry">INSURANCE</span
@@ -783,42 +797,42 @@
                 >
               </div>
             </div>
-            <details class="engineering-detail">
-              <summary>
-                <span
-                  ><svg class="icon" aria-hidden="true">
-                    <use href="#i-shield"></use>
-                  </svg>
-                  Evaluation & grounding</span
-                ><span class="detail-plus">+</span>
-              </summary>
-              <div class="detail-columns two-columns">
-                <div>
-                  <h4>Advisory verification</h4>
-                  <p>
-                    Per-criterion citations make weighted scores auditable.
-                    Grounding checks raise flags; they do not guarantee factual
-                    correctness or automatically block scores.
-                  </p>
-                </div>
-                <div>
-                  <h4>Lightweight checks</h4>
-                  <p>
-                    Local NLI verification benchmarked at 108–151 ms per
-                    criterion. This is component latency, not end-to-end system
-                    latency.
-                  </p>
-                </div>
-              </div>
-            </details>
+            <div class="case-details">
+              <h4>What I built</h4>
+              <ul class="case-points" role="list">
+                <li>
+                  <strong>Scoring with inspectable evidence.</strong> Turned
+                  transcripts into weighted, rubric-driven assessments with
+                  citations for each criterion, making quality reviews
+                  consistent and scores auditable.
+                </li>
+                <li>
+                  <strong>Verification without extra LLM calls.</strong>
+                  Combined RapidFuzz citation checks with DeBERTa NLI to flag
+                  fabricated citations and unsupported reasoning. Local NLI
+                  checks benchmarked at 108–151 ms per criterion; these are
+                  advisory checks, not a factuality guarantee or total
+                  application latency.
+                </li>
+                <li>
+                  <strong>Optimization against human agreement.</strong> Used
+                  DSPy/GEPA with macro-F1 and Cohen’s kappa across eight
+                  criteria and 119 calls (952 judgments) to measure agreement
+                  and identify quality regressions.
+                </li>
+              </ul>
+            </div>
           </article>
           <article
-            class="work-card platform-work"
+            class="contour-card work-card platform-work"
             id="experience-platform"
             aria-labelledby="experience-platform-title"
             data-experience-case
             tabindex="-1"
           >
+            <svg class="card-contour" aria-hidden="true" focusable="false">
+              <rect x="1" y="1" rx="22" pathLength="1"></rect>
+            </svg>
             <div class="work-card-top">
               <span class="work-number">03</span
               ><span class="industry"
@@ -856,21 +870,153 @@
                 </div>
               </div>
             </div>
-            <p class="work-footnote">
-              Multimodal OCR · Entra ID/JWT authentication · Terraform & Azure
-              Pipelines · LLM caching · Cross-region AWS Bedrock load balancing
-            </p>
+            <div class="case-details">
+              <h4>What I built</h4>
+              <ul class="case-points" role="list">
+                <li>
+                  <strong>Faster access to 2.5 million rows.</strong> Delivered
+                  19 self-scoped optimization tickets, using PostgreSQL tuning,
+                  materialized views, batched API endpoints and Redis caching to
+                  bring queries from 25 seconds to under 2 seconds.
+                </li>
+                <li>
+                  <strong>Filtering that could grow.</strong> Refactored API and
+                  UI architecture with Builder and component-based patterns,
+                  expanding from three to 40+ cascading filters under a Q4
+                  deadline, with tests and incremental retirement of older
+                  services.
+                </li>
+                <li>
+                  <strong>More efficient application execution.</strong>
+                  Profiled memory use, fixed leaks and improved cache
+                  management. Added LLM caching and cross-region AWS Bedrock
+                  load balancing to reduce repeated initialization and
+                  throttling pressure.
+                </li>
+                <li>
+                  <strong>Applications connected end to end.</strong> Delivered
+                  FastAPI and Streamlit applications with Microsoft Entra ID/JWT
+                  authentication, processing feedback, Terraform infrastructure
+                  and Azure Pipelines delivery.
+                </li>
+              </ul>
+            </div>
           </article>
-          <div class="nda-note">
-            <svg class="icon" aria-hidden="true">
-              <use href="#i-shield"></use>
-            </svg>
-            <p>
-              Client work stays confidential. These summaries use approved
-              outcomes and broad industry labels. Proprietary code, data, and
-              identifying examples remain private.
-            </p>
-          </div>
+          <section class="earlier-work" aria-labelledby="earlier-work-title">
+            <div class="earlier-heading">
+              <div>
+                <p class="eyebrow">
+                  MORE FROM THE SAME PERIOD / NOV 2024–DEC 2025
+                </p>
+                <h3 id="earlier-work-title">AI, put to work<span>.</span></h3>
+              </div>
+              <p>More of the applications behind that foundation.</p>
+            </div>
+            <div class="earlier-grid">
+              <article class="contour-card application-card">
+                <svg class="card-contour" aria-hidden="true" focusable="false">
+                  <rect x="1" y="1" rx="22" pathLength="1"></rect>
+                </svg>
+                <span class="application-icon" aria-hidden="true"
+                  ><svg class="icon"><use href="#i-cv"></use></svg
+                ></span>
+                <h4>Multimodal document OCR</h4>
+                <p>
+                  From uploaded PDFs and images to structured, downloadable
+                  results.
+                </p>
+                <ul>
+                  <li>
+                    Built PDF-to-image conversion, multithreaded batched
+                    multimodal LLM inference, result synthesis and
+                    Markdown/Excel outputs.
+                  </li>
+                  <li>
+                    Designed modular prompts so new extraction use cases could
+                    be added without changing core inference logic.
+                  </li>
+                  <li>
+                    Built FastAPI endpoints with presigned S3 downloads, JWT
+                    authentication and Microsoft Entra SSO.
+                  </li>
+                  <li>
+                    Created a Streamlit interface with uploads, processing
+                    feedback and downloads for nontechnical users.
+                  </li>
+                  <li>
+                    Provisioned AWS infrastructure with Terraform and Azure
+                    Pipelines CI/CD with ephemeral environments.
+                  </li>
+                </ul>
+                <div class="tag-row">
+                  <span>Multimodal LLMs</span><span>FastAPI</span
+                  ><span>AWS S3</span><span>Terraform</span>
+                </div>
+              </article>
+              <article class="contour-card application-card">
+                <svg class="card-contour" aria-hidden="true" focusable="false">
+                  <rect x="1" y="1" rx="22" pathLength="1"></rect>
+                </svg>
+                <span class="application-icon" aria-hidden="true"
+                  ><svg class="icon"><use href="#i-code"></use></svg
+                ></span>
+                <h4>AI-assisted vehicle listings</h4>
+                <p>
+                  Backend and authentication for an assistant that generates
+                  vehicle descriptions from structured inputs.
+                </p>
+                <ul>
+                  <li>Integrated frontend SSO and backend token validation.</li>
+                  <li>
+                    Cached JWTs and long-lived tokens to reduce repeated
+                    external requests and memory pressure.
+                  </li>
+                  <li>
+                    Cached LLM chains and model instances to avoid repeated
+                    initialization and reduce application load.
+                  </li>
+                  <li>Added typo-tolerant matching for vehicle inputs.</li>
+                </ul>
+                <div class="tag-row">
+                  <span>SSO</span><span>JWT</span><span>LLM caching</span>
+                </div>
+              </article>
+              <article class="contour-card application-card">
+                <svg class="card-contour" aria-hidden="true" focusable="false">
+                  <rect x="1" y="1" rx="22" pathLength="1"></rect>
+                </svg>
+                <span class="application-icon" aria-hidden="true"
+                  ><svg class="icon"><use href="#i-layers"></use></svg
+                ></span>
+                <h4>Workforce &amp; sales assistant</h4>
+                <p>
+                  Cloud infrastructure and delivery for role-specific enterprise
+                  assistants.
+                </p>
+                <ul>
+                  <li>
+                    Provisioned Azure infrastructure with Terraform and
+                    automated deployment through Azure DevOps pipelines.
+                  </li>
+                  <li>
+                    Containerized applications with Docker and deployed through
+                    Azure App Service and Azure Container Registry.
+                  </li>
+                  <li>
+                    Managed environment configuration and service connections.
+                  </li>
+                  <li>
+                    Configured assistants for workforce and sales information,
+                    tailored to different roles.
+                  </li>
+                </ul>
+                <div class="tag-row">
+                  <span>Azure</span><span>Terraform</span><span>Docker</span
+                  ><span>Azure DevOps</span>
+                </div>
+              </article>
+            </div>
+          </section>
           <a class="next-view" href="#stack" data-view="stack"
             ><span>THE TOOLS BEHIND THE WORK</span
             ><strong

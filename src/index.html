@@ -115,6 +115,18 @@
         <circle cx="15" cy="4" r="2" />
         <path d="m12 9 4-2 3 4h3M7 21l4-7 3 3v5M5 10l5-3 4 5-5 5H3" />
       </symbol>
+      <symbol id="i-swim" viewBox="0 0 24 24">
+        <circle cx="17" cy="6" r="2" />
+        <path
+          d="m3 12 5-5 6 4 3-1M8 7l3-4 4 2M2 17q2-2 4 0t4 0t4 0t4 0t4 0M2 21q2-2 4 0t4 0t4 0t4 0t4 0"
+        />
+      </symbol>
+      <symbol id="i-bike" viewBox="0 0 24 24">
+        <circle cx="16" cy="3" r="1.8" />
+        <circle cx="5" cy="18" r="4" />
+        <circle cx="19" cy="18" r="4" />
+        <path d="m5 18 4-8 5 8H5m9 0 3-9h3M9 10l4-4 4 3M13 6l-2 7 3 5" />
+      </symbol>
       <symbol id="i-spark" viewBox="0 0 24 24">
         <path
           d="m12 2 2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5ZM20 2v4m-2-2h4"
@@ -373,7 +385,8 @@
                   <path class="map-travel" d="M94 70H326V210H94Z" />
                 </svg>
                 <div class="map-center" aria-hidden="true">
-                  <span>df.</span><small>END-TO-END</small>
+                  <span class="map-center-mark">df<i>.</i></span
+                  ><small>END-TO-END</small>
                 </div>
                 <button
                   type="button"
@@ -652,7 +665,6 @@
             </p>
           </div>
           <div class="experience-employer">
-            <div class="employer-icon">R<span>.</span></div>
             <div>
               <h3>RebelDot</h3>
               <p>AI Engineer · Cluj-Napoca, Romania</p>
@@ -915,104 +927,122 @@
             <div class="earlier-grid">
               <article class="contour-card application-card">
                 <svg class="card-contour" aria-hidden="true" focusable="false">
-                  <rect x="1" y="1" rx="22" pathLength="1"></rect>
-                </svg>
-                <span class="application-icon" aria-hidden="true"
+                  <rect x="1" y="1" rx="22" pathLength="1"></rect></svg
+                ><span class="application-icon" aria-hidden="true"
                   ><svg class="icon"><use href="#i-cv"></use></svg
                 ></span>
                 <h4>Multimodal document OCR</h4>
-                <p>
-                  From uploaded PDFs and images to structured, downloadable
-                  results.
+                <p class="application-outcome">
+                  <span>Outcome</span>Turned PDFs and images into structured
+                  Markdown and Excel downloads through an authenticated API and
+                  an upload interface.
                 </p>
                 <ul>
                   <li>
-                    Built PDF-to-image conversion, multithreaded batched
-                    multimodal LLM inference, result synthesis and
-                    Markdown/Excel outputs.
+                    <strong>Extraction pipeline:</strong> Built
+                    pdf2image/Poppler conversion, multithreaded batched AWS
+                    Bedrock inference, result synthesis and output generation.
                   </li>
                   <li>
-                    Designed modular prompts so new extraction use cases could
-                    be added without changing core inference logic.
+                    <strong>Extensible extraction:</strong> Designed modular
+                    prompts so new document use cases could be added without
+                    changing the core inference pipeline.
                   </li>
                   <li>
-                    Built FastAPI endpoints with presigned S3 downloads, JWT
-                    authentication and Microsoft Entra SSO.
+                    <strong>Usable delivery:</strong> Built FastAPI endpoints,
+                    JWT/Microsoft Entra SSO, presigned S3 downloads and a
+                    Streamlit interface with uploads and processing feedback.
                   </li>
                   <li>
-                    Created a Streamlit interface with uploads, processing
-                    feedback and downloads for nontechnical users.
-                  </li>
-                  <li>
-                    Provisioned AWS infrastructure with Terraform and Azure
-                    Pipelines CI/CD with ephemeral environments.
+                    <strong>Repeatable releases:</strong> Provisioned AWS
+                    infrastructure with Terraform and configured Azure Pipelines
+                    CI/CD with temporary environments.
                   </li>
                 </ul>
                 <div class="tag-row">
-                  <span>Multimodal LLMs</span><span>FastAPI</span
-                  ><span>AWS S3</span><span>Terraform</span>
+                  <span>Python</span><span>AWS Bedrock</span
+                  ><span>pdf2image / Poppler</span><span>FastAPI</span
+                  ><span>Streamlit</span><span>AWS S3</span
+                  ><span>Terraform</span><span>Azure Pipelines</span>
                 </div>
               </article>
               <article class="contour-card application-card">
                 <svg class="card-contour" aria-hidden="true" focusable="false">
-                  <rect x="1" y="1" rx="22" pathLength="1"></rect>
-                </svg>
-                <span class="application-icon" aria-hidden="true"
+                  <rect x="1" y="1" rx="22" pathLength="1"></rect></svg
+                ><span class="application-icon" aria-hidden="true"
                   ><svg class="icon"><use href="#i-code"></use></svg
                 ></span>
                 <h4>AI-assisted vehicle listings</h4>
-                <p>
-                  Backend and authentication for an assistant that generates
-                  vehicle descriptions from structured inputs.
+                <p class="application-outcome">
+                  <span>Outcome</span>Secured access to a vehicle-description
+                  assistant, reduced repeated authentication and model setup,
+                  and made vehicle inputs more tolerant of typing errors.
                 </p>
                 <ul>
-                  <li>Integrated frontend SSO and backend token validation.</li>
                   <li>
-                    Cached JWTs and long-lived tokens to reduce repeated
-                    external requests and memory pressure.
+                    <strong>Protected access:</strong> Integrated frontend SSO
+                    and backend token validation for the FastAPI service.
                   </li>
                   <li>
-                    Cached LLM chains and model instances to avoid repeated
-                    initialization and reduce application load.
+                    <strong>Fewer external requests:</strong> Implemented JWT
+                    and long-lived token caching to reduce repeated
+                    authentication calls and memory use.
                   </li>
-                  <li>Added typo-tolerant matching for vehicle inputs.</li>
+                  <li>
+                    <strong>Reusable model setup:</strong> Cached LLM chains and
+                    model instances to avoid rebuilding them for each request
+                    and reduce application load.
+                  </li>
+                  <li>
+                    <strong>More forgiving inputs:</strong> Built typo-tolerant
+                    matching for vehicle make, model and year inputs.
+                  </li>
                 </ul>
                 <div class="tag-row">
-                  <span>SSO</span><span>JWT</span><span>LLM caching</span>
+                  <span>Python</span><span>FastAPI</span><span>Streamlit</span
+                  ><span>AWS Bedrock</span><span>SSO / JWT</span
+                  ><span>LLM caching</span><span>Podman</span
+                  ><span>Azure Pipelines</span>
                 </div>
               </article>
               <article class="contour-card application-card">
                 <svg class="card-contour" aria-hidden="true" focusable="false">
-                  <rect x="1" y="1" rx="22" pathLength="1"></rect>
-                </svg>
-                <span class="application-icon" aria-hidden="true"
+                  <rect x="1" y="1" rx="22" pathLength="1"></rect></svg
+                ><span class="application-icon" aria-hidden="true"
                   ><svg class="icon"><use href="#i-layers"></use></svg
                 ></span>
                 <h4>Workforce &amp; sales assistant</h4>
-                <p>
-                  Cloud infrastructure and delivery for role-specific enterprise
-                  assistants.
+                <p class="application-outcome">
+                  <span>Outcome</span>Helped take role-specific workforce and
+                  sales assistants from concept to deployment in three months.
                 </p>
                 <ul>
                   <li>
-                    Provisioned Azure infrastructure with Terraform and
-                    automated deployment through Azure DevOps pipelines.
+                    <strong>Automated infrastructure:</strong> Provisioned Azure
+                    services with Terraform and automated releases through Azure
+                    DevOps/Azure Pipelines.
                   </li>
                   <li>
-                    Containerized applications with Docker and deployed through
-                    Azure App Service and Azure Container Registry.
+                    <strong>Container delivery:</strong> Packaged applications
+                    with Docker, published images to Azure Container Registry
+                    and deployed them to Azure App Service.
                   </li>
                   <li>
-                    Managed environment configuration and service connections.
+                    <strong>Connected services:</strong> Managed environment
+                    configuration and Azure service connections for the
+                    application’s cloud services.
                   </li>
                   <li>
-                    Configured assistants for workforce and sales information,
-                    tailored to different roles.
+                    <strong>Role-specific access to information:</strong>
+                    Configured OpenWebUI assistants for finance and sales teams
+                    to work with workforce availability and sales information.
                   </li>
                 </ul>
                 <div class="tag-row">
-                  <span>Azure</span><span>Terraform</span><span>Docker</span
-                  ><span>Azure DevOps</span>
+                  <span>Python</span><span>OpenWebUI</span><span>Docker</span
+                  ><span>Terraform</span><span>Azure App Service</span
+                  ><span>Azure Container Registry</span
+                  ><span>Azure Pipelines</span><span>Azure Key Vault</span>
                 </div>
               </article>
             </div>
@@ -1048,8 +1078,8 @@
             </p>
           </div>
           <div class="toolkit-grid">
-            <article class="toolkit-card">
-              <span class="toolkit-icon orange-icon"
+            <article class="toolkit-card toolkit-cobalt">
+              <span class="toolkit-icon"
                 ><svg class="icon" aria-hidden="true">
                   <use href="#i-spark"></use></svg
               ></span>
@@ -1089,8 +1119,8 @@
                 ><span>Evaluation</span>
               </div>
             </article>
-            <article class="toolkit-card">
-              <span class="toolkit-icon blue-icon"
+            <article class="toolkit-card toolkit-purple">
+              <span class="toolkit-icon"
                 ><svg class="icon" aria-hidden="true">
                   <use href="#i-search"></use></svg
               ></span>
@@ -1123,8 +1153,8 @@
                 ><span>MPNet</span><span>GLiNER / Presidio</span>
               </div>
             </article>
-            <article class="toolkit-card">
-              <span class="toolkit-icon pink-icon"
+            <article class="toolkit-card toolkit-crimson">
+              <span class="toolkit-icon"
                 ><svg class="icon" aria-hidden="true">
                   <use href="#i-code"></use></svg
               ></span>
@@ -1147,8 +1177,8 @@
                 ><span>pandas / NumPy</span>
               </div>
             </article>
-            <article class="toolkit-card">
-              <span class="toolkit-icon purple-icon"
+            <article class="toolkit-card toolkit-raspberry">
+              <span class="toolkit-icon"
                 ><svg class="icon" aria-hidden="true">
                   <use href="#i-globe"></use></svg
               ></span>
@@ -1248,8 +1278,10 @@
             </article>
             <article class="endurance-card">
               <div class="endurance-top">
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-run"></use></svg
+                <span class="triathlon-icons" aria-hidden="true">
+                  <svg class="icon"><use href="#i-swim"></use></svg>
+                  <svg class="icon"><use href="#i-bike"></use></svg>
+                  <svg class="icon"><use href="#i-run"></use></svg> </span
                 ><span class="eyebrow">OFF THE KEYBOARD</span>
               </div>
               <div class="race-art" aria-hidden="true">

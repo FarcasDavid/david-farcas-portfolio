@@ -10,6 +10,7 @@ Requires Node.js 22 or later.
 npm ci
 npm run build
 npm run check
+npm test
 npm run preview
 ```
 
@@ -48,11 +49,11 @@ Font and icon licenses/source links are recorded in [ASSET_SOURCES.md](docs/ASSE
 
 ## Contact form and case-study links
 
-The orange Contact action and both Email circles open a native dialog with name, email, subject and message fields. **Send message** submits over HTTPS to FormSubmit without leaving the site or opening an email app. The provider emails `farcas.david@yahoo.com`; the visitor’s email becomes Reply-To. No Yahoo password, API key, paid plan, or sending domain is required. FormSubmit processes the submitted details; the form links its privacy policy.
+The orange Contact action and both Email circles open a native dialog with name, email, subject and message fields. **Send message** submits over HTTPS to FormSubmit without leaving the site or opening an email app. The provider emails `farcas.david@yahoo.com`; the visitor’s email becomes Reply-To. No Yahoo password, API key, paid plan, or sending domain is required. There is no visible provider branding in the form.
 
-**Owner setup:** the recipient must activate the form using FormSubmit’s confirmation email. Check the Yahoo inbox and spam folder after the first submission. Delivery is not verified until that link is clicked and an actual test reaches the inbox. Activation applies to the form URL; recheck after moving to a public host. See [delivery options and current status](docs/CONTACT_DELIVERY_OPTIONS.md).
+**Owner setup:** David has activated the existing form and confirmed receipt in Yahoo. Recheck delivery after moving to GitHub Pages or a custom domain, and activate the new origin if the service requests it. See [delivery options and current status](docs/CONTACT_DELIVERY_OPTIONS.md).
 
-During a request, controls are disabled to prevent duplicate clicks and an accessible status is shown. Only an explicit successful provider response clears the form. Activation, rejection, network errors, malformed responses and the 20-second timeout preserve the message. A timeout cannot establish whether the provider received it. Copy message and the direct address remain fallbacks. The `_honey` field supplements the provider’s spam filtering; the AJAX flow does not claim CAPTCHA or automatic visitor confirmations.
+During a request, controls are disabled to prevent duplicate clicks and an accessible status appears immediately. A slow request stays pending with reassurance after eight seconds; there is no artificial abort deadline. Only an explicit successful provider response shows “Message sent” and clears the form. Activation, rejection, network errors and malformed responses preserve the message. A lost response cannot establish whether the provider received it, so the form advises waiting before retrying. Copy message and the direct address remain fallbacks. The `_honey` field supplements the provider’s spam filtering; the AJAX flow does not claim CAPTCHA or automatic visitor confirmations.
 
 The Overview diagram describes a general Prepare → Inference → Evaluate → Deliver workflow. Project-specific technologies and benchmarks remain in the experience summaries and skill explanations.
 

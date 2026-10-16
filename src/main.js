@@ -471,10 +471,13 @@ contactForm?.addEventListener("submit", async (event) => {
     control.disabled = true;
   });
   label.textContent = "Sending…";
-  contactFormStatus.textContent =
-    "Sending your message. Please keep this page open.";
-  const controller = new AbortController();
-  const timeout = window.setTimeout(() => controller.abort(), 20000);
+  contactFormStatus.textContent = "Thanks — sending your message now.";
+  // Delivery can finish after a short client deadline. Keep the original request
+  // alive rather than showing a false failure or encouraging a duplicate send.
+  const slowNotice = window.setTimeout(() => {
+    contactFormStatus.textContent =
+      "Still sending — confirmation is taking a little longer. No need to send again.";
+  }, 8000);
   try {
     const response = await fetch(contactForm.action, {
       method: "POST",
@@ -483,8 +486,8 @@ contactForm?.addEventListener("submit", async (event) => {
         Accept: "application/json",
       },
       body: JSON.stringify(payload),
-      signal: controller.signal,
       credentials: "omit",
+      keepalive: true,
     });
     const result = await response.json();
     if (!response.ok) throw new Error("The delivery service is unavailable.");
@@ -496,18 +499,16 @@ contactForm?.addEventListener("submit", async (event) => {
         "Email delivery is awaiting David’s inbox activation. Your message is still here; please try again later or use Copy message.";
     } else if (result.success === true || result.success === "true") {
       contactFormStatus.textContent =
-        "Message submitted. Thanks for reaching out — I’ll get back to you by email.";
+        "Message sent. Thanks for reaching out — I’ll get back to you by email.";
       contactForm.reset();
     } else {
       throw new Error("The delivery service did not accept the message.");
     }
-  } catch (error) {
+  } catch {
     contactFormStatus.textContent =
-      error.name === "AbortError"
-        ? "The request timed out, so delivery couldn’t be confirmed. Your message is still here. You can retry or use Copy message."
-        : "Your message couldn’t be submitted. It’s still here — please try again or use Copy message.";
+      "Delivery couldn’t be confirmed. Your message may have been sent, so please wait before trying again. Your text is still here to copy.";
   } finally {
-    window.clearTimeout(timeout);
+    window.clearTimeout(slowNotice);
     contactFormSending = false;
     contactForm.removeAttribute("aria-busy");
     controls.forEach((control) => {

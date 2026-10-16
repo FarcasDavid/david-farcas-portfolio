@@ -14,4 +14,4 @@ Updated 16 October 2026.
 - Reference: rendered desktop/mobile audit complete in `docs/REFERENCE_AUDIT.md`.
 - No DNS, domain purchase, paid plan, confidential client assets, or proprietary source introduced.
 
-- Direct email integration: Send message stays on the website; both Email circles open the form. FormSubmit requires recipient inbox activation before normal delivery. No browser secret or Yahoo credentials are used. Live provider response and inbox-delivery status are tracked in `docs/CONTACT_DELIVERY_OPTIONS.md`.
+- Direct email integration: Send message stays on the website; both Email circles open the form. FormSubmit requires recipient inbox activation before normal delivery. No browser secret or Yahoo credentials are used. One authorized live setup request reached FormSubmit and returned activation pending; David must activate the inbox and confirm the held test message arrives. Live provider response and inbox-delivery status are tracked in `docs/CONTACT_DELIVERY_OPTIONS.md`.

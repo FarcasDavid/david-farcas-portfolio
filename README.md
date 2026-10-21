@@ -49,7 +49,7 @@ Font and icon licenses/source links are recorded in [ASSET_SOURCES.md](docs/ASSE
 
 ## Contact form and case-study links
 
-The orange Contact action and both Email circles open a native dialog with name, email, subject and message fields. **Send message** submits over HTTPS to FormSubmit without leaving the site or opening an email app. The provider emails `farcas.david@yahoo.com`; the visitor’s email becomes Reply-To. No Yahoo password, API key, paid plan, or sending domain is required. There is no visible provider branding in the form.
+The warm neutral Contact card’s “Send me a message” button and both Email circles open a native dialog with name, email, subject and message fields. **Send message** submits over HTTPS to FormSubmit without leaving the site or opening an email app. The provider emails `farcas.david@yahoo.com`; the visitor’s email becomes Reply-To. No Yahoo password, API key, paid plan, or sending domain is required. There is no visible provider branding in the form.
 
 **Owner setup:** David has activated the existing form and confirmed receipt in Yahoo. Recheck delivery after moving to GitHub Pages or a custom domain, and activate the new origin if the service requests it. See [delivery options and current status](docs/CONTACT_DELIVERY_OPTIONS.md).
 

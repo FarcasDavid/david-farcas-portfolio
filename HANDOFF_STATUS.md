@@ -2,6 +2,8 @@
 
 Updated 21 October 2026.
 
+- Contact refinement published: removed tab numbers and replaced the solid blue arrow-only card with a warm neutral “Let’s connect” invitation, explicit “Send me a message” button and email-app fallback. Mobile places the invitation before secondary profile links. Desktop/phone/tablet checks and all 22 contact tests passed. Public GitHub Pages deployment 39648492398 and owner-private Sites deployment appgdep_6ad8fd53fe7081918361787764a0ffc4 succeeded; public assets match the verified build and the live message button opens the form.
+
 - Latest content/navigation update: three ordered About → Experience → Contact tabs. About merges the former Overview, Toolkit and About views, adds four CV-grounded paragraphs plus user-confirmed hobbies, and keeps tool details inline (right side on desktop, beneath controls on mobile). Full technology inventory stays in an expandable section. Two highlighted certification cards now lead Experience. Legacy `#home`/`#stack` links remain supported. CV files are unchanged.
 - Validation for this update: production build, static checks and all 22 contact regression tests pass; rendered desktop/390px/320px checks, in-place selection for all seven tools, keyboard tabs, Back/Forward and CV download passed. Published successfully on 21 October 2026 to https://davidfarcas.ro (GitHub Pages run 39607807835) and the existing owner-private Sites preview. Public HTML, CSS, JavaScript and CV match the verified build; live About rendering was checked. Older deployment records below describe the previous versions.
 

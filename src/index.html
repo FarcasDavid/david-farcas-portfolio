@@ -164,7 +164,7 @@
             aria-controls="about"
             aria-selected="true"
             data-view="about"
-            ><span class="nav-step" aria-hidden="true">01</span><svg class="icon" aria-hidden="true">
+            ><svg class="icon" aria-hidden="true">
               <use href="#i-home"></use></svg
             ><span>About</span></a
           >
@@ -177,7 +177,7 @@
             aria-controls="experience"
             aria-selected="false"
             data-view="experience"
-            ><span class="nav-step" aria-hidden="true">02</span><svg class="icon" aria-hidden="true">
+            ><svg class="icon" aria-hidden="true">
               <use href="#i-briefcase"></use></svg
             ><span>Experience</span></a
           >
@@ -190,7 +190,7 @@
             aria-controls="contact"
             aria-selected="false"
             data-view="contact"
-            ><span class="nav-step" aria-hidden="true">03</span><svg class="icon" aria-hidden="true">
+            ><svg class="icon" aria-hidden="true">
               <use href="#i-email"></use></svg
             ><span>Contact</span></a
           >
@@ -770,7 +770,7 @@
               ></a>
             </div>
           </section>
-          <a class="next-view" href="#experience" data-view="experience"><span>02 / NEXT: EXPERIENCE</span><strong>See what I’ve built <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></strong></a>
+          <a class="next-view" href="#experience" data-view="experience"><span>NEXT: EXPERIENCE</span><strong>See what I’ve built <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></strong></a>
         </div>
       </section>
 
@@ -1205,7 +1205,7 @@
             </div>
           </section>
           <a class="next-view" href="#contact" data-view="contact"
-            ><span>03 / START A CONVERSATION</span
+            ><span>START A CONVERSATION</span
             ><strong
               >Let’s connect
               <svg class="icon" aria-hidden="true">
@@ -1233,6 +1233,31 @@
                 AI engineering, a useful product, a hard problem.<br />Let’s
                 talk about what we could build together.
               </p>
+            </div>
+            <aside class="contact-card" aria-labelledby="connect-title">
+              <div class="contact-card-top">
+                <span class="eyebrow">GOOD WORK STARTS WITH A CONVERSATION</span>
+                <span class="contact-card-icon" aria-hidden="true"><svg class="icon"><use href="#i-email"></use></svg></span>
+              </div>
+              <h3 id="connect-title">Let’s connect<span>.</span></h3>
+              <p>Have a project in mind, or a role worth talking about? I’d love to hear what you’re working on.</p>
+              <button
+                type="button"
+                class="contact-message-button"
+                data-open-contact-form
+                aria-controls="contact-form-dialog"
+                aria-haspopup="dialog"
+              >
+                <span>Send me a message</span>
+                <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg>
+              </button>
+              <div class="contact-card-direct">
+                <span>Prefer your email app?</span>
+                <a href="mailto:farcas.david@yahoo.com">Email me directly <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+              </div>
+              <span class="contact-location"><svg class="icon" aria-hidden="true"><use href="#i-globe"></use></svg>CLUJ-NAPOCA, ROMANIA</span>
+            </aside>
+            <div class="contact-details">
               <div
                 class="social-dock contact-socials"
                 aria-label="Contact and profile actions"
@@ -1340,41 +1365,7 @@
                 +40 720 806 333</a
               >
             </div>
-            <aside class="contact-card interactive-field">
-              <svg
-                class="contact-asterisk"
-                viewBox="0 0 100 100"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <path
-                  d="M44 2h12v31l22-22 9 9-22 24h33v12H65l22 24-9 9-22-22v31H44V67L22 89l-9-9 22-24H2V44h33L13 22l9-9 22 22Z"
-                />
-              </svg>
-              <p class="eyebrow">BASED IN ROMANIA.<br />THINKING END TO END.</p>
-              <h3>From first idea<br />to final detail.</h3>
-              <p>
-                My focus: evidence-grounded AI, useful applications, and
-                thoughtful engineering.
-              </p>
-              <button
-                type="button"
-                class="contact-email-circle"
-                data-open-contact-form
-                aria-controls="contact-form-dialog"
-                aria-haspopup="dialog"
-                aria-label="Open contact form"
-              >
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-arrow"></use>
-                </svg></button
-              ><span class="contact-location"
-                ><svg class="icon" aria-hidden="true">
-                  <use href="#i-globe"></use>
-                </svg>
-                CLUJ-NAPOCA / RO</span
-              >
-            </aside>
+
           </div>
         </div>
       </section>

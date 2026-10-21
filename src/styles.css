@@ -1957,82 +1957,123 @@ h1 {
   height: 16px;
   color: var(--accent);
 }
+/* A clear invitation with a full-width, labelled message action. */
 .contact-card {
-  background: var(--accent-fill);
-  color: var(--accent-ink);
-  border-radius: 24px;
-  padding: 32px;
+  grid-area: card;
   position: relative;
   overflow: hidden;
-  margin-top: 13px;
-  min-height: 490px;
-  transform: rotate(2deg);
+  padding: 38px;
+  border: 1px solid #cfc4b6;
+  border-radius: 28px;
+  background: radial-gradient(ellipse at 100% 0, #dfc8b6 0, transparent 65%), #f1ece4;
+  color: #24211e;
+  box-shadow: 0 24px 60px #00000018;
 }
-.contact-asterisk {
-  position: absolute;
-  width: 195px;
-  height: 195px;
-  fill: currentColor;
-  pointer-events: none;
-  top: -20px;
-  right: -26px;
-  color: color-mix(in srgb, var(--accent-ink) 9%, transparent);
-  transition: transform 1s;
+.contact-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 48px;
 }
-.contact-card:hover .contact-asterisk {
-  transform: rotate(90deg);
-}
-.contact-card > .eyebrow {
-  position: relative;
-  font-size: 8px;
+.contact-card-top .eyebrow {
+  font-size: 9px;
   line-height: 1.8;
-  letter-spacing: 1.5px;
-  margin-bottom: 65px;
+  letter-spacing: 1.3px;
+  max-width: 24ch;
+  color: #65564a;
 }
-.contact-card h3 {
-  font-size: 35px;
-  line-height: 1.1;
-  letter-spacing: -1.5px;
-  font-weight: 500;
-  position: relative;
-  margin-bottom: 20px;
-}
-.contact-card > p:not(.eyebrow) {
-  font-size: 11px;
-  max-width: 245px;
-  line-height: 1.9;
-}
-.contact-email-circle {
+.contact-card-icon {
   display: grid;
   place-items: center;
-  width: 65px;
-  height: 65px;
-  background: var(--accent-ink);
-  color: var(--accent-fill);
-  border-radius: 50%;
-  margin-top: 30px;
-  transition: transform 0.25s;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #24211e30;
+  border-radius: 16px;
+  flex-shrink: 0;
 }
-.contact-email-circle .icon {
-  width: 30px;
-  height: 30px;
-  stroke-width: 1.3;
+.contact-card-icon .icon { width: 22px; height: 22px; }
+.contact-card h3 {
+  font-size: clamp(38px, 3.4vw, 50px);
+  line-height: 1.08;
+  letter-spacing: -2px;
+  font-weight: 500;
+  margin: 0 0 21px;
 }
-.contact-email-circle:hover {
-  transform: rotate(45deg);
+.contact-card h3 span { color: #886346; }
+.contact-card > p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #62584f;
+  max-width: 36ch;
+  margin: 0;
 }
+.contact-message-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  min-height: 58px;
+  padding: 16px 20px;
+  margin-top: 32px;
+  border: 1px solid #24211e;
+  border-radius: 14px;
+  background: #24211e;
+  color: #fffaf4;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  transition: background .2s, transform .2s, box-shadow .2s;
+}
+.contact-message-button .icon {
+  width: 21px;
+  height: 21px;
+  flex-shrink: 0;
+  transition: transform .2s;
+}
+.contact-message-button:hover {
+  background: #44382e;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px #24211e20;
+}
+.contact-message-button:hover .icon { transform: translate(2px, -2px); }
+.contact-message-button:focus-visible, .contact-card-direct a:focus-visible {
+  outline: 3px solid #765339;
+  outline-offset: 4px;
+}
+.contact-card-direct {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px 9px;
+  margin-top: 18px;
+  color: #62584f;
+  font-size: 11px;
+  line-height: 1.8;
+}
+.contact-card-direct a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #24211e;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  padding: 8px 0;
+}
+.contact-card-direct .icon { width: 13px; height: 13px; }
 .contact-location {
   display: flex;
   align-items: center;
   gap: 9px;
-  margin-top: 27px;
-  font-size: 8px;
-  letter-spacing: 1.3px;
+  margin-top: 30px;
+  padding-top: 22px;
+  border-top: 1px solid #24211e24;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: #65564a;
 }
-.contact-location .icon {
-  width: 14px;
-  height: 14px;
-}
+.contact-location .icon { width: 15px; height: 15px; }
 .site-footer {
   border-top: 1px solid var(--line);
   display: flex;
@@ -2754,19 +2795,6 @@ h1 {
     height: 35px;
     flex-shrink: 0;
   }
-  .contact-card {
-    transform: none;
-    margin-top: 0;
-    min-height: 430px;
-    padding: 30px;
-    max-width: 450px;
-  }
-  .contact-card > .eyebrow {
-    margin-bottom: 47px;
-  }
-  .contact-card h3 {
-    font-size: 34px;
-  }
   .site-footer {
     flex-wrap: wrap;
     gap: 10px 18px;
@@ -3170,9 +3198,6 @@ h1 {
 body.has-contact-dialog {
   overflow: hidden;
 }
-.contact-email-circle {
-  border: 0;
-}
 .contact-form-dialog {
   width: min(620px, calc(100% - 32px));
   max-height: calc((100dvh - 40px) / var(--display-scale));
@@ -3417,12 +3442,6 @@ body.has-contact-dialog {
 }
 
 /* Three ordered chapters, with the toolkit and introduction kept together. */
-.nav-step {
-  margin-right: 8px;
-  font-size: 10px;
-  opacity: .65;
-  font-variant-numeric: tabular-nums;
-}
 .has-indicator .nav-tab.is-active:hover {
   background: transparent;
 }
@@ -3607,10 +3626,6 @@ body.has-contact-dialog {
   .nav-tab > .icon {
     display: none;
   }
-  .nav-step {
-    margin: 0;
-    font-size: 9px;
-  }
   #about > .page-width {
     display: block;
   }
@@ -3695,4 +3710,46 @@ body.has-contact-dialog {
 }
 #about-me:focus, #toolkit:focus {
   outline: none;
+}
+
+/* Keep the invitation ahead of secondary links in the mobile reading order. */
+.contact-layout {
+  grid-template-columns: 1.15fr 1fr;
+  grid-template-areas: "intro card" "details card";
+  gap: 30px 64px;
+}
+.contact-main { grid-area: intro; }
+.contact-details { grid-area: details; min-width: 0; }
+.contact-details .contact-socials { margin-top: 0; }
+.contact-details .contact-address { margin-top: 30px; }
+@media (max-width: 1120px) and (min-width: 761px) {
+  .contact-layout { gap: 28px; }
+  .contact-card { padding: 28px; }
+  .contact-card h3 { font-size: 38px; }
+}
+@media (max-width: 760px) {
+  .contact-layout {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "intro" "card" "details";
+    gap: 30px;
+  }
+  .contact-main > .eyebrow { margin-bottom: 22px; }
+  .contact-main > h2 {
+    font-size: clamp(40px, 10vw, 60px);
+    margin-bottom: 18px;
+  }
+  .contact-main > p:not(.eyebrow) { font-size: 13px; }
+  .contact-card { padding: 28px; border-radius: 24px; }
+  .contact-card-top { margin-bottom: 32px; }
+  .contact-card-top .eyebrow { font-size: 8px; letter-spacing: 1px; }
+  .contact-card h3 { font-size: 38px; letter-spacing: -1.5px; }
+  .contact-card > p { font-size: 14px; }
+  .contact-message-button { padding: 16px; font-size: 13px; }
+  .contact-details { padding: 6px 0 12px; }
+}
+@media (max-width: 360px) {
+  .contact-card { padding: 22px; }
+  .contact-card h3 { font-size: 34px; }
+  .contact-card-icon { width: 40px; height: 40px; border-radius: 12px; }
+  .contact-message-button { font-size: 12px; gap: 8px; }
 }

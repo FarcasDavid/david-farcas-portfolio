@@ -45,3 +45,12 @@ No blocking visual defect remained after rechecking the repairs above. Temporary
 - Rendered IAB checks at 1440×1000, 390×844 and 320×740: readable paragraphs, stacked certification cards, three-button dock, no horizontal overflow. Dark and light themes reviewed. Existing reduced-motion CSS disables animations and transitions.
 - Keyboard ArrowRight/Home routing, browser Back/Forward, legacy #stack and local toolkit focus verified. Agent review caught missing toolkit programmatic focus; fixed with tabindex=-1.
 - Browser CV download completed; exact file hash matches approved PDF. No browser console errors observed. Contact/social destinations remain covered by existing link checks.
+
+
+## 21 October 2026 — Contact invitation refinement
+
+- Removed the 01/02/03 navigation labels and matching next-step prefixes.
+- Replaced the blue, tilted, arrow-only contact card with a warm neutral invitation, “Let’s connect” heading, full-width “Send me a message” button, and explicit email-app fallback.
+- Mobile reading and focus order: introduction → invitation/action → profile/contact links. Desktop retains two columns. Message action has a visible contrasting keyboard outline; no rotating-button behavior remains.
+- Reviewed all three tabs at 320px, Contact at 390px, 768px, 1440px and 1920px, and dark/light themes. No horizontal overflow observed. Contact form opens from all three entry points; required-field validation, Escape/close and opener focus return work. Keyboard Home/End, Back/Forward and local toolkit selection pass. No console errors observed.
+- Production build, static checks, all 22 contact regression tests and whitespace checks pass. Sending success/failure/pending behavior is covered by the automated tests; no real email was sent during this design review.

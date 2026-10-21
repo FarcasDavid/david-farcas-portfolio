@@ -67,6 +67,8 @@ David explicitly confirmed on 16 October 2026 that all certifications listed in 
 
 ## Life outside engineering
 
+On 21 October 2026, David confirmed cycling, training for his next race, playing tennis, and DJing at private events. These are user-confirmed personal details, not CV-derived claims.
+
 Running and triathlon. David states he is registered for IM 70.3 Mamaia 2027. Describe training toward this future event. Official event naming/date should be verified before specific race details or a countdown. No past race times, training data, finisher status, Strava link, or approved photography was supplied.
 
 ## Public personal work and unknowns

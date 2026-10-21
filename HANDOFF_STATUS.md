@@ -1,6 +1,9 @@
 # Handoff status
 
-Updated 16 October 2026.
+Updated 21 October 2026.
+
+- Latest content/navigation update: three ordered About → Experience → Contact tabs. About merges the former Overview, Toolkit and About views, adds four CV-grounded paragraphs plus user-confirmed hobbies, and keeps tool details inline (right side on desktop, beneath controls on mobile). Full technology inventory stays in an expandable section. Two highlighted certification cards now lead Experience. Legacy `#home`/`#stack` links remain supported. CV files are unchanged.
+- Validation for this update: production build, static checks and all 22 contact regression tests pass; rendered desktop/390px/320px checks, in-place selection for all seven tools, keyboard tabs, Back/Forward and CV download passed. Publication status for this update is pending; older deployment records below describe the prior version.
 
 - Redesigned: five separate Overview, Experience, Toolkit, About and Contact views; near-black/white/orange/cobalt palette with no green; circular SVG CV/social controls; clickable priority skills; interactive system map; dark/light themes; desktop tab bar and mobile bottom dock.
 - Latest refinements: Contact form with FormSubmit AJAX delivery, activated recipient and user-confirmed Yahoo receipt, plus copy fallback; concise Email labels; general Prepare → Inference → Evaluate → Deliver diagram; Overview fact cards deep-link to their matching Experience articles.

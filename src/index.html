@@ -143,9 +143,9 @@
       <div class="header-inner">
         <a
           class="identity"
-          href="#home"
-          data-view="home"
-          aria-label="David Farcas overview"
+          href="#about"
+          data-view="about"
+          aria-label="David Farcas home"
           ><span class="monogram">d<span>f</span><i>.</i></span
           ><span class="identity-name">DAVID<br />FARCAS</span></a
         >
@@ -156,17 +156,17 @@
           aria-label="Portfolio sections"
         >
           <a
-            id="tab-home"
+            id="tab-about"
             class="nav-tab is-active"
-            href="#home"
+            href="#about"
             role="tab"
             tabindex="0"
-            aria-controls="home"
+            aria-controls="about"
             aria-selected="true"
-            data-view="home"
-            ><svg class="icon" aria-hidden="true">
+            data-view="about"
+            ><span class="nav-step" aria-hidden="true">01</span><svg class="icon" aria-hidden="true">
               <use href="#i-home"></use></svg
-            ><span>Overview</span></a
+            ><span>About</span></a
           >
           <a
             id="tab-experience"
@@ -177,35 +177,9 @@
             aria-controls="experience"
             aria-selected="false"
             data-view="experience"
-            ><svg class="icon" aria-hidden="true">
+            ><span class="nav-step" aria-hidden="true">02</span><svg class="icon" aria-hidden="true">
               <use href="#i-briefcase"></use></svg
             ><span>Experience</span></a
-          >
-          <a
-            id="tab-stack"
-            class="nav-tab"
-            href="#stack"
-            role="tab"
-            tabindex="-1"
-            aria-controls="stack"
-            aria-selected="false"
-            data-view="stack"
-            ><svg class="icon" aria-hidden="true">
-              <use href="#i-layers"></use></svg
-            ><span>Toolkit</span></a
-          >
-          <a
-            id="tab-about"
-            class="nav-tab"
-            href="#about"
-            role="tab"
-            tabindex="-1"
-            aria-controls="about"
-            aria-selected="false"
-            data-view="about"
-            ><svg class="icon" aria-hidden="true">
-              <use href="#i-person"></use></svg
-            ><span>About</span></a
           >
           <a
             id="tab-contact"
@@ -216,7 +190,7 @@
             aria-controls="contact"
             aria-selected="false"
             data-view="contact"
-            ><svg class="icon" aria-hidden="true">
+            ><span class="nav-step" aria-hidden="true">03</span><svg class="icon" aria-hidden="true">
               <use href="#i-email"></use></svg
             ><span>Contact</span></a
           >
@@ -241,9 +215,9 @@
     <main id="main" tabindex="-1">
       <section
         class="view is-active"
-        id="home"
+        id="about"
         role="tabpanel"
-        aria-labelledby="tab-home"
+        aria-labelledby="tab-about"
       >
         <div class="page-width">
           <div class="view-topline">
@@ -469,27 +443,42 @@
               <strong>AI Engineer @ RebelDot</strong
               ><span class="footnote-date"> / Nov 2024–present</span>
             </p>
-            <a href="#about" data-view="about"
-              >A little about me
+            <a href="#about-me"
+              >Read my introduction
               <svg class="icon" aria-hidden="true">
                 <use href="#i-arrow"></use></svg
             ></a>
           </div>
-          <section class="skill-playground" aria-labelledby="home-skills-title">
+          <section class="about-introduction" id="about-me" aria-labelledby="about-me-title" tabindex="-1">
+            <div class="about-introduction-heading">
+              <p class="eyebrow">A LITTLE ABOUT ME</p>
+              <h2 id="about-me-title">About me<span>.</span></h2>
+              <span class="about-location">Cluj-Napoca, Romania<br />Romanian &amp; English</span>
+            </div>
+            <div class="about-prose">
+              <p>I’m David, an AI/ML Engineer and full stack developer based in Cluj-Napoca, Romania. I’ve been working as an AI Engineer at RebelDot since November 2024, building AI applications for automotive, insurance and enterprise clients.</p>
+              <p>My main focus is RAG and LLM systems: helping models find useful information, produce clear answers and show the evidence behind them. I’ve built an email assistant that prepares replies for human review, a system for assessing call quality, and cloud AI applications. My work also covers backend APIs, databases and performance improvements.</p>
+              <p>I like taking ownership of the whole process, from understanding the problem and planning the solution to building, testing and delivering it. I use clear metrics to check what works and improve what doesn’t. I also care about making the work easy for others to follow, with shared coding practices and practical documentation.</p>
+              <p>When I’m not behind a computer, you can find me cycling, training for my next race, playing a match of tennis or DJing at private events. I enjoy having different things to focus on outside work and always having something to look forward to.</p>
+              <div class="education-note"><span class="eyebrow">EDUCATION · 2020–2024</span><strong>Technical University of Cluj-Napoca</strong><span>Bachelor’s Degree in Electronics, Telecommunications and Information Technology.</span></div>
+            </div>
+          </section>
+          <section id="toolkit" tabindex="-1" class="skill-playground" aria-labelledby="home-skills-title">
             <div class="skill-heading">
               <div>
                 <p class="eyebrow">MY EVERYDAY BUILDING BLOCKS</p>
                 <h2 id="home-skills-title">
-                  Tools with a purpose<span>.</span>
+                  My toolkit<span>.</span>
                 </h2>
               </div>
-              <p>Pick a tool. See where it fits.</p>
+              <p>Pick a tool to see how I’ve used it in client work.</p>
             </div>
-            <div class="skill-buttons">
+            <div class="skill-explorer">
+            <div class="skill-buttons" role="group" aria-label="Choose a tool">
               <button
                 class="skill-button is-selected"
                 type="button"
-                data-skill="python"
+                data-skill="python" aria-controls="skill-detail"
                 aria-pressed="true"
               >
                 <span
@@ -502,7 +491,7 @@
               <button
                 class="skill-button"
                 type="button"
-                data-skill="rag"
+                data-skill="rag" aria-controls="skill-detail"
                 aria-pressed="false"
               >
                 <svg class="icon" aria-hidden="true">
@@ -512,7 +501,7 @@
               <button
                 class="skill-button"
                 type="button"
-                data-skill="dspy"
+                data-skill="dspy" aria-controls="skill-detail"
                 aria-pressed="false"
               >
                 <svg class="icon" aria-hidden="true">
@@ -522,7 +511,7 @@
               <button
                 class="skill-button"
                 type="button"
-                data-skill="bedrock"
+                data-skill="bedrock" aria-controls="skill-detail"
                 aria-pressed="false"
               >
                 <span
@@ -537,7 +526,7 @@
               <button
                 class="skill-button"
                 type="button"
-                data-skill="postgres"
+                data-skill="postgres" aria-controls="skill-detail"
                 aria-pressed="false"
               >
                 <span
@@ -552,7 +541,7 @@
               <button
                 class="skill-button"
                 type="button"
-                data-skill="fastapi"
+                data-skill="fastapi" aria-controls="skill-detail"
                 aria-pressed="false"
               >
                 <span
@@ -565,7 +554,7 @@
               <button
                 class="skill-button"
                 type="button"
-                data-skill="huggingface"
+                data-skill="huggingface" aria-controls="skill-detail"
                 aria-pressed="false"
               >
                 <span
@@ -578,23 +567,160 @@
                 ><span>HuggingFace Transformers</span>
               </button>
             </div>
-            <div class="skill-context" aria-live="polite" aria-atomic="true">
+            <div id="skill-detail" class="skill-context" aria-live="polite" aria-atomic="true">
               <span class="context-icon"
                 ><svg class="icon" aria-hidden="true">
                   <use href="#i-code"></use></svg
               ></span>
               <div>
+                <p class="eyebrow">HOW I USED IT</p>
                 <h3 id="skill-title">Python</h3>
                 <p id="skill-description">
-                  The connective tissue across my AI systems, APIs, and
-                  evaluation pipelines.
+                  I use Python to build retrieval pipelines, process data and connect language models to applications.
                 </p>
               </div>
               <p id="skill-proof">
-                Used across RAG, call quality assurance, and platform
-                engineering.
+                At RebelDot, I used it across the RAG email assistant, call-quality scoring and earlier AI applications.
               </p>
             </div>
+            </div>
+            <details class="full-toolkit">
+              <summary>Explore my full toolkit <span aria-hidden="true">+</span></summary>
+          <div class="toolkit-grid">
+            <article class="toolkit-card toolkit-cobalt">
+              <span class="toolkit-icon"
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-spark"></use></svg
+              ></span>
+              <p class="eyebrow">01 / AI ENGINEERING</p>
+              <h3>Quality you can measure.</h3>
+              <p>
+                Grounded answers, repeatable optimization, and evaluation that
+                makes regressions visible.
+              </p>
+              <div class="toolkit-chips">
+                <span
+                  ><span
+                    class="brand-icon"
+                    style="--brand: url(&quot;./assets/icons/python.svg&quot;)"
+                    aria-hidden="true"
+                  ></span
+                  >Python</span
+                ><span
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-layers"></use></svg
+                  >RAG</span
+                ><span
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-spark"></use></svg
+                  >DSPy / GEPA</span
+                ><span>LangChain / LangGraph</span
+                ><span
+                  ><span
+                    class="brand-icon"
+                    style="
+                      --brand: url(&quot;./assets/icons/amazonwebservices.svg&quot;);
+                    "
+                    aria-hidden="true"
+                  ></span
+                  >AWS Bedrock</span
+                ><span>Claude</span><span>Structured outputs</span
+                ><span>Evaluation</span>
+              </div>
+            </article>
+            <article class="toolkit-card toolkit-purple">
+              <span class="toolkit-icon"
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-search"></use></svg
+              ></span>
+              <p class="eyebrow">02 / RETRIEVAL & NLP</p>
+              <h3>Evidence, in context.</h3>
+              <p>
+                Relevant retrieval, sensitive-data masking, reranking, and
+                traceable sources.
+              </p>
+              <div class="toolkit-chips">
+                <span
+                  ><span
+                    class="brand-icon"
+                    style="
+                      --brand: url(&quot;./assets/icons/postgresql.svg&quot;);
+                    "
+                    aria-hidden="true"
+                  ></span
+                  >PostgreSQL / pgvector</span
+                ><span
+                  ><span
+                    class="brand-icon"
+                    style="
+                      --brand: url(&quot;./assets/icons/huggingface.svg&quot;);
+                    "
+                    aria-hidden="true"
+                  ></span
+                  >HuggingFace Transformers</span
+                ><span>Cohere</span><span>PyTorch</span><span>DeBERTa NLI</span
+                ><span>MPNet</span><span>GLiNER / Presidio</span>
+              </div>
+            </article>
+            <article class="toolkit-card toolkit-crimson">
+              <span class="toolkit-icon"
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-code"></use></svg
+              ></span>
+              <p class="eyebrow">03 / BACKEND & DATA</p>
+              <h3>From model to application.</h3>
+              <p>
+                Typed APIs, reliable data access, caching, and interfaces people
+                can use.
+              </p>
+              <div class="toolkit-chips">
+                <span
+                  ><span
+                    class="brand-icon"
+                    style="--brand: url(&quot;./assets/icons/fastapi.svg&quot;)"
+                    aria-hidden="true"
+                  ></span
+                  >FastAPI</span
+                ><span>Pydantic</span><span>SQLAlchemy</span><span>SQL</span
+                ><span>Redis</span><span>Streamlit</span
+                ><span>pandas / NumPy</span>
+              </div>
+            </article>
+            <article class="toolkit-card toolkit-raspberry">
+              <span class="toolkit-icon"
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-globe"></use></svg
+              ></span>
+              <p class="eyebrow">04 / CLOUD & DELIVERY</p>
+              <h3>Built to keep moving.</h3>
+              <p>
+                Infrastructure, identity, testing, and delivery practices that
+                support maintainable systems.
+              </p>
+              <div class="toolkit-chips">
+                <span
+                  ><span
+                    class="brand-icon"
+                    style="
+                      --brand: url(&quot;./assets/icons/amazonwebservices.svg&quot;);
+                    "
+                    aria-hidden="true"
+                  ></span
+                  >AWS / Azure</span
+                ><span>Terraform</span
+                ><span
+                  ><span
+                    class="brand-icon"
+                    style="--brand: url(&quot;./assets/icons/docker.svg&quot;)"
+                    aria-hidden="true"
+                  ></span
+                  >Docker</span
+                ><span>Azure Pipelines</span><span>Git</span><span>pytest</span
+                ><span>Ruff / mypy</span>
+              </div>
+            </article>
+          </div>
+            </details>
           </section>
           <section class="home-results" aria-labelledby="home-results-title">
             <div class="results-heading">
@@ -644,6 +770,7 @@
               ></a>
             </div>
           </section>
+          <a class="next-view" href="#experience" data-view="experience"><span>02 / NEXT: EXPERIENCE</span><strong>See what I’ve built <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></strong></a>
         </div>
       </section>
 
@@ -667,6 +794,33 @@
               and the evidence behind the work.
             </p>
           </div>
+          <section class="certifications" aria-labelledby="certifications-title">
+            <div class="credentials-heading">
+              <p class="eyebrow">LEARNING, PUT TO WORK</p>
+              <h3 id="certifications-title">Certifications<span>.</span></h3>
+            </div>
+            <div class="credential-grid"><article class="credential-card">
+              <span class="credential-number">01</span>
+              <p class="eyebrow">CERTIFICATION</p>
+              <h4>Claude Certified Architect – Foundations</h4>
+              <p>
+                Claude API/Agent SDK, agentic orchestration, tools and MCP
+                integration, structured outputs, context management, and
+                reliability.
+              </p>
+              <small>20 June 2026–June 2027</small>
+            </article>
+<article class="credential-card">
+              <span class="credential-number">02</span>
+              <p class="eyebrow">CERTIFICATION</p>
+              <h4>Microsoft Certified: Azure AI Engineer Associate (AI-102)</h4>
+              <p>
+                Azure AI design and deployment, NLP, computer vision, document
+                extraction, search, and responsible AI.
+              </p>
+              <small>Earned 2024</small>
+            </article></div>
+          </section>
           <div class="experience-employer">
             <div>
               <h3>RebelDot</h3>
@@ -1050,300 +1204,8 @@
               </article>
             </div>
           </section>
-          <a class="next-view" href="#stack" data-view="stack"
-            ><span>THE TOOLS BEHIND THE WORK</span
-            ><strong
-              >Explore my toolkit
-              <svg class="icon" aria-hidden="true">
-                <use href="#i-arrow"></use></svg></strong
-          ></a>
-        </div>
-      </section>
-
-      <section
-        class="view"
-        id="stack"
-        hidden
-        role="tabpanel"
-        aria-labelledby="tab-stack"
-      >
-        <div class="page-width view-content">
-          <div class="page-heading">
-            <div>
-              <p class="eyebrow">
-                <span class="signal-dot"></span> TOOLKIT / INTENT BEFORE TOOLS
-              </p>
-              <h2>The right tool.<br /><span>For the real problem.</span></h2>
-            </div>
-            <p>
-              My strongest work happens at the intersection of AI, data, backend
-              engineering, and cloud delivery.
-            </p>
-          </div>
-          <div class="toolkit-grid">
-            <article class="toolkit-card toolkit-cobalt">
-              <span class="toolkit-icon"
-                ><svg class="icon" aria-hidden="true">
-                  <use href="#i-spark"></use></svg
-              ></span>
-              <p class="eyebrow">01 / AI ENGINEERING</p>
-              <h3>Quality you can measure.</h3>
-              <p>
-                Grounded answers, repeatable optimization, and evaluation that
-                makes regressions visible.
-              </p>
-              <div class="toolkit-chips">
-                <span
-                  ><span
-                    class="brand-icon"
-                    style="--brand: url(&quot;./assets/icons/python.svg&quot;)"
-                    aria-hidden="true"
-                  ></span
-                  >Python</span
-                ><span
-                  ><svg class="icon" aria-hidden="true">
-                    <use href="#i-layers"></use></svg
-                  >RAG</span
-                ><span
-                  ><svg class="icon" aria-hidden="true">
-                    <use href="#i-spark"></use></svg
-                  >DSPy / GEPA</span
-                ><span>LangChain / LangGraph</span
-                ><span
-                  ><span
-                    class="brand-icon"
-                    style="
-                      --brand: url(&quot;./assets/icons/amazonwebservices.svg&quot;);
-                    "
-                    aria-hidden="true"
-                  ></span
-                  >AWS Bedrock</span
-                ><span>Claude</span><span>Structured outputs</span
-                ><span>Evaluation</span>
-              </div>
-            </article>
-            <article class="toolkit-card toolkit-purple">
-              <span class="toolkit-icon"
-                ><svg class="icon" aria-hidden="true">
-                  <use href="#i-search"></use></svg
-              ></span>
-              <p class="eyebrow">02 / RETRIEVAL & NLP</p>
-              <h3>Evidence, in context.</h3>
-              <p>
-                Relevant retrieval, sensitive-data masking, reranking, and
-                traceable sources.
-              </p>
-              <div class="toolkit-chips">
-                <span
-                  ><span
-                    class="brand-icon"
-                    style="
-                      --brand: url(&quot;./assets/icons/postgresql.svg&quot;);
-                    "
-                    aria-hidden="true"
-                  ></span
-                  >PostgreSQL / pgvector</span
-                ><span
-                  ><span
-                    class="brand-icon"
-                    style="
-                      --brand: url(&quot;./assets/icons/huggingface.svg&quot;);
-                    "
-                    aria-hidden="true"
-                  ></span
-                  >HuggingFace Transformers</span
-                ><span>Cohere</span><span>PyTorch</span><span>DeBERTa NLI</span
-                ><span>MPNet</span><span>GLiNER / Presidio</span>
-              </div>
-            </article>
-            <article class="toolkit-card toolkit-crimson">
-              <span class="toolkit-icon"
-                ><svg class="icon" aria-hidden="true">
-                  <use href="#i-code"></use></svg
-              ></span>
-              <p class="eyebrow">03 / BACKEND & DATA</p>
-              <h3>From model to application.</h3>
-              <p>
-                Typed APIs, reliable data access, caching, and interfaces people
-                can use.
-              </p>
-              <div class="toolkit-chips">
-                <span
-                  ><span
-                    class="brand-icon"
-                    style="--brand: url(&quot;./assets/icons/fastapi.svg&quot;)"
-                    aria-hidden="true"
-                  ></span
-                  >FastAPI</span
-                ><span>Pydantic</span><span>SQLAlchemy</span><span>SQL</span
-                ><span>Redis</span><span>Streamlit</span
-                ><span>pandas / NumPy</span>
-              </div>
-            </article>
-            <article class="toolkit-card toolkit-raspberry">
-              <span class="toolkit-icon"
-                ><svg class="icon" aria-hidden="true">
-                  <use href="#i-globe"></use></svg
-              ></span>
-              <p class="eyebrow">04 / CLOUD & DELIVERY</p>
-              <h3>Built to keep moving.</h3>
-              <p>
-                Infrastructure, identity, testing, and delivery practices that
-                support maintainable systems.
-              </p>
-              <div class="toolkit-chips">
-                <span
-                  ><span
-                    class="brand-icon"
-                    style="
-                      --brand: url(&quot;./assets/icons/amazonwebservices.svg&quot;);
-                    "
-                    aria-hidden="true"
-                  ></span
-                  >AWS / Azure</span
-                ><span>Terraform</span
-                ><span
-                  ><span
-                    class="brand-icon"
-                    style="--brand: url(&quot;./assets/icons/docker.svg&quot;)"
-                    aria-hidden="true"
-                  ></span
-                  >Docker</span
-                ><span>Azure Pipelines</span><span>Git</span><span>pytest</span
-                ><span>Ruff / mypy</span>
-              </div>
-            </article>
-          </div>
-          <div class="collaboration-card">
-            <span class="collaboration-mark" aria-hidden="true">&lt;/&gt;</span>
-            <div>
-              <p class="eyebrow">HOW I WORK</p>
-              <h3>Good engineering is a team sport.</h3>
-              <p>
-                I established shared coding-agent rules and pre-commit checks
-                for style, tests, and commits. Architecture and contribution
-                guides I wrote were adopted by the team, making technical
-                collaboration clearer.
-              </p>
-            </div>
-          </div>
-          <a class="next-view" href="#experience" data-view="experience"
-            ><span>TOOLS, APPLIED</span
-            ><strong
-              >See them in the work
-              <svg class="icon" aria-hidden="true">
-                <use href="#i-arrow"></use></svg></strong
-          ></a>
-        </div>
-      </section>
-
-      <section
-        class="view"
-        id="about"
-        hidden
-        role="tabpanel"
-        aria-labelledby="tab-about"
-      >
-        <div class="page-width view-content">
-          <div class="page-heading">
-            <div>
-              <p class="eyebrow">
-                <span class="signal-dot"></span> ABOUT / THE HUMAN PART
-              </p>
-              <h2>
-                Curious by nature.<br /><span>Engineer by practice.</span>
-              </h2>
-            </div>
-            <p>
-              Cluj-Napoca, Romania.<br />Romanian & English.<br />Usually
-              thinking about the next problem—or the next run.
-            </p>
-          </div>
-          <div class="about-bento">
-            <article class="about-story">
-              <span class="eyebrow">01 / MY APPROACH</span>
-              <h3>I like owning<br />the whole puzzle<span>.</span></h3>
-              <p>
-                From the first unanswered question to the working application. I
-                enjoy shaping the architecture, solving the awkward details, and
-                communicating the tradeoffs.
-              </p>
-              <p>
-                My work combines initiative, analytical problem-solving, and
-                technical communication with a practical focus on delivery under
-                real deadlines.
-              </p>
-              <a class="small-action" href="#experience" data-view="experience"
-                >See how that translates into work
-                <svg class="icon" aria-hidden="true">
-                  <use href="#i-arrow"></use></svg
-              ></a>
-            </article>
-            <article class="endurance-card">
-              <div class="endurance-top">
-                <span class="triathlon-icons" aria-hidden="true">
-                  <svg class="icon"><use href="#i-swim"></use></svg>
-                  <svg class="icon"><use href="#i-bike"></use></svg>
-                  <svg class="icon"><use href="#i-run"></use></svg> </span
-                ><span class="eyebrow">OFF THE KEYBOARD</span>
-              </div>
-              <div class="race-art" aria-hidden="true">
-                <span class="race-line line-one"></span
-                ><span class="race-line line-two"></span
-                ><span class="race-line line-three"></span
-                ><span class="race-orbit"></span
-                ><strong
-                  >KEEP<br />MOVING<span aria-hidden="true"
-                    ><svg class="icon"><use href="#i-arrow"></use></svg></span
-                ></strong>
-              </div>
-              <h3>Running. Triathlon.<br />Steady progress.</h3>
-              <p>
-                I’m registered for IM 70.3 Mamaia 2027. A future goal I’m
-                working toward, one session at a time.
-              </p>
-              <span class="future-label">ON THE HORIZON / 2027</span>
-            </article>
-          </div>
-          <div class="credentials-heading">
-            <p class="eyebrow">LEARNING, PUT TO WORK</p>
-            <h3>Credentials & foundations.</h3>
-          </div>
-          <div class="credential-grid">
-            <article class="credential-card">
-              <span class="credential-number">01</span>
-              <p class="eyebrow">CERTIFICATION</p>
-              <h4>Claude Certified Architect – Foundations</h4>
-              <p>
-                Claude API/Agent SDK, agentic orchestration, tools and MCP
-                integration, structured outputs, context management, and
-                reliability.
-              </p>
-              <small>20 June 2026–June 2027</small>
-            </article>
-            <article class="credential-card">
-              <span class="credential-number">02</span>
-              <p class="eyebrow">CERTIFICATION</p>
-              <h4>Microsoft Certified: Azure AI Engineer Associate (AI-102)</h4>
-              <p>
-                Azure AI design and deployment, NLP, computer vision, document
-                extraction, search, and responsible AI.
-              </p>
-              <small>Earned 2024</small>
-            </article>
-            <article class="credential-card">
-              <span class="credential-number">03</span>
-              <p class="eyebrow">EDUCATION</p>
-              <h4>Technical University of Cluj-Napoca</h4>
-              <p>
-                Bachelor’s Degree in Electronics, Telecommunications and
-                Information Technology.
-              </p>
-              <small>2020–2024</small>
-            </article>
-          </div>
           <a class="next-view" href="#contact" data-view="contact"
-            ><span>START A CONVERSATION</span
+            ><span>03 / START A CONVERSATION</span
             ><strong
               >Let’s connect
               <svg class="icon" aria-hidden="true">
@@ -1622,7 +1484,7 @@
       </form>
     </dialog>
     <footer class="site-footer page-width">
-      <a class="footer-name" href="#home" data-view="home"
+      <a class="footer-name" href="#about" data-view="about"
         >David Farcas<span aria-hidden="true"
           ><svg class="icon"><use href="#i-arrow"></use></svg></span></a
       ><span>Built with intention. © 2026</span

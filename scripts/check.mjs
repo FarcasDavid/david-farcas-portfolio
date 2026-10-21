@@ -74,11 +74,11 @@ for (const { attrs } of tags) {
   }
 }
 
-const views = ["home", "experience", "stack", "about", "contact"];
+const views = ["about", "experience", "contact"];
 const tabs = tags.filter(({ attrs }) => attrs.role === "tab");
 const panels = tags.filter(({ attrs }) => attrs.role === "tabpanel");
-assert.equal(tabs.length, views.length, "Expected five navigation tabs");
-assert.equal(panels.length, views.length, "Expected five application panels");
+assert.equal(tabs.length, views.length, "Expected three navigation tabs");
+assert.equal(panels.length, views.length, "Expected three application panels");
 assert(
   tags.some(({ attrs }) => attrs.role === "tablist" && attrs["aria-label"]),
   "Tab navigation needs a named tablist",
@@ -91,11 +91,11 @@ for (const view of views) {
   assert.equal(tab.href, `#${view}`, `Tab must support deep linking: ${view}`);
   assert.equal(tab["aria-controls"], view);
   assert.equal(panel["aria-labelledby"], tab.id);
-  assert.equal(tab["aria-selected"], String(view === "home"));
-  assert.equal(tab.tabindex, view === "home" ? "0" : "-1");
+  assert.equal(tab["aria-selected"], String(view === "about"));
+  assert.equal(tab.tabindex, view === "about" ? "0" : "-1");
   assert.equal(
     "hidden" in panel,
-    view !== "home",
+    view !== "about",
     `Initial visibility is wrong for ${view}`,
   );
 }
@@ -124,6 +124,15 @@ for (const skill of [
     `${skill} needs a pressed state`,
   );
 }
+const aboutMarkup = html.slice(html.indexOf('id="about"'), html.indexOf('id="experience"'));
+const experienceMarkup = html.slice(html.indexOf('id="experience"'), html.indexOf('id="contact"'));
+assert(!aboutMarkup.includes('class="credential-card"'), "Certifications belong in Experience");
+assert.equal((experienceMarkup.match(/class="credential-card"/g) || []).length, 2);
+assert.equal((aboutMarkup.match(/<div class="about-prose">([\s\S]*?)<div class="education-note">/)?.[1].match(/<p>/g) || []).length, 4, "About needs four introduction paragraphs");
+assert(aboutMarkup.includes('class="next-view" href="#experience"'), "About leads to Experience");
+assert(experienceMarkup.includes('class="next-view" href="#contact"'), "Experience leads to Contact");
+assert.equal(tags.find(({ attrs }) => attrs.id === "toolkit")?.attrs.tabindex, "-1", "Toolkit deep links must receive keyboard focus");
+
 const workflowStages = ["prepare", "inference", "evaluate", "deliver"];
 assert.equal(
   tags.filter(({ attrs }) => "data-stage" in attrs).length,
@@ -394,5 +403,5 @@ assert(
 );
 assert(css.includes("focus-visible"), "Keyboard focus must remain visible");
 console.log(
-  "Passed: five accessible tab/panel mappings, four workflow stages, FormSubmit contact form, interactive controls, logo/contact links, local assets, unique IDs, searchable skills, motion/focus support, approved CV integrity.",
+  "Passed: three accessible tab/panel mappings, four workflow stages, FormSubmit contact form, interactive controls, logo/contact links, local assets, unique IDs, searchable skills, motion/focus support, approved CV integrity.",
 );

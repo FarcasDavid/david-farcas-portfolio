@@ -1,6 +1,6 @@
 # David Farcas — professional portfolio
 
-An experience-led, responsive portfolio for David Farcas, AI/ML Engineer & Full Stack Developer in Cluj-Napoca. A five-view application with an original near-black and white identity with a fixed vivid cobalt accent, circular SVG logo controls, interactive skills and a system explorer. Static HTML/CSS/JavaScript with no runtime dependencies, trackers, or browser API keys. The contact form uses FormSubmit for server-side email delivery.
+An experience-led, responsive portfolio for David Farcas, AI/ML Engineer & Full Stack Developer in Cluj-Napoca. A three-view application with an original near-black and white identity with a fixed vivid cobalt accent, circular SVG logo controls, interactive skills and a system explorer. Static HTML/CSS/JavaScript with no runtime dependencies, trackers, or browser API keys. The contact form uses FormSubmit for server-side email delivery.
 
 ## Run locally
 
@@ -41,9 +41,9 @@ GitHub Pages is the recommended public host. `.github/workflows/deploy.yml` buil
 
 ## Editing the application
 
-The five views are Overview (`#home`), Experience (`#experience`), Toolkit (`#stack`), About (`#about`), and Contact (`#contact`). Only the selected panel is shown; browser Back/Forward and direct hash links work. The desktop tab bar becomes a fixed bottom dock on mobile. Arrow keys, Home and End move between tabs. Without JavaScript all content remains available.
+The three views follow About (`#about`) → Experience (`#experience`) → Contact (`#contact`). About combines the introduction, education, local toolkit explorer and results. Certifications are highlighted at the start of Experience. Legacy `#home` and `#stack` links resolve to About and its toolkit section. Only the selected panel is shown; browser Back/Forward and direct hash links work. The desktop tab bar becomes a fixed bottom dock on mobile. Arrow keys, Home and End move between tabs. Without JavaScript all content remains available.
 
-The Overview skill buttons update explanatory copy stored in the `skills` object in `src/main.js`; the diagram uses the `stages` object. Keep those explanations grounded in `docs/PROFILE.md`. `src/styles.css` starts with dark/light color tokens. Both themes exclude green, including the monochrome brand icons. Cobalt is fixed; there is no palette or size switch. Large viewports automatically scale to 125% at 1800×950 CSS pixels and 150% at 2300×1200; smaller windows keep the original sizing. `portfolio-theme` is the only active stored appearance preference. Reduced-motion preferences disable animation.
+The About skill buttons update explanatory copy stored in the `skills` object in `src/main.js`; the diagram uses the `stages` object. Keep those explanations grounded in `docs/PROFILE.md`. `src/styles.css` starts with dark/light color tokens. Both themes exclude green, including the monochrome brand icons. Cobalt is fixed; there is no palette or size switch. Large viewports automatically scale to 125% at 1800×950 CSS pixels and 150% at 2300×1200; smaller windows keep the original sizing. `portfolio-theme` is the only active stored appearance preference. Reduced-motion preferences disable animation.
 
 Font and icon licenses/source links are recorded in [ASSET_SOURCES.md](docs/ASSET_SOURCES.md). No personal projects are displayed.
 
@@ -55,6 +55,6 @@ The orange Contact action and both Email circles open a native dialog with name,
 
 During a request, controls are disabled to prevent duplicate clicks and an accessible status appears immediately. A slow request stays pending with reassurance after eight seconds; there is no artificial abort deadline. Only an explicit successful provider response shows “Message sent” and clears the form. Activation, rejection, network errors and malformed responses preserve the message. A lost response cannot establish whether the provider received it, so the form advises waiting before retrying. Copy message and the direct address remain fallbacks. The `_honey` field supplements the provider’s spam filtering; the AJAX flow does not claim CAPTCHA or automatic visitor confirmations.
 
-The Overview diagram describes a general Prepare → Inference → Evaluate → Deliver workflow. Project-specific technologies and benchmarks remain in the experience summaries and skill explanations.
+The About diagram describes a general Prepare → Inference → Evaluate → Deliver workflow. Project-specific technologies and benchmarks remain in the experience summaries and skill explanations.
 
-Overview evidence cards link directly to `#experience-email`, `#experience-calls` and `#experience-platform`. These fragments select the Experience tab and scroll to the corresponding article below the header; direct links and browser history use the same destinations.
+About evidence cards link directly to `#experience-email`, `#experience-calls` and `#experience-platform`. These fragments select the Experience tab and scroll to the corresponding article below the header; direct links and browser history use the same destinations.

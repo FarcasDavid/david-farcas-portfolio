@@ -97,14 +97,16 @@ function closeMenu({ restoreFocus = false } = {}) {
 function routeFromHash() {
   try {
     const id = decodeURIComponent(window.location.hash.slice(1));
+    if (id === "home") return { view: "about" };
+    if (id === "stack") return { view: "about", target: "toolkit" };
     if (panelById.has(id)) return { view: id };
     const target = document.getElementById(id);
-    if (target?.matches("[data-experience-case]")) {
+    if (target?.matches("[data-experience-case], #about-me, #toolkit")) {
       const view = target.closest(".view")?.id;
       if (panelById.has(view)) return { view, target: id };
     }
   } catch {
-    // Malformed or unknown fragments fall back to the overview.
+    // Malformed or unknown fragments fall back to About.
   }
 }
 
@@ -137,7 +139,7 @@ function selectView(
   document.body.dataset.view = id;
   const targetElement = target ? document.getElementById(target) : undefined;
   const validTarget =
-    targetElement?.matches("[data-experience-case]") &&
+    targetElement?.matches("[data-experience-case], #about-me, #toolkit") &&
     targetElement.closest(".view") === selectedPanel
       ? targetElement
       : undefined;
@@ -235,8 +237,8 @@ navigation?.addEventListener("keydown", (event) => {
 function restoreView() {
   const route = routeFromHash();
   if (route) selectView(route.view, { target: route.target, scroll: true });
-  else if (window.location.hash !== "#main" && panelById.has("home")) {
-    selectView("home", { history: "replace" });
+  else if (window.location.hash !== "#main" && panelById.has("about")) {
+    selectView("about", { history: "replace" });
   }
 }
 
@@ -245,7 +247,7 @@ window.addEventListener("hashchange", restoreView);
 if (panels.length) {
   const initialRoute = routeFromHash();
   selectView(
-    initialRoute?.view || (panelById.has("home") ? "home" : panels[0].id),
+    initialRoute?.view || (panelById.has("about") ? "about" : panels[0].id),
     {
       history: "replace",
       scroll: false,
@@ -270,55 +272,41 @@ document.addEventListener("keydown", (event) => {
 });
 
 const skills = {
-  python: {
-    title: "Python",
-    description:
-      "The connective tissue across my work: retrieval pipelines, language models, evaluation, APIs, and data processing.",
-    proof:
-      "Used across both recent AI systems and earlier AI applications and platform engineering at RebelDot.",
+  "python": {
+    "title": "Python",
+    "description": "I use Python to build retrieval pipelines, process data and connect language models to applications.",
+    "proof": "At RebelDot, I used it across the RAG email assistant, call-quality scoring and earlier AI applications."
   },
-  rag: {
-    title: "RAG",
-    description:
-      "Turn past agent replies into reusable knowledge, retrieve relevant evidence, and draft answers with sources for human review.",
-    proof:
-      "Reported outcomes for the integrated knowledge pipeline: correct drafting 45% → 88%; top-5 retrieval 70% → 91%.",
+  "rag": {
+    "title": "RAG",
+    "description": "I built an 11-category email assistant that finds relevant information from past agent replies and prepares source-cited drafts for human review.",
+    "proof": "Reported results for the combined knowledge pipeline: correct drafting rose from 45% to 88%, and top-5 retrieval from 70% to 91%."
   },
-  dspy: {
-    title: "DSPy / GEPA",
-    description:
-      "Make prompt optimization repeatable against explicit metrics instead of relying on ad hoc edits and intuition.",
-    proof:
-      "Classification and safety metrics for email assistance; macro-F1 and Cohen’s kappa for call-quality evaluation.",
+  "dspy": {
+    "title": "DSPy / GEPA",
+    "description": "I used DSPy and GEPA to improve prompts against defined metrics, so I could compare changes instead of relying on trial and error.",
+    "proof": "For email assistance, I measured classification and safety. For call-quality scoring, I measured macro-F1 and Cohen’s kappa across 952 judgments."
   },
-  bedrock: {
-    title: "AWS Bedrock",
-    description:
-      "Connect Claude models to useful application flows, including Haiku reranking before source-cited email drafting.",
-    proof:
-      "AWS Bedrock in the RAG assistant, plus cross-region load balancing and LLM caching in earlier cloud AI work.",
+  "bedrock": {
+    "title": "AWS Bedrock",
+    "description": "I used AWS Bedrock in the RAG email assistant, with Haiku reranking to help select relevant evidence before drafting a reply.",
+    "proof": "In earlier cloud AI work, I also added cross-region AWS Bedrock load balancing."
   },
-  postgres: {
-    title: "PostgreSQL / pgvector",
-    description:
-      "Bring structured data and vector retrieval together, then make the underlying queries fast enough for usable applications.",
-    proof:
-      "pgvector retrieval for the email assistant; separate platform work reduced 2.5M-row queries from 25 seconds to under 2.",
+  "postgres": {
+    "title": "PostgreSQL / pgvector",
+    "description": "I used PostgreSQL and pgvector to retrieve relevant knowledge for the email assistant, alongside Cohere embeddings.",
+    "proof": "In separate platform work, I used PostgreSQL, batched APIs and Redis to reduce queries over 2.5 million rows from 25 seconds to under 2 seconds."
   },
-  fastapi: {
-    title: "FastAPI",
-    description:
-      "Expose AI capabilities through clear Python APIs and connect model workflows to the applications people actually use.",
-    proof:
-      "Delivered AI applications alongside Streamlit, cloud infrastructure, authentication, and automated delivery practices.",
+  "fastapi": {
+    "title": "FastAPI",
+    "description": "I used FastAPI to build the API layer for AI applications, including multimodal OCR workflows.",
+    "proof": "My delivery work also included Streamlit interfaces, Microsoft Entra ID/JWT authentication, Terraform and Azure Pipelines."
   },
-  huggingface: {
-    title: "HuggingFace Transformers",
-    description:
-      "Use focused language models for grounding, semantic clustering, and evidence verification alongside larger models.",
-    proof:
-      "DeBERTa NLI flags unsupported call-scoring reasoning; MPNet and DeBERTa support the agent-reply knowledge pipeline.",
-  },
+  "huggingface": {
+    "title": "HuggingFace Transformers",
+    "description": "I used HuggingFace Transformers in call-quality assessment, including DeBERTa NLI checks that flag unsupported reasoning.",
+    "proof": "Together with RapidFuzz citation checks, this helped identify evidence problems without extra LLM verification calls. Local NLI checks took 108–151 ms per criterion."
+  }
 };
 
 const skillButtons = [...document.querySelectorAll("button[data-skill]")];

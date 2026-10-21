@@ -34,3 +34,14 @@ The redesign addresses the requested change in direction. Its large original typ
 This independent pass checked visual composition, responsive behavior, selected interactions, text integrity and keyboard visibility. The root's separate functional verification owns external destination responses, actual CV download/byte identity, build results, browser history, reduced-motion checks and deployment status. No claim of a formal accessibility certification or user acceptance is made.
 
 No blocking visual defect remained after rechecking the repairs above. Temporary responsive viewport overrides were reset to the normal desktop viewport when the review finished.
+
+
+## 21 October 2026 — About and navigation consolidation
+
+- Merged Overview/Toolkit/About into About, with ordered About → Experience → Contact navigation and forward next-view links.
+- Four separate B2-level paragraphs cover identity, work, approach and user-confirmed cycling/race training/tennis/private-event DJing. Education remains distinct; two certification cards appear only in Experience.
+- Toolkit details appear right of the controls on desktop and beneath them on mobile. All seven buttons update the title, example and selected state without changing the active view. Full CV technology inventory remains expandable.
+- Production build and static contracts pass; existing 22 contact regression tests pass without sending external messages.
+- Rendered IAB checks at 1440×1000, 390×844 and 320×740: readable paragraphs, stacked certification cards, three-button dock, no horizontal overflow. Dark and light themes reviewed. Existing reduced-motion CSS disables animations and transitions.
+- Keyboard ArrowRight/Home routing, browser Back/Forward, legacy #stack and local toolkit focus verified. Agent review caught missing toolkit programmatic focus; fixed with tabindex=-1.
+- Browser CV download completed; exact file hash matches approved PDF. No browser console errors observed. Contact/social destinations remain covered by existing link checks.

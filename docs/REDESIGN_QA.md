@@ -63,3 +63,8 @@ No blocking visual defect remained after rechecking the repairs above. Temporary
 - Rendered all three tabs on desktop and phones in both themes, including 1440px, 390px and 320px; checked 768px tablet wrapping. No horizontal overflow observed. Verified saved light preference after reload, legacy hash focus, keyboard Home, workflow selection and contact-dialog open/Escape/focus return. No browser console errors observed.
 - Light-mode text contrast: charcoal on cream 13.47:1; secondary text on cream 5.32:1; secondary text on sand labels 4.79:1; white on indigo 6.12:1. All exceed 4.5:1 for normal text.
 - Production build, static checks and all 22 contact regression tests pass. Approved CV hash remains unchanged. No external message was sent during visual verification.
+
+
+## 22 October 2026 — Modular refactor regression review
+
+See `docs/REFACTORING.md` for critic findings, applied fixes and the full validation record. All three views were reviewed in the IAB at desktop and narrow-phone sizes in both themes. Native contact validation/focus, workflow selection and route aliases worked; a second origin served the build under `/portfolio/` to verify relative JavaScript-module loading. Build/content/CV checks and 41 tests pass. Public content is preserved; navigation now closes a dialog without focusing an opener in a hidden view.

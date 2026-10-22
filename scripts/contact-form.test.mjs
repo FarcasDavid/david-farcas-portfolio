@@ -1,17 +1,8 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
 import test from "node:test";
-import vm from "node:vm";
+import { initContactForm } from "../src/scripts/contact/contact-form.js";
+import { createFormSubmitDelivery } from "../src/scripts/contact/formsubmit-delivery.js";
 
-const source = await readFile(
-  new URL("../src/main.js", import.meta.url),
-  "utf8",
-);
-const contactStart = source.lastIndexOf(
-  'const contactDialog = document.querySelector("#contact-form-dialog");',
-);
-assert(contactStart !== -1, "The contact controller must exist in src/main.js");
-const contactSource = source.slice(contactStart);
 const message = {
   name: "QA Visitor",
   email: "qa@example.com",
@@ -20,8 +11,8 @@ const message = {
 };
 const flush = () => new Promise((resolve) => setImmediate(resolve));
 
-// Run the actual controller unchanged. Only browser, HTTP, clipboard, and clock
-// boundaries are replaced; the contact validation and state transitions are real.
+// Import the public initializer. Only browser capabilities, HTTP and timers
+// are replaced; validation, delivery parsing and pending-send behavior are real.
 function createContact({ clipboardUnavailable = false } = {}) {
   let now = 0;
   let nextTimer = 0;
@@ -154,20 +145,6 @@ function createContact({ clipboardUnavailable = false } = {}) {
     },
   };
 
-  class FormDataMock {
-    constructor(element) {
-      this.values = Object.fromEntries(
-        Object.entries(element.elements).map(([key, field]) => [
-          key,
-          field.value,
-        ]),
-      );
-    }
-    get(key) {
-      return this.values[key];
-    }
-  }
-
   const window = {
     location: {
       origin: "https://portfolio.example.test",
@@ -186,21 +163,15 @@ function createContact({ clipboardUnavailable = false } = {}) {
     },
   };
 
-  vm.runInNewContext(
-    contactSource,
-    {
-      document,
-      window,
-      navigator: {
-        clipboard: {
-          async writeText(value) {
-            if (clipboardUnavailable) throw new Error("Clipboard unavailable");
-            copied.push(value);
-          },
-        },
-      },
-      FormData: FormDataMock,
-      AbortController,
+  form.setAttribute("data-recipient", "farcas.david@yahoo.com");
+  const controller = initContactForm({
+    document,
+    window,
+    async copyText(value) {
+      if (clipboardUnavailable) throw new Error("Clipboard unavailable");
+      copied.push(value);
+    },
+    deliverMessage: createFormSubmitDelivery({
       fetch(url, options) {
         return new Promise((resolve, reject) => {
           options.signal?.addEventListener(
@@ -228,12 +199,12 @@ function createContact({ clipboardUnavailable = false } = {}) {
             },
           });
         });
-      },
-    },
-    { filename: "src/main.js contact controller" },
-  );
+      }
+    }),
+  });
 
   return {
+    controller,
     fields,
     form,
     label,
@@ -283,6 +254,11 @@ test("a message accepted after 25 seconds stays pending and prevents duplicate s
   contact.fill();
   const submitted = contact.submit();
   assert.equal(contact.requests.length, 1);
+  assert.equal(contact.requests[0].url, "https://formsubmit.co/ajax/farcas.david@yahoo.com");
+  assert.equal(contact.requests[0].options.method, "POST");
+  assert.equal(contact.requests[0].options.credentials, "omit");
+  assert.equal(contact.requests[0].options.keepalive, true);
+  assert.equal(JSON.parse(contact.requests[0].options.body)._url, "https://portfolio.example.test/#contact");
   assert.match(
     contact.status.textContent,
     /sending/i,
@@ -312,6 +288,18 @@ test("a message accepted after 25 seconds stays pending and prevents duplicate s
   assert.equal(contact.form.getAttribute("aria-busy"), null);
   assert.equal(contact.sendButton.disabled, false);
   assert(Object.values(contact.values()).every((value) => value === ""));
+});
+
+test("navigation can close the dialog without focusing a hidden opener", async () => {
+  const contact = createContact();
+  await contact.openers[0].dispatch("click");
+  assert.equal(contact.dialog.open, true);
+  contact.controller.close({ restoreFocus: false });
+  assert.equal(contact.dialog.open, false);
+  assert.notEqual(contact.document.activeElement, contact.openers[0]);
+  await contact.openers[1].dispatch("click");
+  await contact.closeButton.dispatch("click");
+  assert.equal(contact.document.activeElement, contact.openers[1]);
 });
 
 test("a request still awaiting confirmation after two minutes remains locked until accepted", async () => {

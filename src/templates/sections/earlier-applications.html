@@ -1,0 +1,133 @@
+<section class="earlier-work" aria-labelledby="earlier-work-title">
+            <div class="earlier-heading">
+              <div>
+                <p class="eyebrow">
+                  MORE FROM THE SAME PERIOD / NOV 2024–DEC 2025
+                </p>
+                <h3 id="earlier-work-title">AI, put to work<span>.</span></h3>
+              </div>
+              <p>More of the applications behind that foundation.</p>
+            </div>
+            <div class="earlier-grid">
+              <article class="contour-card application-card">
+                <svg class="card-contour" aria-hidden="true" focusable="false">
+                  <rect x="1" y="1" rx="22" pathLength="1"></rect></svg
+                ><span class="application-icon" aria-hidden="true"
+                  ><svg class="icon"><use href="#i-cv"></use></svg
+                ></span>
+                <h4>Multimodal document OCR</h4>
+                <p class="application-outcome">
+                  <span>Outcome</span>Turned PDFs and images into structured
+                  Markdown and Excel downloads through an authenticated API and
+                  an upload interface.
+                </p>
+                <ul>
+                  <li>
+                    <strong>Extraction pipeline:</strong> Built
+                    pdf2image/Poppler conversion, multithreaded batched AWS
+                    Bedrock inference, result synthesis and output generation.
+                  </li>
+                  <li>
+                    <strong>Extensible extraction:</strong> Designed modular
+                    prompts so new document use cases could be added without
+                    changing the core inference pipeline.
+                  </li>
+                  <li>
+                    <strong>Usable delivery:</strong> Built FastAPI endpoints,
+                    JWT/Microsoft Entra SSO, presigned S3 downloads and a
+                    Streamlit interface with uploads and processing feedback.
+                  </li>
+                  <li>
+                    <strong>Repeatable releases:</strong> Provisioned AWS
+                    infrastructure with Terraform and configured Azure Pipelines
+                    CI/CD with temporary environments.
+                  </li>
+                </ul>
+                <div class="tag-row">
+                  <span>Python</span><span>AWS Bedrock</span
+                  ><span>pdf2image / Poppler</span><span>FastAPI</span
+                  ><span>Streamlit</span><span>AWS S3</span
+                  ><span>Terraform</span><span>Azure Pipelines</span>
+                </div>
+              </article>
+              <article class="contour-card application-card">
+                <svg class="card-contour" aria-hidden="true" focusable="false">
+                  <rect x="1" y="1" rx="22" pathLength="1"></rect></svg
+                ><span class="application-icon" aria-hidden="true"
+                  ><svg class="icon"><use href="#i-code"></use></svg
+                ></span>
+                <h4>AI-assisted vehicle listings</h4>
+                <p class="application-outcome">
+                  <span>Outcome</span>Secured access to a vehicle-description
+                  assistant, reduced repeated authentication and model setup,
+                  and made vehicle inputs more tolerant of typing errors.
+                </p>
+                <ul>
+                  <li>
+                    <strong>Protected access:</strong> Integrated frontend SSO
+                    and backend token validation for the FastAPI service.
+                  </li>
+                  <li>
+                    <strong>Fewer external requests:</strong> Implemented JWT
+                    and long-lived token caching to reduce repeated
+                    authentication calls and memory use.
+                  </li>
+                  <li>
+                    <strong>Reusable model setup:</strong> Cached LLM chains and
+                    model instances to avoid rebuilding them for each request
+                    and reduce application load.
+                  </li>
+                  <li>
+                    <strong>More forgiving inputs:</strong> Built typo-tolerant
+                    matching for vehicle make, model and year inputs.
+                  </li>
+                </ul>
+                <div class="tag-row">
+                  <span>Python</span><span>FastAPI</span><span>Streamlit</span
+                  ><span>AWS Bedrock</span><span>SSO / JWT</span
+                  ><span>LLM caching</span><span>Podman</span
+                  ><span>Azure Pipelines</span>
+                </div>
+              </article>
+              <article class="contour-card application-card">
+                <svg class="card-contour" aria-hidden="true" focusable="false">
+                  <rect x="1" y="1" rx="22" pathLength="1"></rect></svg
+                ><span class="application-icon" aria-hidden="true"
+                  ><svg class="icon"><use href="#i-layers"></use></svg
+                ></span>
+                <h4>Workforce &amp; sales assistant</h4>
+                <p class="application-outcome">
+                  <span>Outcome</span>Helped take role-specific workforce and
+                  sales assistants from concept to deployment in three months.
+                </p>
+                <ul>
+                  <li>
+                    <strong>Automated infrastructure:</strong> Provisioned Azure
+                    services with Terraform and automated releases through Azure
+                    DevOps/Azure Pipelines.
+                  </li>
+                  <li>
+                    <strong>Container delivery:</strong> Packaged applications
+                    with Docker, published images to Azure Container Registry
+                    and deployed them to Azure App Service.
+                  </li>
+                  <li>
+                    <strong>Connected services:</strong> Managed environment
+                    configuration and Azure service connections for the
+                    application’s cloud services.
+                  </li>
+                  <li>
+                    <strong>Role-specific access to information:</strong>
+                    Configured OpenWebUI assistants for finance and sales teams
+                    to work with workforce availability and sales information.
+                  </li>
+                </ul>
+                <div class="tag-row">
+                  <span>Python</span><span>OpenWebUI</span><span>Docker</span
+                  ><span>Terraform</span><span>Azure App Service</span
+                  ><span>Azure Container Registry</span
+                  ><span>Azure Pipelines</span><span>Azure Key Vault</span>
+                </div>
+              </article>
+            </div>
+          </section>

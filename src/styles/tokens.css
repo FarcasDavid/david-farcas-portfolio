@@ -1,0 +1,77 @@
+/* Theme palettes and layout tokens shared by every module. */
+
+:root {
+  color-scheme: dark;
+  --bg: #101014;
+  --surface: #17171e;
+  --surface-raised: #1e1e27;
+  --surface-soft: #23232e;
+  --text: #f7f6f9;
+  --muted: #a4a4b3;
+  --line: #30303b;
+  --accent: #4d82ff;
+  --accent-fill: #174fff;
+  --accent-on-dark: #4d82ff;
+  --diagram-fill: #174fff;
+  --diagram-ink: #ffffff;
+  --accent-ink: #ffffff;
+  --blue: #9aa8ff;
+  --header: #101014ed;
+  --shadow: #00000035;
+  --diagram-surface: linear-gradient(135deg, #252431, #191922 50%, #1b1926);
+  --diagram-text: #f4f1ff;
+  --diagram-muted: #b6b1c7;
+  --diagram-line: #4b455d;
+  --diagram-hover: #656079;
+  --diagram-glow: #9386ff10;
+  --diagram-grid: #c3b9df2c;
+  --diagram-track: #666078;
+  --diagram-center: #302839;
+  --diagram-node: #26232f;
+  --radius: 24px;
+  --display-scale: 1;
+  font-family: "Manrope", Arial, sans-serif;
+  font-synthesis: none;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f4f0e8;
+  --surface: #fcfaf6;
+  --surface-raised: #ebe4d9;
+  --surface-soft: #f0eae0;
+  --text: #272520;
+  --muted: #686256;
+  --line: #d8d0c4;
+  --accent: #3659c9;
+  --accent-fill: #3659c9;
+  --accent-on-dark: #3659c9;
+  --diagram-fill: #3659c9;
+  --diagram-ink: #ffffff;
+  --accent-ink: #ffffff;
+  --blue: #3659c9;
+  --header: #f4f0e8f2;
+  --shadow: #483b2610;
+  --diagram-surface: linear-gradient(135deg, #fcfaf6, #f0eae0);
+  --diagram-text: #272520;
+  --diagram-muted: #686256;
+  --diagram-line: #c9bfaf;
+  --diagram-hover: #a89c88;
+  --diagram-glow: #c9b99c12;
+  --diagram-grid: #96876c40;
+  --diagram-track: #b2a58f;
+  --diagram-center: #ebe4d9;
+  --diagram-node: #fcfaf6;
+}
+
+@media (min-width: 1800px) and (min-height: 950px) {
+  :root {
+    --display-scale: 1.25;
+  }
+}
+
+@media (min-width: 2300px) and (min-height: 1200px) {
+  :root {
+    --display-scale: 1.5;
+  }
+}

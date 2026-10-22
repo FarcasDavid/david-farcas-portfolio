@@ -98,10 +98,10 @@ function routeFromHash() {
   try {
     const id = decodeURIComponent(window.location.hash.slice(1));
     if (id === "home") return { view: "about" };
-    if (id === "stack") return { view: "about", target: "toolkit" };
+    if (id === "stack" || id === "toolkit") return { view: "about", target: "tech-stack" };
     if (panelById.has(id)) return { view: id };
     const target = document.getElementById(id);
-    if (target?.matches("[data-experience-case], #about-me, #toolkit")) {
+    if (target?.matches("[data-experience-case], #about-me, #tech-stack")) {
       const view = target.closest(".view")?.id;
       if (panelById.has(view)) return { view, target: id };
     }
@@ -139,7 +139,7 @@ function selectView(
   document.body.dataset.view = id;
   const targetElement = target ? document.getElementById(target) : undefined;
   const validTarget =
-    targetElement?.matches("[data-experience-case], #about-me, #toolkit") &&
+    targetElement?.matches("[data-experience-case], #about-me, #tech-stack") &&
     targetElement.closest(".view") === selectedPanel
       ? targetElement
       : undefined;
@@ -271,71 +271,6 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-const skills = {
-  "python": {
-    "title": "Python",
-    "description": "I use Python to build retrieval pipelines, process data and connect language models to applications.",
-    "proof": "At RebelDot, I used it across the RAG email assistant, call-quality scoring and earlier AI applications."
-  },
-  "rag": {
-    "title": "RAG",
-    "description": "I built an 11-category email assistant that finds relevant information from past agent replies and prepares source-cited drafts for human review.",
-    "proof": "Reported results for the combined knowledge pipeline: correct drafting rose from 45% to 88%, and top-5 retrieval from 70% to 91%."
-  },
-  "dspy": {
-    "title": "DSPy / GEPA",
-    "description": "I used DSPy and GEPA to improve prompts against defined metrics, so I could compare changes instead of relying on trial and error.",
-    "proof": "For email assistance, I measured classification and safety. For call-quality scoring, I measured macro-F1 and Cohen’s kappa across 952 judgments."
-  },
-  "bedrock": {
-    "title": "AWS Bedrock",
-    "description": "I used AWS Bedrock in the RAG email assistant, with Haiku reranking to help select relevant evidence before drafting a reply.",
-    "proof": "In earlier cloud AI work, I also added cross-region AWS Bedrock load balancing."
-  },
-  "postgres": {
-    "title": "PostgreSQL / pgvector",
-    "description": "I used PostgreSQL and pgvector to retrieve relevant knowledge for the email assistant, alongside Cohere embeddings.",
-    "proof": "In separate platform work, I used PostgreSQL, batched APIs and Redis to reduce queries over 2.5 million rows from 25 seconds to under 2 seconds."
-  },
-  "fastapi": {
-    "title": "FastAPI",
-    "description": "I used FastAPI to build the API layer for AI applications, including multimodal OCR workflows.",
-    "proof": "My delivery work also included Streamlit interfaces, Microsoft Entra ID/JWT authentication, Terraform and Azure Pipelines."
-  },
-  "huggingface": {
-    "title": "HuggingFace Transformers",
-    "description": "I used HuggingFace Transformers in call-quality assessment, including DeBERTa NLI checks that flag unsupported reasoning.",
-    "proof": "Together with RapidFuzz citation checks, this helped identify evidence problems without extra LLM verification calls. Local NLI checks took 108–151 ms per criterion."
-  }
-};
-
-const skillButtons = [...document.querySelectorAll("button[data-skill]")];
-function selectSkill(id) {
-  const skill = skills[id];
-  if (!skill) return;
-  for (const button of skillButtons) {
-    const selected = button.dataset.skill === id;
-    button.classList.toggle("is-selected", selected);
-    button.setAttribute("aria-pressed", String(selected));
-  }
-  const title = document.querySelector("#skill-title");
-  const description = document.querySelector("#skill-description");
-  const proof = document.querySelector("#skill-proof");
-  if (title) title.textContent = skill.title;
-  if (description) description.textContent = skill.description;
-  if (proof) proof.textContent = skill.proof;
-  document.body.dataset.activeSkill = id;
-}
-
-for (const button of skillButtons) {
-  button.addEventListener("click", () => selectSkill(button.dataset.skill));
-}
-const initialSkill =
-  skillButtons.find(
-    (button) => button.getAttribute("aria-pressed") === "true",
-  ) || skillButtons[0];
-if (initialSkill) selectSkill(initialSkill.dataset.skill);
-
 const stages = {
   prepare: {
     index: "01",
@@ -409,7 +344,7 @@ for (const button of document.querySelectorAll("[data-copy-email]")) {
 
 const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
 for (const field of document.querySelectorAll(
-  ".interactive-field, .skill-button",
+  ".interactive-field",
 )) {
   let frame;
   field.addEventListener("pointermove", (event) => {

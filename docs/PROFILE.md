@@ -48,7 +48,7 @@ End-to-end ownership, initiative, analytical problem-solving, technical communic
 
 ## Technology inventory
 
-The CV is authoritative for the full inventory. Prioritize rather than turning the homepage into a package list.
+The CV is authoritative for the original inventory. On 21 October 2026, David additionally confirmed TypeScript, Cypher, MongoDB, Neo4j, Claude Code, Codex and Warp, alongside Python, SQL, Qdrant, FAISS and Git. These are user-confirmed technologies; no additional project-specific production claims were supplied. The Tech Stack section presents a concise grouped inventory.
 
 - AI engineering: Python, RAG, LangChain, LangGraph, DSPy, GEPA, AWS Bedrock, pgvector, prompt optimization, structured outputs, grounding, reranking, evaluation, LiteLLM, OpenWebUI.
 - Models/NLP: Claude Sonnet/Haiku/Opus, Cohere Embed English v3, MPNet, DeBERTa NLI, GLiNER, Presidio, spaCy, PyTorch, Sentence Transformers, HuggingFace Transformers, BERTopic, UMAP.

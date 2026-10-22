@@ -104,26 +104,14 @@ assert(
   "Personal projects are not part of this application",
 );
 
-for (const skill of [
-  "python",
-  "rag",
-  "dspy",
-  "bedrock",
-  "postgres",
-  "fastapi",
-  "huggingface",
-]) {
-  const buttons = tags.filter(({ attrs }) => attrs["data-skill"] === skill);
-  assert.equal(buttons.length, 1, `Expected one ${skill} skill button`);
-  assert(
-    buttons[0].tag.startsWith("<button"),
-    `${skill} must be an accessible native button`,
-  );
-  assert(
-    ["true", "false"].includes(buttons[0].attrs["aria-pressed"]),
-    `${skill} needs a pressed state`,
-  );
+const stackMarkup = html.match(/<section id="tech-stack"[\s\S]*?<\/section>/)?.[0];
+assert(stackMarkup, "Tech Stack must be available as a section");
+assert(!/<(?:button|details)\b/.test(stackMarkup), "Tech Stack should be readable without interaction");
+assert.equal((stackMarkup.match(/class="stack-card"/g) || []).length, 7, "Expected seven Tech Stack categories");
+for (const term of ["TypeScript", "Cypher", "MongoDB", "Neo4j", "Qdrant", "FAISS", "Claude Code", "Codex", "Warp"]) {
+  assert(stackMarkup.includes(term), `Missing confirmed technology: ${term}`);
 }
+
 const aboutMarkup = html.slice(html.indexOf('id="about"'), html.indexOf('id="experience"'));
 const experienceMarkup = html.slice(html.indexOf('id="experience"'), html.indexOf('id="contact"'));
 assert(!aboutMarkup.includes('class="credential-card"'), "Certifications belong in Experience");
@@ -131,7 +119,7 @@ assert.equal((experienceMarkup.match(/class="credential-card"/g) || []).length, 
 assert.equal((aboutMarkup.match(/<div class="about-prose">([\s\S]*?)<div class="education-note">/)?.[1].match(/<p>/g) || []).length, 4, "About needs four introduction paragraphs");
 assert(aboutMarkup.includes('class="next-view" href="#experience"'), "About leads to Experience");
 assert(experienceMarkup.includes('class="next-view" href="#contact"'), "Experience leads to Contact");
-assert.equal(tags.find(({ attrs }) => attrs.id === "toolkit")?.attrs.tabindex, "-1", "Toolkit deep links must receive keyboard focus");
+assert.equal(tags.find(({ attrs }) => attrs.id === "tech-stack")?.attrs.tabindex, "-1", "Tech Stack deep links must receive keyboard focus");
 
 const workflowStages = ["prepare", "inference", "evaluate", "deliver"];
 assert.equal(
@@ -158,9 +146,6 @@ for (const stage of workflowStages) {
   );
 }
 for (const id of [
-  "skill-title",
-  "skill-description",
-  "skill-proof",
   "stage-title",
   "stage-description",
 ]) {

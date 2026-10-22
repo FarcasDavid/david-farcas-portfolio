@@ -54,3 +54,12 @@ No blocking visual defect remained after rechecking the repairs above. Temporary
 - Mobile reading and focus order: introduction → invitation/action → profile/contact links. Desktop retains two columns. Message action has a visible contrasting keyboard outline; no rotating-button behavior remains.
 - Reviewed all three tabs at 320px, Contact at 390px, 768px, 1440px and 1920px, and dark/light themes. No horizontal overflow observed. Contact form opens from all three entry points; required-field validation, Escape/close and opener focus return work. Keyboard Home/End, Back/Forward and local toolkit selection pass. No console errors observed.
 - Production build, static checks, all 22 contact regression tests and whitespace checks pass. Sending success/failure/pending behavior is covered by the automated tests; no real email was sent during this design review.
+
+
+## 22 October 2026 — Warm light theme and static Tech Stack
+
+- Light mode now uses warm cream/ivory surfaces, charcoal text, stone borders and deep indigo accents. Diagram surfaces, nodes, text and lines have independent theme tokens; dark styling is retained. Removed the lavender background tint and softened mobile navigation shadows.
+- Replaced the interactive toolkit and expandable inventory with seven static Tech Stack category cards. Added user-confirmed TypeScript, Cypher, MongoDB, Neo4j, Claude Code, Codex and Warp; preserved CV models/frameworks. Removed obsolete selection code and toolkit styles. Legacy #stack/#toolkit links resolve to #tech-stack.
+- Rendered all three tabs on desktop and phones in both themes, including 1440px, 390px and 320px; checked 768px tablet wrapping. No horizontal overflow observed. Verified saved light preference after reload, legacy hash focus, keyboard Home, workflow selection and contact-dialog open/Escape/focus return. No browser console errors observed.
+- Light-mode text contrast: charcoal on cream 13.47:1; secondary text on cream 5.32:1; secondary text on sand labels 4.79:1; white on indigo 6.12:1. All exceed 4.5:1 for normal text.
+- Production build, static checks and all 22 contact regression tests pass. Approved CV hash remains unchanged. No external message was sent during visual verification.

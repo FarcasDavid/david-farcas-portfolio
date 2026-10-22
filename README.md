@@ -1,6 +1,6 @@
 # David Farcas — professional portfolio
 
-An experience-led, responsive portfolio for David Farcas, AI/ML Engineer & Full Stack Developer in Cluj-Napoca. A three-view application with an original near-black and white identity with a fixed vivid cobalt accent, circular SVG logo controls, interactive skills and a system explorer. Static HTML/CSS/JavaScript with no runtime dependencies, trackers, or browser API keys. The contact form uses FormSubmit for server-side email delivery.
+An experience-led, responsive portfolio for David Farcas, AI/ML Engineer & Full Stack Developer in Cluj-Napoca. A three-view application with an original near-black and white identity with a fixed vivid cobalt accent, circular SVG logo controls, a grouped Tech Stack and an interactive system explorer. Static HTML/CSS/JavaScript with no runtime dependencies, trackers, or browser API keys. The contact form uses FormSubmit for server-side email delivery.
 
 ## Run locally
 
@@ -20,7 +20,7 @@ Open http://localhost:4173. `npm run dev` serves the built `dist/` directory too
 
 - `src/index.html`: page content, metadata, contact links, semantic sections.
 - `src/styles.css`: colors, layout, responsive behavior, focus and reduced-motion styles.
-- `src/main.js`: view/hash/history routing, keyboard tabs, skill and system selectors, theme persistence, and the contact form with direct email delivery.
+- `src/main.js`: view/hash/history routing, keyboard tabs, system selectors, theme persistence, and the contact form with direct email delivery.
 - `src/assets/`: self-hosted variable fonts and monochrome SVG logos, with licenses and a hash manifest.
 - `public/cv/David_Farcas_2026_CV.pdf`: approved downloadable CV, including the verified website in its contact row at David's request.
 - `cv/David_Farcas_2026_CV.tex`: matching editable LaTeX source.
@@ -41,9 +41,11 @@ GitHub Pages is the recommended public host. `.github/workflows/deploy.yml` buil
 
 ## Editing the application
 
-The three views follow About (`#about`) → Experience (`#experience`) → Contact (`#contact`). About combines the introduction, education, local toolkit explorer and results. Certifications are highlighted at the start of Experience. Legacy `#home` and `#stack` links resolve to About and its toolkit section. Only the selected panel is shown; browser Back/Forward and direct hash links work. The desktop tab bar becomes a fixed bottom dock on mobile. Arrow keys, Home and End move between tabs. Without JavaScript all content remains available.
+The three views follow About (`#about`) → Experience (`#experience`) → Contact (`#contact`). About combines the introduction, education, static Tech Stack and results. Certifications are highlighted at the start of Experience. Legacy `#home` and `#stack` links resolve to About and its Tech Stack section. Only the selected panel is shown; browser Back/Forward and direct hash links work. The desktop tab bar becomes a fixed bottom dock on mobile. Arrow keys, Home and End move between tabs. Without JavaScript all content remains available.
 
-The About skill buttons update explanatory copy stored in the `skills` object in `src/main.js`; the diagram uses the `stages` object. Keep those explanations grounded in `docs/PROFILE.md`. `src/styles.css` starts with dark/light color tokens. Both themes exclude green, including the monochrome brand icons. Cobalt is fixed; there is no palette or size switch. Large viewports automatically scale to 125% at 1800×950 CSS pixels and 150% at 2300×1200; smaller windows keep the original sizing. `portfolio-theme` is the only active stored appearance preference. Reduced-motion preferences disable animation.
+The About Tech Stack uses seven static category cards in `src/index.html`; it has no hidden details or selection controls. Both `#stack` and `#toolkit` remain aliases for `#tech-stack`. The diagram uses the `stages` object in `src/main.js`. Keep all technology names grounded in `docs/PROFILE.md`.
+
+`src/styles.css` starts with dark/light color tokens, including the diagram’s surfaces and text. Light mode uses warm cream/ivory surfaces, charcoal text and deep indigo accents; dark mode retains cobalt. Both themes exclude green. Large viewports automatically scale to 125% at 1800×950 CSS pixels and 150% at 2300×1200; smaller windows keep the original sizing. `portfolio-theme` is the stored appearance preference. Reduced-motion preferences disable animation.
 
 Font and icon licenses/source links are recorded in [ASSET_SOURCES.md](docs/ASSET_SOURCES.md). No personal projects are displayed.
 

@@ -1,0 +1,74 @@
+<article
+            class="contour-card work-card"
+            id="experience-calls"
+            aria-labelledby="experience-calls-title"
+            data-experience-case
+            tabindex="-1"
+          >
+            <svg class="card-contour" aria-hidden="true" focusable="false">
+              <rect x="1" y="1" rx="22" pathLength="1"></rect>
+            </svg>
+            <div class="work-card-top">
+              <span class="work-number">02</span
+              ><span class="industry">INSURANCE</span
+              ><span class="work-date">2026</span>
+            </div>
+            <div class="work-card-grid">
+              <div>
+                <h3 id="experience-calls-title">
+                  LLM-based Call<br />Quality Assurance
+                </h3>
+                <p class="work-lead">Assessments you can actually inspect.</p>
+                <p>
+                  I built weighted, rubric-driven LLM scoring with evidence for
+                  each criterion. RapidFuzz and DeBERTa NLI flag fabricated
+                  citations and unsupported reasoning without extra LLM
+                  verification calls.
+                </p>
+                <div class="tag-row">
+                  <span>Python</span><span>LangChain</span><span>DSPy</span
+                  ><span>HuggingFace Transformers</span>
+                </div>
+              </div>
+              <div class="judgments-card" data-case-evidence>
+                <span class="large-number">952<span>judgments</span></span>
+                <p>8 criteria · 119 calls</p>
+                <div
+                  class="criterion-blocks"
+                  aria-label="Eight evaluation criteria"
+                >
+                  <span>01</span><span>02</span><span>03</span><span>04</span
+                  ><span>05</span><span>06</span><span>07</span><span>08</span>
+                </div>
+                <small
+                  >Evaluated with macro-F1 and Cohen’s kappa to track agreement
+                  and regressions.</small
+                >
+              </div>
+            </div>
+            <div class="case-details">
+              <h4>What I built</h4>
+              <ul class="case-points" role="list">
+                <li>
+                  <strong>Scoring with inspectable evidence.</strong> Turned
+                  transcripts into weighted, rubric-driven assessments with
+                  citations for each criterion, making quality reviews
+                  consistent and scores auditable.
+                </li>
+                <li>
+                  <strong>Verification without extra LLM calls.</strong>
+                  Combined RapidFuzz citation checks with DeBERTa NLI to flag
+                  fabricated citations and unsupported reasoning. Local NLI
+                  checks benchmarked at 108–151 ms per criterion; these are
+                  advisory checks, not a factuality guarantee or total
+                  application latency.
+                </li>
+                <li>
+                  <strong>Optimization against human agreement.</strong> Used
+                  DSPy/GEPA with macro-F1 and Cohen’s kappa across eight
+                  criteria and 119 calls (952 judgments) to measure agreement
+                  and identify quality regressions.
+                </li>
+              </ul>
+            </div>
+          </article>

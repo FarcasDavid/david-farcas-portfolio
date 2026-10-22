@@ -1,0 +1,506 @@
+/* Interactive AI workflow diagram and its stage details. */
+
+.hero-workbench {
+  position: relative;
+  padding: 23px;
+  border: 1px solid var(--diagram-line);
+  border-radius: var(--radius);
+  background: var(--diagram-surface);
+  box-shadow: 0 28px 80px #0002;
+  overflow: hidden;
+  transform: rotate(1.2deg);
+  transition:
+    transform 0.4s,
+    border-color 0.4s;
+}
+
+.hero-workbench:hover {
+  transform: rotate(0);
+  border-color: var(--diagram-hover);
+}
+
+.interactive-field::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    360px circle at var(--pointer-x, 70%) var(--pointer-y, 20%),
+    var(--diagram-glow),
+    transparent 70%
+  );
+}
+
+.workbench-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  position: relative;
+}
+
+.workbench-heading .eyebrow {
+  color: var(--diagram-muted);
+  font-size: 8px;
+  letter-spacing: 1.1px;
+}
+
+.interactive-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--diagram-text);
+  font-size: 9px;
+  border: 1px solid var(--diagram-line);
+  padding: 5px 8px;
+  border-radius: 100px;
+}
+
+.interactive-label .icon {
+  width: 12px;
+  height: 12px;
+  color: var(--accent-on-dark);
+}
+
+.system-map {
+  position: relative;
+  margin: 20px 0 17px;
+  background-image: radial-gradient(
+    var(--diagram-grid) 0.7px,
+    transparent 0.7px
+  );
+  background-size: 15px 15px;
+  border-radius: 16px;
+}
+
+.map-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.map-track {
+  stroke: var(--diagram-track);
+  stroke-width: 1;
+  fill: none;
+}
+
+.map-cross {
+  stroke: var(--diagram-line);
+  stroke-width: 1;
+  fill: none;
+  stroke-dasharray: 3 6;
+}
+
+.map-travel {
+  stroke: var(--accent-on-dark);
+  stroke-width: 1.7;
+  fill: none;
+  stroke-dasharray: 26 730;
+  animation: track-flow 12s linear infinite;
+}
+
+@keyframes track-flow {
+  to {
+    stroke-dashoffset: -756;
+  }
+}
+
+.map-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-7deg);
+  width: 84px;
+  height: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid var(--diagram-line);
+  border-radius: 25px;
+  background: var(--diagram-center);
+  box-shadow:
+    0 0 55px color-mix(in srgb, var(--accent-fill) 14%, transparent),
+    0 8px 30px #0003;
+  color: var(--diagram-text);
+}
+
+.map-center > span {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 36px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -4px;
+  padding-right: 3px;
+}
+
+.map-center-mark i {
+  color: var(--accent-on-dark);
+  font-style: normal;
+}
+
+.map-center small {
+  font-size: 6px;
+  letter-spacing: 1px;
+  margin-top: 7px;
+  color: var(--diagram-muted);
+}
+
+.stage-node {
+  width: 123px;
+  height: 69px;
+  position: absolute;
+  z-index: 2;
+  border-radius: 13px;
+  border: 1px solid var(--diagram-line);
+  background: var(--diagram-node);
+  color: var(--diagram-text);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 12px 14px;
+  gap: 7px;
+  box-shadow: 0 6px 16px #0002;
+  transition:
+    transform 0.25s,
+    background 0.25s,
+    border-color 0.25s,
+    color 0.25s;
+}
+
+.stage-node .icon {
+  width: 18px;
+  height: 18px;
+}
+
+.stage-node span {
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.stage-node:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-on-dark);
+}
+
+.stage-node.is-selected {
+  background: var(--diagram-fill);
+  border-color: var(--accent-on-dark);
+  color: var(--diagram-ink);
+  box-shadow: 0 6px 25px color-mix(in srgb, var(--accent-fill) 18%, transparent);
+}
+
+.node-prepare {
+  top: 25px;
+  left: 5px;
+}
+
+.node-inference {
+  top: 25px;
+  right: 5px;
+}
+
+.node-evaluate {
+  bottom: 25px;
+  right: 5px;
+}
+
+.node-deliver {
+  bottom: 25px;
+  left: 5px;
+}
+
+.map-crosshair {
+  position: absolute;
+  color: var(--diagram-muted);
+  font-family: monospace;
+  font-size: 14px;
+}
+
+.crosshair-one {
+  left: 1px;
+  top: 48%;
+}
+
+.crosshair-two {
+  right: 1px;
+  top: 48%;
+}
+
+.stage-output {
+  position: relative;
+  border-top: 1px solid var(--diagram-line);
+  padding-top: 20px;
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 10px;
+}
+
+.stage-index {
+  color: var(--accent-on-dark);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.stage-output h2 {
+  color: var(--diagram-text);
+  font-size: 18px;
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+}
+
+.stage-output p {
+  color: var(--diagram-muted);
+  line-height: 1.85;
+  margin: 0;
+}
+
+.workbench-footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--diagram-line);
+  padding-top: 14px;
+  margin-top: 10px;
+  font-size: 8px;
+  color: var(--diagram-muted);
+  position: relative;
+}
+
+.workbench-footer > span {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.workbench-footer .icon {
+  width: 12px;
+  height: 12px;
+  color: var(--accent-on-dark);
+}
+
+@media (max-width: 1120px) {
+  .hero-workbench {
+    padding: 20px;
+  }
+
+  .workbench-heading .eyebrow {
+    font-size: 7px;
+    letter-spacing: 0.7px;
+  }
+
+  .stage-node {
+    width: 110px;
+  }
+
+  .stage-output h2 {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 900px) and (min-width: 761px) {
+  .hero-workbench {
+    padding: 17px;
+  }
+
+  .stage-node {
+    width: 94px;
+    padding: 10px;
+  }
+
+  .map-center {
+    width: 70px;
+    height: 70px;
+    border-radius: 22px;
+  }
+
+  .stage-output {
+    grid-template-columns: 27px 1fr;
+  }
+
+  .workbench-footer {
+    font-size: 7px;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-workbench {
+    padding: 22px;
+    transform: none;
+    border-radius: 20px;
+    max-width: 510px;
+    width: 100%;
+    justify-self: center;
+  }
+
+  .workbench-heading .eyebrow {
+    font-size: 7px;
+    letter-spacing: 0.8px;
+  }
+
+  .interactive-label {
+    font-size: 8px;
+    padding: 4px 7px;
+  }
+
+  .system-map {
+    margin: 15px 0;
+  }
+
+  .stage-node {
+    width: 112px;
+    height: 65px;
+    padding: 11px 13px;
+  }
+
+  .stage-node span {
+    font-size: 8px;
+  }
+
+  .stage-node .icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .node-prepare,
+  .node-inference {
+    top: 18px;
+  }
+
+  .node-evaluate,
+  .node-deliver {
+    bottom: 18px;
+  }
+
+  .map-center {
+    height: 72px;
+    width: 72px;
+    border-radius: 21px;
+  }
+
+  .map-center > span {
+    font-size: 32px;
+  }
+
+  .map-center small {
+    font-size: 5px;
+  }
+
+  .stage-output {
+    padding-top: 18px;
+    grid-template-columns: 29px 1fr;
+    gap: 8px;
+  }
+
+  .stage-index {
+    font-size: 18px;
+  }
+
+  .stage-output h2 {
+    font-size: 17px;
+    margin-bottom: 9px;
+  }
+
+  .workbench-footer {
+    font-size: 7px;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-workbench {
+    padding: 17px;
+  }
+
+  .workbench-heading .eyebrow {
+    font-size: 6.5px;
+    letter-spacing: 0.3px;
+  }
+
+  .stage-node {
+    width: 97px;
+    height: 62px;
+    padding: 10px;
+  }
+
+  .stage-output h2 {
+    font-size: 15px;
+  }
+}
+
+.system-map {
+  height: 242px;
+}
+
+.stage-output {
+  min-height: 155px;
+}
+
+.stage-output p {
+  font-size: 12px;
+}
+
+@media (max-width: 1120px) and (min-width: 761px) {
+  .stage-output {
+    min-height: 205px;
+  }
+
+  .stage-output p {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-workbench {
+    order: 3;
+    flex-shrink: 0;
+  }
+
+  .system-map {
+    height: 252px;
+  }
+
+  .stage-output {
+    min-height: 185px;
+  }
+
+  .stage-output p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .system-map {
+    height: 240px;
+  }
+
+  .stage-output {
+    min-height: 218px;
+  }
+
+  .stage-output p {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-workbench {
+    margin: 0 auto 28px;
+  }
+}
+
+[data-theme="light"] .hero-workbench {
+  box-shadow: 0 18px 48px #483b2610;
+}
+
+[data-theme="light"] .stage-node {
+  box-shadow: 0 4px 12px #483b260b;
+}
+
+[data-theme="light"] .map-center {
+  box-shadow: 0 8px 22px #483b2610;
+}

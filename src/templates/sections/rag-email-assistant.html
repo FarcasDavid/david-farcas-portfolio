@@ -1,0 +1,90 @@
+<article
+            class="contour-card work-card"
+            id="experience-email"
+            aria-labelledby="experience-email-title"
+            data-experience-case
+            tabindex="-1"
+          >
+            <svg class="card-contour" aria-hidden="true" focusable="false">
+              <rect x="1" y="1" rx="22" pathLength="1"></rect>
+            </svg>
+            <div class="work-card-top">
+              <span class="work-number">01</span
+              ><span class="industry">AUTOMOTIVE MARKETPLACE</span
+              ><span class="work-date">Aug 2026–present</span>
+            </div>
+            <div class="work-card-grid">
+              <div>
+                <h3 id="experience-email-title">
+                  RAG-based Email<br />Response Automation
+                </h3>
+                <p class="work-lead">
+                  From past replies to reusable knowledge.
+                </p>
+                <p>
+                  I independently architected and implemented an 11-category RAG
+                  assistant. It retrieves relevant knowledge and generates
+                  source-cited email drafts for human review.
+                </p>
+                <div class="tag-row">
+                  <span>Python</span><span>DSPy / GEPA</span
+                  ><span>AWS Bedrock</span><span>PostgreSQL / pgvector</span>
+                </div>
+              </div>
+              <div class="results-card" data-case-evidence>
+                <p class="eyebrow">AGENT-REPLY KNOWLEDGE PIPELINE</p>
+                <div>
+                  <p>Correct drafting</p>
+                  <strong
+                    >45%
+                    <svg class="icon" aria-hidden="true">
+                      <use href="#i-arrow"></use>
+                    </svg>
+                    <b>88%</b></strong
+                  >
+                </div>
+                <div>
+                  <p>Top-5 retrieval</p>
+                  <strong
+                    >70%
+                    <svg class="icon" aria-hidden="true">
+                      <use href="#i-arrow"></use>
+                    </svg>
+                    <b>91%</b></strong
+                  >
+                </div>
+                <small
+                  >Reported measurements for the integrated pipeline.</small
+                >
+              </div>
+            </div>
+            <div class="case-details">
+              <h4>What I built</h4>
+              <ul class="case-points" role="list">
+                <li>
+                  <strong>Retrieval with the right context.</strong> Routed
+                  requests across 11 categories, combined Cohere embeddings with
+                  PostgreSQL/pgvector search, and used Haiku reranking to
+                  prioritize evidence before drafting.
+                </li>
+                <li>
+                  <strong>A reusable knowledge pipeline.</strong> Turned
+                  historical agent replies into source-grounded knowledge. The
+                  integrated pipeline raised reported correct drafting from 45%
+                  to 88% and top-5 retrieval from 70% to 91%.
+                </li>
+                <li>
+                  <strong>Preparation before indexing.</strong> Added
+                  GLiNER/Presidio PII masking, MPNet semantic clustering and
+                  DeBERTa NLI grounding checks to limit personal-data exposure
+                  and keep answers traceable to their sources.
+                </li>
+                <li>
+                  <strong>Repeatable prompt optimization.</strong> Replaced ad
+                  hoc tuning with DSPy/GEPA against defined classification and
+                  safety metrics, making prompt selection repeatable and quality
+                  changes measurable.
+                </li>
+              </ul>
+            </div>
+          </article>

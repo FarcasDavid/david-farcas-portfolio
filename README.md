@@ -1,62 +1,51 @@
 # David Farcas — professional portfolio
 
-An experience-led, responsive portfolio for David Farcas, AI/ML Engineer & Full Stack Developer in Cluj-Napoca. A three-view application with an original near-black and white identity with a fixed vivid cobalt accent, circular SVG logo controls, a grouped Tech Stack and an interactive system explorer. Static HTML/CSS/JavaScript with no runtime dependencies, trackers, or browser API keys. The contact form uses FormSubmit for server-side email delivery.
+An experience-led, responsive portfolio for David Farcas, AI/ML Engineer & Full Stack Developer in Cluj-Napoca. About, Experience and Contact are static HTML views enhanced by small native JavaScript modules. Dark mode uses cobalt accents; light mode uses warm cream/ivory surfaces and deep indigo. Fonts and icons are self-hosted. There are no runtime packages, trackers or browser API keys. The contact form uses FormSubmit for email delivery.
 
-## Run locally
+## Run and verify
 
 Requires Node.js 22 or later.
 
 ```sh
 npm ci
-npm run build
-npm run check
-npm test
+npm run verify
 npm run preview
 ```
 
-Open http://localhost:4173. `npm run dev` serves the built `dist/` directory too; rebuild after source edits and refresh. To change the port, use `PORT=4174 npm run preview`.
+Open http://localhost:4173. To change the port: `PORT=4174 npm run preview`. Rebuild and refresh after source edits; `npm run dev` serves the same built output. `npm run verify` runs the build, production checks and all behavior tests.
 
-## Edit and build
+## Source map
 
-- `src/index.html`: page content, metadata, contact links, semantic sections.
-- `src/styles.css`: colors, layout, responsive behavior, focus and reduced-motion styles.
-- `src/main.js`: view/hash/history routing, keyboard tabs, system selectors, theme persistence, and the contact form with direct email delivery.
-- `src/assets/`: self-hosted variable fonts and monochrome SVG logos, with licenses and a hash manifest.
-- `public/cv/David_Farcas_2026_CV.pdf`: approved downloadable CV, including the verified website in its contact row at David's request.
-- `cv/David_Farcas_2026_CV.tex`: matching editable LaTeX source.
-- `scripts/build.mjs`: copies `src/` and `public/` into ignored `dist/`.
-- `scripts/check.mjs`: internal links, anchor/ID integrity, primary heading and approved PDF hash.
+- `src/index.html`: document shell and build-time HTML includes.
+- `src/templates/pages/`: About, Experience and Contact views.
+- `src/templates/sections/`: introduction, Tech Stack, results, certifications and individual experience cases.
+- `src/templates/partials/`: shared head/icons/header/footer, message dialog and no-JavaScript fallback.
+- `src/main.js`: composition root; supplies browser capabilities and coordinates features.
+- `src/scripts/`: navigation, appearance, workflow and contact modules, plus editable workflow content.
+- `src/styles.css`: ordered source stylesheet imports; feature styles live in `src/styles/`.
+- `src/assets/`: self-hosted fonts/icons with licenses and a hash manifest.
+- `cv/David_Farcas_2026_CV.tex` and `public/cv/David_Farcas_2026_CV.pdf`: approved CV source and download.
+- `scripts/`: static assembly, production checks, preview server and Node tests.
+- `dist/`: ignored, fully assembled deployable website. Never edit it directly.
 
-All asset and CV links are relative, so the build works at a domain root or GitHub Pages project subpath. No framework base-path rewrite is required. `BASE_PATH` is not consumed by this static build. Generated output and QA screenshots stay out of Git.
+The build assembles templates and bundles styles without external tooling. Native JavaScript modules load directly in the browser. Relative paths support a domain root or a GitHub Pages project subpath; no framework base-path rewrite is needed.
 
-## Deployment and evidence
+## Architecture and editing
 
-[Hosting comparison and exact steps](docs/HOSTING.md) · [Validation record](docs/VALIDATION.md) · [Reference audit](docs/REFERENCE_AUDIT.md) · [Redesign reference](docs/REDESIGN_REFERENCE.md) · [Redesign QA](docs/REDESIGN_QA.md) · [Content review](docs/CONTENT_REVIEW.md) · [Prioritized project roadmap](docs/PROJECT_IDEAS.md).
+[Architecture and module interfaces](docs/ARCHITECTURE.md) · [Editing guide and release checks](docs/MAINTENANCE.md)
 
-GitHub Pages is the recommended public host. `.github/workflows/deploy.yml` builds and deploys on pushes to `main` once Pages is enabled for GitHub Actions. See `HANDOFF_STATUS.md` for the actual publication status; a configured workflow alone does not establish a live deployment.
+Feature modules own their DOM behavior. A pure resolver owns route aliases. Contact delivery uses an injected adapter; provider-specific HTTP behavior stays outside the UI. Tests import the same interfaces the site uses, with simulated HTTP/storage/clocks where necessary. The architecture deliberately fits a small static portfolio.
 
-## Content integrity
+The three views are About (`#about`), Experience (`#experience`) and Contact (`#contact`). Browser history and direct deep links work; the desktop tab bar becomes a mobile bottom dock. Keyboard arrows, Home, End and Space select tabs. `#home`, `#stack` and `#toolkit` remain supported aliases. With JavaScript disabled, all portfolio content remains readable and direct contact/CV links work.
 
-`docs/PROFILE.md` and the approved CV are the source of truth. Professional client work is anonymized. Project recommendations are proposals, not finished work; there are no fabricated demos. Outcome figures retain their supplied scope. David requested the verified `https://davidfarcas.ro/` link in the CV contact row on 16 October 2026; the remaining CV content is unchanged.
+## Content and contact
 
-## Editing the application
+`docs/PROFILE.md` and the approved CV are the content sources of truth. Client work is anonymized, reported outcomes retain their scope, and proposed personal projects are not presented as finished work. David approved the verified website link in the CV on 16 October 2026; the refactor leaves the CV unchanged.
 
-The three views follow About (`#about`) → Experience (`#experience`) → Contact (`#contact`). About combines the introduction, education, static Tech Stack and results. Certifications are highlighted at the start of Experience. Legacy `#home` and `#stack` links resolve to About and its Tech Stack section. Only the selected panel is shown; browser Back/Forward and direct hash links work. The desktop tab bar becomes a fixed bottom dock on mobile. Arrow keys, Home and End move between tabs. Without JavaScript all content remains available.
+The Contact invitation and Email controls open a native dialog. Send message submits over HTTPS without leaving the site; success is shown only after explicit provider acceptance. Pending requests prevent duplicate sends and retain reassurance when slow. Activation, rejection, malformed responses and network failures keep the draft. Copy message and direct email are fallbacks. No mailbox credentials are shipped. See [delivery status and setup](docs/CONTACT_DELIVERY_OPTIONS.md).
 
-The About Tech Stack uses seven static category cards in `src/index.html`; it has no hidden details or selection controls. Both `#stack` and `#toolkit` remain aliases for `#tech-stack`. The diagram uses the `stages` object in `src/main.js`. Keep all technology names grounded in `docs/PROFILE.md`.
+## Publication and evidence
 
-`src/styles.css` starts with dark/light color tokens, including the diagram’s surfaces and text. Light mode uses warm cream/ivory surfaces, charcoal text and deep indigo accents; dark mode retains cobalt. Both themes exclude green. Large viewports automatically scale to 125% at 1800×950 CSS pixels and 150% at 2300×1200; smaller windows keep the original sizing. `portfolio-theme` is the stored appearance preference. Reduced-motion preferences disable animation.
+GitHub Pages is the public host at https://davidfarcas.ro. `.github/workflows/deploy.yml` builds, checks, tests and deploys pushes to `main`. The existing Sites preview remains owner-private. See [handoff status](HANDOFF_STATUS.md) for verified deployment results.
 
-Font and icon licenses/source links are recorded in [ASSET_SOURCES.md](docs/ASSET_SOURCES.md). No personal projects are displayed.
-
-## Contact form and case-study links
-
-The warm neutral Contact card’s “Send me a message” button and both Email circles open a native dialog with name, email, subject and message fields. **Send message** submits over HTTPS to FormSubmit without leaving the site or opening an email app. The provider emails `farcas.david@yahoo.com`; the visitor’s email becomes Reply-To. No Yahoo password, API key, paid plan, or sending domain is required. There is no visible provider branding in the form.
-
-**Owner setup:** David has activated the existing form and confirmed receipt in Yahoo. Recheck delivery after moving to GitHub Pages or a custom domain, and activate the new origin if the service requests it. See [delivery options and current status](docs/CONTACT_DELIVERY_OPTIONS.md).
-
-During a request, controls are disabled to prevent duplicate clicks and an accessible status appears immediately. A slow request stays pending with reassurance after eight seconds; there is no artificial abort deadline. Only an explicit successful provider response shows “Message sent” and clears the form. Activation, rejection, network errors and malformed responses preserve the message. A lost response cannot establish whether the provider received it, so the form advises waiting before retrying. Copy message and the direct address remain fallbacks. The `_honey` field supplements the provider’s spam filtering; the AJAX flow does not claim CAPTCHA or automatic visitor confirmations.
-
-The About diagram describes a general Prepare → Inference → Evaluate → Deliver workflow. Project-specific technologies and benchmarks remain in the experience summaries and skill explanations.
-
-About evidence cards link directly to `#experience-email`, `#experience-calls` and `#experience-platform`. These fragments select the Experience tab and scroll to the corresponding article below the header; direct links and browser history use the same destinations.
+[Hosting](docs/HOSTING.md) · [Validation](docs/VALIDATION.md) · [Refactoring record](docs/REFACTORING.md) · [Rendered QA](docs/REDESIGN_QA.md) · [Reference audit](docs/REFERENCE_AUDIT.md) · [Project roadmap](docs/PROJECT_IDEAS.md) · [Asset sources/licenses](docs/ASSET_SOURCES.md)

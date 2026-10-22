@@ -1,52 +1,39 @@
+import { attributes, textContent, parseTags, hasClass, elementMarkup } from "./lib/html-inspection.mjs";
 import assert from "node:assert/strict";
-import { readFile, stat } from "node:fs/promises";
+import { readFile, stat, readdir } from "node:fs/promises";
 import { createHash } from "node:crypto";
-import { Script } from "node:vm";
+import { spawnSync } from "node:child_process";
+import path from "node:path";
 
 const html = await readFile("dist/index.html", "utf8");
 const css = await readFile("dist/styles.css", "utf8");
-const script = await readFile("dist/main.js", "utf8");
-new Script(script, { filename: "dist/main.js" });
-
-function decodeEntities(value) {
-  return value.replace(
-    /&(quot|apos|amp|lt|gt|#39);/g,
-    (_, entity) =>
-      ({
-        quot: '"',
-        apos: "'",
-        amp: "&",
-        lt: "<",
-        gt: ">",
-        "#39": "'",
-      })[entity],
-  );
+async function checkJavaScriptModule(file) {
+  const parsed = spawnSync(process.execPath, ["--check", file], { encoding: "utf8" });
+  assert.equal(parsed.status, 0, `${file}: ${parsed.stderr}`);
+  const source = await readFile(file, "utf8");
+  for (const [, specifier] of source.matchAll(/(?:\bfrom\s*|\bimport\s*)["']([^"']+)["']/g)) {
+    assert(specifier.startsWith("."), `Unexpected runtime dependency in ${file}`);
+    const target = path.resolve(path.dirname(file), specifier);
+    assert(!path.relative(path.resolve("dist"), target).startsWith(".."), `Import escapes deployment output: ${file}`);
+    await stat(target);
+  }
 }
-
-function textContent(markup) {
-  return decodeEntities(markup.replace(/<[^>]+>/g, " "))
-    .replace(/\s+/g, " ")
-    .trim();
+async function checkModuleDirectory(directory) {
+  for (const entry of await readdir(directory, { withFileTypes: true })) {
+    const file = path.join(directory, entry.name);
+    if (entry.isDirectory()) await checkModuleDirectory(file);
+    else if (entry.name.endsWith(".js")) {
+      await checkJavaScriptModule(file);
+    }
+  }
 }
+await checkModuleDirectory("dist/scripts");
+await checkJavaScriptModule("dist/main.js");
+assert(!/<!--\s*include:/.test(html), "Unresolved HTML include in production output");
+assert(!/@import\s/.test(css), "Production stylesheet must be bundled");
 
-function attributes(tag) {
-  const content = tag.replace(/^<\/?[\w-]+/, "").replace(/\/?>$/, "");
-  return Object.fromEntries(
-    [
-      ...content.matchAll(
-        /([^\s"'<>/=]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+)))?/g,
-      ),
-    ].map(([, key, double, single, unquoted]) => [
-      key,
-      decodeEntities(double ?? single ?? unquoted ?? ""),
-    ]),
-  );
-}
-
-const tags = [...html.matchAll(/<[a-z][^>]*>/gi)].map(([tag]) => ({
-  tag,
-  attrs: attributes(tag),
-}));
+const tags = parseTags(html);
+assert(tags.some(({ attrs }) => attrs.src === "./main.js" && attrs.type === "module"), "Entry point must load as a native JavaScript module");
 const ids = tags
   .filter(({ attrs }) => "id" in attrs)
   .map(({ attrs }) => attrs.id);
@@ -104,21 +91,21 @@ assert(
   "Personal projects are not part of this application",
 );
 
-const stackMarkup = html.match(/<section id="tech-stack"[\s\S]*?<\/section>/)?.[0];
+const stackMarkup = elementMarkup(html, attrs => attrs.id === "tech-stack");
 assert(stackMarkup, "Tech Stack must be available as a section");
 assert(!/<(?:button|details)\b/.test(stackMarkup), "Tech Stack should be readable without interaction");
-assert.equal((stackMarkup.match(/class="stack-card"/g) || []).length, 7, "Expected seven Tech Stack categories");
+assert.equal(parseTags(stackMarkup).filter(({ attrs }) => hasClass(attrs, "stack-card")).length, 7, "Expected seven Tech Stack categories");
 for (const term of ["TypeScript", "Cypher", "MongoDB", "Neo4j", "Qdrant", "FAISS", "Claude Code", "Codex", "Warp"]) {
   assert(stackMarkup.includes(term), `Missing confirmed technology: ${term}`);
 }
 
-const aboutMarkup = html.slice(html.indexOf('id="about"'), html.indexOf('id="experience"'));
-const experienceMarkup = html.slice(html.indexOf('id="experience"'), html.indexOf('id="contact"'));
-assert(!aboutMarkup.includes('class="credential-card"'), "Certifications belong in Experience");
-assert.equal((experienceMarkup.match(/class="credential-card"/g) || []).length, 2);
-assert.equal((aboutMarkup.match(/<div class="about-prose">([\s\S]*?)<div class="education-note">/)?.[1].match(/<p>/g) || []).length, 4, "About needs four introduction paragraphs");
-assert(aboutMarkup.includes('class="next-view" href="#experience"'), "About leads to Experience");
-assert(experienceMarkup.includes('class="next-view" href="#contact"'), "Experience leads to Contact");
+const aboutMarkup = elementMarkup(html, attrs => attrs.id === "about");
+const experienceMarkup = elementMarkup(html, attrs => attrs.id === "experience");
+assert(!parseTags(aboutMarkup).some(({ attrs }) => hasClass(attrs, "credential-card")), "Certifications belong in Experience");
+assert.equal(parseTags(experienceMarkup).filter(({ attrs }) => hasClass(attrs, "credential-card")).length, 2);
+assert.equal(parseTags(elementMarkup(aboutMarkup, attrs => hasClass(attrs, "about-prose"))).filter(({ tag }) => /^<p[ >]/.test(tag)).length, 4, "About needs four introduction paragraphs");
+assert(parseTags(aboutMarkup).some(({ attrs }) => hasClass(attrs, "next-view") && attrs.href === "#experience"), "About leads to Experience");
+assert(parseTags(experienceMarkup).some(({ attrs }) => hasClass(attrs, "next-view") && attrs.href === "#contact"), "Experience leads to Contact");
 assert.equal(tags.find(({ attrs }) => attrs.id === "tech-stack")?.attrs.tabindex, "-1", "Tech Stack deep links must receive keyboard focus");
 
 const workflowStages = ["prepare", "inference", "evaluate", "deliver"];
@@ -293,6 +280,7 @@ const contactForm = [
 )?.[0];
 assert(contactForm, "Contact dialog needs form#contact-form");
 const formAttributes = attributes(contactForm.match(/^<form\b[^>]*>/)[0]);
+assert.equal(formAttributes["data-recipient"], "farcas.david@yahoo.com", "Copy fallback needs the approved email recipient");
 assert.equal(
   formAttributes.action,
   "https://formsubmit.co/ajax/farcas.david@yahoo.com",

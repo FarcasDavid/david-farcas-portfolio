@@ -1,0 +1,830 @@
+/* Experience case studies, outcomes and certifications. */
+
+.earlier-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.earlier-heading h3 {
+  font-size: 27px;
+  font-weight: 500;
+  letter-spacing: -1px;
+  margin: 0;
+}
+
+.earlier-heading h3 span {
+  color: var(--accent);
+}
+
+.earlier-heading > p {
+  color: var(--muted);
+  font-size: 11px;
+  margin: 0 0 3px;
+  line-height: 1.7;
+}
+
+.experience-employer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 0;
+  margin-bottom: 5px;
+  border-top: 1px solid var(--line);
+}
+
+.experience-employer h3 {
+  font-size: 17px;
+  margin: 0;
+  font-weight: 500;
+}
+
+.experience-employer p {
+  margin: 1px 0 0;
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.experience-employer > span {
+  margin-left: auto;
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.work-card {
+  --contour-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 30px 34px 0;
+  margin-top: 24px;
+  overflow: hidden;
+}
+
+.work-card-top {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 32px;
+}
+
+.work-number {
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--accent);
+  font-size: 14px;
+}
+
+.industry {
+  font-size: 8px;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.work-date {
+  font-size: 9px;
+  margin-left: auto;
+  color: var(--muted);
+}
+
+.work-card-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 65px;
+  padding-bottom: 28px;
+}
+
+.work-card h3 {
+  font-size: 33px;
+  line-height: 1.12;
+  letter-spacing: -1.2px;
+  font-weight: 500;
+  margin-bottom: 22px;
+}
+
+.work-card p {
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+.work-card .work-lead {
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 13px;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 20px;
+}
+
+.tag-row > span {
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 5px 9px;
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.results-card {
+  background: color-mix(in srgb, var(--accent-fill) 4.3%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-fill) 19.2%, transparent);
+  border-radius: 16px;
+  padding: 25px;
+}
+
+.results-card > .eyebrow {
+  font-size: 8px;
+  color: var(--accent);
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+}
+
+.results-card > div {
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--accent-fill) 14.1%, transparent);
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+}
+
+.results-card > div > p {
+  margin-bottom: 5px;
+}
+
+.results-card strong {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 38px;
+  font-weight: 400;
+  letter-spacing: -1px;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.results-card strong > b {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.results-card strong .icon {
+  width: 25px;
+  height: 25px;
+  color: var(--accent);
+  transform: rotate(45deg);
+  margin: 0 9px;
+}
+
+.results-card small {
+  font-size: 9px;
+  color: var(--muted);
+}
+
+.judgments-card {
+  padding: 22px 28px;
+  border-radius: 16px;
+  background: var(--surface-raised);
+}
+
+.large-number {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 76px;
+  line-height: 1;
+  letter-spacing: -3px;
+}
+
+.large-number > span {
+  display: block;
+  font-family: "Manrope", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0;
+  margin-top: 8px;
+}
+
+.judgments-card p {
+  font-size: 10px;
+  margin: 13px 0 17px;
+}
+
+.judgments-card small {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.8;
+  display: block;
+}
+
+.platform-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+}
+
+.platform-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.platform-metrics strong {
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--accent);
+  font-size: 27px;
+  font-weight: 500;
+  white-space: nowrap;
+  letter-spacing: -1px;
+}
+
+.platform-metrics p {
+  margin-top: 12px;
+}
+
+.case-details {
+  border-top: 1px solid var(--line);
+  padding: 25px 0 30px;
+}
+
+.case-details h4 {
+  margin: 0 0 22px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.case-points {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px 38px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.case-points li {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.9;
+  padding-left: 17px;
+  position: relative;
+}
+
+.case-points li::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.case-points strong {
+  display: block;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.platform-grid {
+  padding-bottom: 28px;
+}
+
+.earlier-work {
+  margin-top: 50px;
+}
+
+.earlier-heading .eyebrow {
+  color: var(--accent);
+  font-size: 9px;
+  margin-bottom: 15px;
+  line-height: 1.8;
+}
+
+.earlier-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.application-card {
+  --contour-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 25px;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.application-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+
+.application-card h4 {
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: -0.6px;
+  line-height: 1.25;
+  margin: 0 0 16px;
+}
+
+.application-card p,
+.application-card li {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.application-card p {
+  margin: 0 0 20px;
+}
+
+.application-card .application-outcome {
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.application-outcome > span {
+  display: block;
+  color: var(--accent);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.application-card li strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.application-card ul {
+  padding-left: 16px;
+  margin: 0 0 25px;
+}
+
+.application-card li + li {
+  margin-top: 12px;
+}
+
+.application-card li::marker {
+  color: var(--accent);
+}
+
+.application-card .tag-row {
+  margin-top: auto;
+}
+
+.work-card:focus,
+.application-card:focus {
+  outline: none;
+}
+
+@media (max-width: 1000px) {
+  .earlier-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .earlier-heading {
+    display: block;
+  }
+
+  .earlier-heading h3 {
+    font-size: 25px;
+  }
+
+  .earlier-heading > p {
+    margin-top: 12px;
+  }
+
+  .work-card {
+    --contour-radius: 20px;
+  }
+
+  .case-points {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .case-points li {
+    font-size: 12px;
+  }
+
+  .case-points strong {
+    font-size: 13px;
+  }
+
+  .application-card {
+    padding: 24px 22px;
+  }
+}
+
+.credentials-heading {
+  margin: 48px 0 25px;
+}
+
+.credentials-heading > .eyebrow {
+  color: var(--muted);
+  font-size: 8px;
+  margin-bottom: 12px;
+}
+
+.credentials-heading > h3 {
+  font-size: 29px;
+  font-weight: 500;
+  letter-spacing: -1px;
+}
+
+.credential-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.credential-card {
+  border: 1px solid var(--line);
+  padding: 28px;
+  border-radius: 18px;
+  background: var(--surface);
+}
+
+.credential-number {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 24px;
+  color: var(--accent);
+}
+
+.credential-card > .eyebrow {
+  font-size: 8px;
+  color: var(--muted);
+  margin: 18px 0 12px;
+}
+
+.credential-card h4 {
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 13px;
+}
+
+.credential-card > p:not(.eyebrow) {
+  line-height: 1.9;
+  color: var(--muted);
+}
+
+.credential-card small {
+  display: block;
+  font-size: 9px;
+  color: var(--accent);
+  padding-top: 10px;
+}
+
+@media (max-width: 1120px) {
+  .work-card-grid {
+    gap: 35px;
+  }
+
+  .work-card {
+    padding: 25px 28px 0;
+  }
+
+  .work-card h3 {
+    font-size: 29px;
+  }
+
+  .platform-grid {
+    gap: 30px;
+  }
+
+  .platform-metrics {
+    gap: 17px;
+  }
+
+  .platform-metrics strong {
+    font-size: 23px;
+  }
+
+  .credential-card {
+    padding: 23px;
+  }
+}
+
+@media (max-width: 760px) {
+  .experience-employer {
+    gap: 11px;
+    padding: 18px 0;
+  }
+
+  .experience-employer h3 {
+    font-size: 16px;
+  }
+
+  .experience-employer p {
+    font-size: 8px;
+  }
+
+  .experience-employer > span {
+    font-size: 8px;
+    text-align: right;
+    max-width: 68px;
+  }
+
+  .work-card {
+    padding: 22px 21px 0;
+    border-radius: 20px;
+    margin-top: 18px;
+  }
+
+  .work-card-top {
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .industry {
+    font-size: 7px;
+    letter-spacing: 0.7px;
+  }
+
+  .work-date {
+    font-size: 8px;
+  }
+
+  .work-number {
+    font-size: 12px;
+  }
+
+  .work-card-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .work-card h3 {
+    font-size: 28px;
+    letter-spacing: -1.1px;
+    margin-bottom: 19px;
+  }
+
+  .tag-row {
+    gap: 6px;
+    margin-top: 18px;
+  }
+
+  .tag-row > span {
+    padding: 5px 8px;
+    font-size: 8px;
+  }
+
+  .results-card {
+    padding: 22px;
+  }
+
+  .results-card > .eyebrow {
+    font-size: 7px;
+    letter-spacing: 0.8px;
+  }
+
+  .results-card strong {
+    font-size: 35px;
+  }
+
+  .results-card strong .icon {
+    width: 22px;
+    height: 22px;
+    margin: 0 7px;
+  }
+
+  .judgments-card {
+    padding: 25px;
+  }
+
+  .large-number {
+    font-size: 66px;
+  }
+
+  .large-number > span {
+    display: inline;
+    font-size: 12px;
+    letter-spacing: 0;
+    margin-left: 12px;
+  }
+
+  .platform-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .platform-work .industry {
+    max-width: 230px;
+  }
+
+  .platform-work .work-date {
+    margin-left: 20px;
+  }
+
+  .platform-metrics strong {
+    font-size: 23px;
+  }
+
+  .credentials-heading {
+    margin-top: 35px;
+  }
+
+  .credentials-heading > h3 {
+    font-size: 27px;
+  }
+
+  .credential-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .credential-card {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 360px) {
+  .results-card {
+    padding: 18px;
+  }
+
+  .results-card strong {
+    font-size: 30px;
+  }
+
+  .work-card h3 {
+    font-size: 25px;
+  }
+}
+
+.work-card p {
+  font-size: 14px;
+}
+
+.work-card .work-lead {
+  font-size: 17px;
+}
+
+.results-card > div > p {
+  font-size: 11px;
+}
+
+.platform-metrics p {
+  font-size: 12px;
+}
+
+.credential-card > p:not(.eyebrow) {
+  font-size: 12px;
+}
+
+.criterion-blocks {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 5px;
+  margin: 18px 0;
+}
+
+.criterion-blocks > span {
+  display: grid;
+  place-items: center;
+  height: 30px;
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, var(--line));
+  color: var(--blue);
+  border-radius: 5px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 9px;
+}
+
+@media (max-width: 760px) {
+  .work-card p {
+    font-size: 13px;
+  }
+
+  .work-card .work-lead {
+    font-size: 15px;
+  }
+
+  .platform-metrics p {
+    font-size: 11px;
+  }
+
+  .credential-card > p:not(.eyebrow) {
+    font-size: 12px;
+  }
+}
+
+.work-card[data-experience-case] {
+  scroll-margin-top: 20px;
+}
+
+.work-card[data-experience-case]:focus {
+  outline: none;
+}
+
+[data-case-evidence] {
+  scroll-margin-top: 20px;
+}
+
+.credentials-heading h3 span {
+  color: var(--accent);
+}
+
+.certifications {
+  margin: 0 0 44px;
+}
+
+.certifications .credentials-heading {
+  margin: 0 0 24px;
+}
+
+.certifications .credential-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.certifications .credential-card {
+  position: relative;
+  padding: 28px 32px;
+  border-color: color-mix(in srgb, var(--accent) 50%, var(--line));
+  border-top: 3px solid var(--accent);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--accent) 9%, var(--surface)),
+    var(--surface)
+  );
+}
+
+.certifications .credential-number {
+  position: absolute;
+  top: 22px;
+  right: 26px;
+  opacity: 0.55;
+  font-size: 30px;
+}
+
+.certifications .credential-card > .eyebrow {
+  color: var(--accent);
+  margin: 0 45px 18px 0;
+}
+
+.certifications .credential-card h4 {
+  font-size: 21px;
+  max-width: 32ch;
+}
+
+.certifications .credential-card > p:not(.eyebrow) {
+  font-size: 13px;
+}
+
+.certifications .credential-card small {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+@media (max-width: 760px) {
+  .certifications .credential-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .certifications .credential-card {
+    padding: 26px;
+  }
+
+  .certifications .credential-card h4 {
+    font-size: 21px;
+  }
+
+  .certifications {
+    margin-bottom: 32px;
+  }
+}
+
+[data-theme="light"] .certifications .credential-card {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--accent) 3%, var(--surface)),
+    var(--surface)
+  );
+}

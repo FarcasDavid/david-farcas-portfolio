@@ -1,0 +1,43 @@
+/* Print presentation of every portfolio section. */
+
+@media print {
+  .site-header,
+  .social-dock,
+  .hero-workbench,
+  .site-footer,
+  .next-view,
+  .contact-card {
+    display: none;
+  }
+
+  body {
+    background: white;
+    color: black;
+    padding: 0;
+  }
+
+  .page-width {
+    width: 100%;
+  }
+
+  .view[hidden] {
+    display: block !important;
+  }
+
+  .view {
+    min-height: 0;
+  }
+
+  .view-content {
+    padding-top: 25px;
+  }
+
+  .work-card,
+  .credential-card {
+    break-inside: avoid;
+  }
+
+  .stack-card {
+    break-inside: avoid;
+  }
+}

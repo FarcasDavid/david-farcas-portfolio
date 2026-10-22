@@ -1,6 +1,8 @@
 # Handoff status
 
-Updated 21 October 2026.
+Updated 22 October 2026.
+
+- Warm light theme and Tech Stack update: cream/ivory surfaces, charcoal text and deep indigo accents; theme-aware workflow diagram; seven static stack categories including the newly confirmed technologies. Removed interactive tool explanations and obsolete code. Both themes checked on desktop and phone; tablet wrapping, theme persistence, legacy links, contrast and contact-dialog focus passed. Production build/static checks and 22 regression tests pass. Owner-private Sites deployment appgdep_6ad98ed0a51c8191839d84051a9fe11c succeeded. Public source is on main; GitHub Pages deployment for this update is awaiting its workflow run.
 
 - Contact refinement published: removed tab numbers and replaced the solid blue arrow-only card with a warm neutral “Let’s connect” invitation, explicit “Send me a message” button and email-app fallback. Mobile places the invitation before secondary profile links. Desktop/phone/tablet checks and all 22 contact tests passed. Public GitHub Pages deployment 39648492398 and owner-private Sites deployment appgdep_6ad8fd53fe7081918361787764a0ffc4 succeeded; public assets match the verified build and the live message button opens the form.
 

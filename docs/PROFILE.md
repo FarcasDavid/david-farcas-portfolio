@@ -42,6 +42,14 @@ Insurance, automotive and enterprise clients; November 2024–December 2025. Pyt
 
 Keep these aggregated dates. No individually confirmed dates, promotions, or client names are available.
 
+### Full-stack review app, architecture and quality gates (confirmed 26 November 2026)
+
+David states he designed the modular, scalable, production-ready architecture of the email assistant on his own. Verified against the project's own documentation (not published): nine decoupled packages with Pydantic contracts at LLM boundaries; evaluation decoupled from inference through run artifacts; a draft review app with a Next.js 16 (App Router) / React 19 frontend in strict TypeScript, a FastAPI REST API on SQLAlchemy/Alembic/PostgreSQL, and a scheduled job that drafts replies to new emails every two hours; guardrails enforced in code (figure/link grounding checks, confidence gating, untrusted-input isolation, human review of every draft); an offline evaluation harness. Code-quality tooling: ESLint (Next.js Core Web Vitals + TypeScript), Prettier, Vitest + React Testing Library on the frontend; Ruff (McCabe ≤ 12), mypy, interrogate (90% docstring coverage), pytest and pre-commit on the backend. Do not name the client or the product, and do not publish source, data or screenshots.
+
+### iOS Developer, CHR Mobile Solutions (confirmed 26 November 2026)
+
+Cluj-Napoca, 2022–2024; David's first engineering role. Do not publish months. Built FlyEvents, a native iOS app for booking and customizing private-event services (DJ, bar, decor, photography), in Swift and UIKit with MVVM, Firebase Authentication/Firestore/Storage, REST APIs via Alamofire, SwiftLint and CocoaPods (verified from the public FlyEventsApp repository). Together with RebelDot this gives four years of professional experience.
+
 ## Collaboration and strengths
 
 End-to-end ownership, initiative, analytical problem-solving, technical communication, delivery under deadlines. Shared AI coding-agent rules and pre-commit checks for style, tests and commits; architecture/contribution guides adopted by the team. Treat these as engineering practices with practical delivery benefits; no quantified development-time saving was substantiated.
@@ -55,14 +63,14 @@ The CV is authoritative for the original inventory. On 21 October 2026, David ad
 - Backend/data: SQL, FastAPI, Pydantic, Streamlit, SQLAlchemy, PostgreSQL, Redis, Qdrant, Pinecone, FAISS, pandas, NumPy, scikit-learn, SciPy, RapidFuzz, BM25, ROUGE-L.
 - Cloud/delivery: AWS S3/RDS/EC2/Secrets Manager; Azure App Service/ACR/Key Vault/Entra; Terraform, Docker, Podman, Kubernetes, Azure DevOps, Azure Pipelines, Git, Bash, pytest, Ruff, mypy.
 
-Do not invent experience with frontend frameworks just because one is selected for this portfolio.
+On 26 November 2026 David confirmed the OpenAI API (used during his Azure AI-102 certification, via Azure OpenAI) and the Next.js/React/TypeScript frontend stack above. Do not invent experience with other frontend frameworks.
 
 ## Certifications and education
 
 David explicitly confirmed on 16 October 2026 that all certifications listed in his CV remain valid.
 
 - Claude Certified Architect - Foundations: 20 June 2026–June 2027. User-supplied credential. Skills: Claude API/Agent SDK, agentic orchestration, tool and MCP integration, Claude Code workflows, prompt engineering, structured outputs, context management and reliability. No badge URL provided.
-- Microsoft Certified: Azure AI Engineer Associate (AI-102): earned 2024; current validity confirmed by David. Skills: Azure AI design/deployment, NLP, computer vision, document extraction, search, responsible AI. No badge URL provided.
+- Microsoft Certified: Azure AI Engineer Associate (AI-102): earned 2024; current validity confirmed by David. Skills: Azure AI design/deployment, Azure OpenAI (OpenAI API), NLP, computer vision, document extraction, search, responsible AI. No badge URL provided.
 - Technical University of Cluj-Napoca, 2020–2024: Bachelor's Degree in Electronics, Telecommunications and Information Technology.
 
 ## Life outside engineering

@@ -359,6 +359,14 @@ assert.equal(
   "b19941e8de75199a967c347ada81fcd8e9347cc9333d87a7d886da8be1f4991d",
 );
 assert.equal((html.match(/<h1\b/g) || []).length, 1);
+assert(
+  tags.some(({ attrs }) => attrs.rel === "canonical" && attrs.href === "https://davidfarcas.ro/"),
+  "Search engines need the canonical public URL",
+);
+for (const [, json] of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+  assert.equal(JSON.parse(json)["@type"], "Person", "Structured data must describe David as a Person");
+}
+for (const file of ["dist/robots.txt", "dist/sitemap.xml"]) await stat(file);
 for (const term of [
   "RAG",
   "DSPy",

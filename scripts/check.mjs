@@ -94,8 +94,8 @@ assert(
 const stackMarkup = elementMarkup(html, attrs => attrs.id === "tech-stack");
 assert(stackMarkup, "Tech Stack must be available as a section");
 assert(!/<(?:button|details)\b/.test(stackMarkup), "Tech Stack should be readable without interaction");
-assert.equal(parseTags(stackMarkup).filter(({ attrs }) => hasClass(attrs, "stack-card")).length, 7, "Expected seven Tech Stack categories");
-for (const term of ["TypeScript", "Cypher", "MongoDB", "Neo4j", "Qdrant", "FAISS", "Claude Code", "Codex", "Warp"]) {
+assert.equal(parseTags(stackMarkup).filter(({ attrs }) => hasClass(attrs, "stack-card")).length, 8, "Expected eight Tech Stack categories");
+for (const term of ["TypeScript", "Cypher", "MongoDB", "Neo4j", "Qdrant", "FAISS", "Claude Code", "Codex", "Warp", "Next.js", "React", "OpenAI API"]) {
   assert(stackMarkup.includes(term), `Missing confirmed technology: ${term}`);
 }
 
@@ -356,7 +356,7 @@ const built = await readFile("dist/cv/David_Farcas_2026_CV.pdf");
 assert(source.equals(built), "Built CV differs from approved CV");
 assert.equal(
   createHash("sha256").update(source).digest("hex"),
-  "9a30450e0996d2369e27514c823074c971b5b9c235d66f4040343d53efdb90d9",
+  "b19941e8de75199a967c347ada81fcd8e9347cc9333d87a7d886da8be1f4991d",
 );
 assert.equal((html.match(/<h1\b/g) || []).length, 1);
 for (const term of [

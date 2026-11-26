@@ -39,10 +39,6 @@
   background: var(--surface);
 }
 
-.stack-card:last-child {
-  grid-column: 1 / -1;
-}
-
 .stack-card h3 {
   margin: 0 0 18px;
   color: var(--text);

@@ -40,7 +40,7 @@ The three views are About (`#about`), Experience (`#experience`) and Contact (`#
 
 ## Content and contact
 
-`docs/PROFILE.md` and the approved CV are the content sources of truth. Client work is anonymized, reported outcomes retain their scope, and proposed personal projects are not presented as finished work. David approved the verified website link in the CV on 16 October 2026; the refactor leaves the CV unchanged.
+`docs/PROFILE.md` and the approved CV are the content sources of truth. Client work is anonymized, reported outcomes retain their scope, and proposed personal projects are not presented as finished work. David approved the verified website link in the CV on 16 October 2026. On 26 November 2026 he requested a full CV update: a one-page, single-column (ATS-friendly) version with certifications first, the full-stack email assistant work and his 2022–2024 iOS role at CHR Mobile Solutions. `robots.txt` and `sitemap.xml` in `public/` are copied to the site root.
 
 The Contact invitation and Email controls open a native dialog. Send message submits over HTTPS without leaving the site; success is shown only after explicit provider acceptance. Pending requests prevent duplicate sends and retain reassurance when slow. Activation, rejection, malformed responses and network failures keep the draft. Copy message and direct email are fallbacks. No mailbox credentials are shipped. See [delivery status and setup](docs/CONTACT_DELIVERY_OPTIONS.md).
 

@@ -1,6 +1,9 @@
 # Handoff status
 
-Updated 22 October 2026.
+Updated 26 November 2026.
+
+- CV and content update (branch `update/cv-and-site-nov-2026`, pending review and merge): replaced the approved CV at David's request with a one-page, single-column version (certifications first; SHA-256 `b19941e8de75199a967c347ada81fcd8e9347cc9333d87a7d886da8be1f4991d`). Site content now covers four years of experience: the email assistant's architecture, full-stack Next.js/TypeScript review app, guardrails and quality gates; a new CHR Mobile Solutions iOS case (`#experience-mobile`); an eighth Tech Stack card (Frontend & mobile) plus OpenAI API, Kubernetes and tooling. Sweep improvements: canonical URL, Open Graph profile tags, schema.org Person structured data, robots.txt and sitemap.xml; group/img roles for labelled containers; CI now verifies pull requests without deploying. `npm run verify` passes 41 tests. Rendered desktop (1440px) and phone (390px) checks in dark and light themes passed for all three views and the contact dialog: no horizontal overflow, console errors or failed requests. Deep links, CV download, keyboard tabs, Back and the no-JavaScript fallback were checked. Not deployed until the pull request is merged into `main`.
+
 
 - Modular refactor published: named browser feature modules, a small composition root, injected FormSubmit delivery adapter, static page/section templates, and twelve ordered CSS source modules bundled to one production stylesheet. Critic agents reviewed architecture/behavior; fixes include imported-interface tests, removed dead code and hidden-opener focus prevention. `npm run verify` passes 41 tests. Desktop/mobile light/dark and project-subpath checks passed. Documentation: docs/ARCHITECTURE.md, docs/MAINTENANCE.md and docs/REFACTORING.md. GitHub Pages run 39724472264 and owner-private Sites deployment appgdep_6ad995df92508191bf72f81283fb1a09 succeeded. Public HTML/CSS/entry point/eight module files/CV match the verified build; live interactions and console were checked.
 

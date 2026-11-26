@@ -35,6 +35,11 @@
   border-top: 1px solid var(--line);
 }
 
+/* A later employer follows the previous employer's cards, so it needs room above. */
+.earlier-work + .experience-employer {
+  margin-top: 50px;
+}
+
 .experience-employer h3 {
   font-size: 17px;
   margin: 0;

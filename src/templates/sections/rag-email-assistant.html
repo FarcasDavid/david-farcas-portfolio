@@ -22,13 +22,16 @@
                   From past replies to reusable knowledge.
                 </p>
                 <p>
-                  I independently architected and implemented an 11-category RAG
-                  assistant. It retrieves relevant knowledge and generates
-                  source-cited email drafts for human review.
+                  I designed the modular, production-ready architecture on my own
+                  and built the system end to end: an 11-category RAG pipeline
+                  that drafts source-cited email replies, and the full-stack app
+                  where people review them.
                 </p>
                 <div class="tag-row">
                   <span>Python</span><span>DSPy / GEPA</span
-                  ><span>AWS Bedrock</span><span>PostgreSQL / pgvector</span>
+                  ><span>AWS Bedrock</span><span>PostgreSQL / pgvector</span
+                  ><span>FastAPI</span><span>Next.js</span
+                  ><span>TypeScript</span>
                 </div>
               </div>
               <div class="results-card" data-case-evidence>
@@ -62,6 +65,20 @@
               <h4>What I built</h4>
               <ul class="case-points" role="list">
                 <li>
+                  <strong>Architecture built to grow.</strong> Split the system
+                  into nine decoupled packages, from preprocessing and retrieval
+                  to drafting, evaluation and the web app, with Pydantic
+                  contracts at every LLM boundary. Evaluation runs separately
+                  from inference, on versioned run artifacts.
+                </li>
+                <li>
+                  <strong>A full-stack review app.</strong> Built a Next.js 16
+                  (App Router) and React 19 frontend with Server Components in
+                  strict TypeScript, a FastAPI REST API on SQLAlchemy, Alembic
+                  and PostgreSQL, and a scheduled job that drafts replies to new
+                  emails every two hours.
+                </li>
+                <li>
                   <strong>Retrieval with the right context.</strong> Routed
                   requests across 11 categories, combined Cohere embeddings with
                   PostgreSQL/pgvector search, and used Haiku reranking to
@@ -84,6 +101,20 @@
                   hoc tuning with DSPy/GEPA against defined classification and
                   safety metrics, making prompt selection repeatable and quality
                   changes measurable.
+                </li>
+                <li>
+                  <strong>Guardrails in code, not prompts.</strong> Checks every
+                  figure and link in a draft against its cited sources, gates on
+                  classifier confidence, isolates untrusted email text from the
+                  prompt, and keeps a person reviewing every draft. An offline
+                  evaluation harness tracks retrieval, citation and refusal
+                  quality for every run.
+                </li>
+                <li>
+                  <strong>Strict quality gates.</strong> ESLint, Prettier,
+                  Vitest and React Testing Library on the frontend; Ruff with a
+                  complexity limit, mypy, docstring coverage, pytest and
+                  pre-commit hooks on the backend.
                 </li>
               </ul>
             </div>
